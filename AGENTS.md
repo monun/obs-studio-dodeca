@@ -20,6 +20,7 @@
 
 ## 빌드와 검증
 
+- OBS 원본의 GitHub Actions 워크플로는 제거했다. upstream 갱신 시 `.github/workflows/`의 자동 실행이 다시 추가되는지 확인한다. 로컬 빌드 스크립트와 CMake preset은 유지한다.
 - 재현 명령·의존성·실행기 사용법: `docs/audio-tracks/README.md`, `test/audio-tracks/Dockerfile`.
 - 기존 플랫폼 CMake preset을 사용한다. `ENABLE_AUDIO_TRACK_TESTS=ON`, `ENABLE_TEST_INPUT=ON`은 검증할 때만 켠다. 일반 빌드에서는 기본 OFF다.
 - Windows `windows-x64` preset은 Visual Studio 2026과 CMake 4.2 이상이 필요하다. PowerShell 5.1에서는 `'-DOBS_VERSION_OVERRIDE=32.2.2-dodeca'`처럼 점을 포함한 CMake 인수를 따옴표로 감싼다.
