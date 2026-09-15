@@ -78,11 +78,11 @@ static void CheckRouting()
 	OBSSourceAutoRelease source = obs_source_create("track-test", "new", nullptr, nullptr);
 	CHECK(source);
 	CHECK(obs_source_get_audio_mixers(source) == 0xFFF);
-	uint32_t signaled = 0;
+	int64_t signaled = 0;
 	OBSSignal signal(
 		obs_source_get_signal_handler(source), "audio_mixers",
 		[](void *data, calldata_t *params) {
-			*static_cast<uint32_t *>(data) = calldata_int(params, "mixers");
+			*static_cast<int64_t *>(data) = calldata_int(params, "mixers");
 			calldata_set_int(params, "mixers", calldata_int(params, "mixers") | (1u << 31));
 		},
 		&signaled);
@@ -103,7 +103,7 @@ static void CheckMigration()
 		OBSDataAutoRelease data = obs_data_array_item(cases, i);
 		obs_data_set_default_string(data, "id", "track-test");
 		obs_data_set_default_int(data, "prev_ver", LIBOBS_API_VER);
-		uint32_t expected = obs_data_get_int(data, "expected");
+		const auto expected = obs_data_get_int(data, "expected");
 		OBSSourceAutoRelease source = obs_load_source(data);
 		CHECK(source);
 		CHECK(obs_source_get_audio_mixers(source) == expected);

@@ -13,7 +13,7 @@ def prepare(directory, recordings, tracks=12, port=4455, bridge=None):
     (root / "basic/scenes").mkdir()
     (root / "plugin_config/obs-websocket").mkdir(parents=True)
     recordings.mkdir(parents=True, exist_ok=True)
-    (root / "global.ini").write_text("[General]\nEnableAutoUpdates=false\nLastVersion=536936450\n")
+    (root / "global.ini").write_text("[General]\nEnableAutoUpdates=false\nLastVersion=536936450\n", encoding="utf-8")
     (root / "user.ini").write_text("""[General]
 FirstRun=true
 EnableCustomServerVodTrack=true
@@ -27,7 +27,7 @@ ConfigOnNewProfile=false
 WarnBeforeStartingStream=false
 WarnBeforeStoppingStream=false
 WarnBeforeStoppingRecord=false
-""")
+""", encoding="utf-8")
     (profile / "basic.ini").write_text(f"""[General]
 Name=Tracks
 [Output]
@@ -57,19 +57,19 @@ RecRBSize=256
 TrackIndex={tracks}
 VodTrackIndex={tracks - 1}
 VodTrackEnabled=true
-""" + "".join(f"Track{i}Name=Track{i:02d}\nTrack{i}Bitrate=160\n" for i in range(1, tracks + 1)))
+""" + "".join(f"Track{i}Name=Track{i:02d}\nTrack{i}Bitrate=160\n" for i in range(1, tracks + 1)), encoding="utf-8")
     settings = {"rate_control": "CBR", "bitrate": 1000, "preset": "ultrafast", "keyint_sec": 1}
     for encoder in ("recordEncoder", "streamEncoder"):
-        (profile / f"{encoder}.json").write_text(json.dumps(settings))
+        (profile / f"{encoder}.json").write_text(json.dumps(settings), encoding="utf-8")
     (profile / "service.json").write_text(json.dumps({"type": "rtmp_custom", "settings": {
-        "server": "rtmp://127.0.0.1:1935/live", "key": "tracks"}}))
+        "server": "rtmp://127.0.0.1:1935/live", "key": "tracks"}}), encoding="utf-8")
     (root / "plugin_config/obs-websocket/config.json").write_text(json.dumps({
         "server_enabled": True, "server_port": port, "auth_required": False,
-        "first_load": False, "alerts_enabled": False}))
+        "first_load": False, "alerts_enabled": False}), encoding="utf-8")
     if bridge:
         (root / "basic/scenes/Tracks.json").write_text(json.dumps({"name": "Tracks", "sources": [],
             "modules": {"scripts-tool": [{"path": str(Path(__file__).with_name("ui_bridge.py")),
-                                          "settings": {"directory": str(bridge)}}]}}))
+                                          "settings": {"directory": str(bridge)}}]}}), encoding="utf-8")
 
 
 if __name__ == "__main__":

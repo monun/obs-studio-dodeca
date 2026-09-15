@@ -13,7 +13,7 @@
 - `openspec/changes/expand-audio-tracks-to-twelve/{proposal,design,tasks}.md`와 그 안의 `specs/`를 읽는다. 명세는 구현과 함께 Git으로 관리한다. 파일이 없다면 작업 브랜치에서 가져온다. 명세를 확보하지 못하면 이 문서와 `docs/audio-tracks/README.md`를 기준으로 검증하되 명세 체크를 했다고 보고하지 않는다.
 - 12는 트랙 수다. 각 트랙의 스테레오/서라운드 채널 수는 기존 그대로다. 녹화·리플레이·MKV → MP4 리먹스를 대상으로 한다. 고급 방송 주 트랙/VOD 후보는 1~12지만 전송 개수는 유지한다. SRT/RIST는 12개 후보 중 최대 6개다. 제삼자 플러그인 바이너리 호환은 범위 밖이다.
 - Windows 네이티브 PowerShell과 도구를 사용한다. WSL에서 Windows 실행 성공을 대신 추정하지 않는다. UNC/WSL 경로에 소스가 있다면 사용자 작업을 덮어쓰지 않는 새 NTFS 작업 디렉터리에 작업 브랜치를 가져오고, 추가 작업 파일이 있다면 함께 옮긴다. 원본 경로·복사 경로를 기록한다. 기존 `.git`, 빌드 디렉터리와 의존성 캐시를 무작정 복사하거나 삭제하지 않는다.
-- `CMakePresets.json`과 `.github/scripts/Build-Windows.ps1`, `.github/scripts/.Wingetfile`을 현재 체크아웃에서 확인한다. 작성 시 x64 preset은 **Visual Studio 18 2026**, Windows SDK **10.0.26100.0**, `RelWithDebInfo`를 사용한다. preset을 과거 VS 버전으로 조용히 바꾸지 않는다. `cmake --version`, `cmake --help`, `vswhere`로 실제 설치를 확인한다. 도구가 없으면 정확한 누락 항목을 보고하고 가능한 비의존 검사를 계속한다.
+- `CMakePresets.json`과 `.github/scripts/Build-Windows.ps1`, `.github/scripts/.Wingetfile`을 현재 체크아웃에서 확인한다. 작성 시 x64 preset은 **Visual Studio 18 2026**, Windows SDK **10.0.26100.0**, `RelWithDebInfo`를 사용한다. 해당 generator에는 [CMake 4.2 이상](https://cmake.org/cmake/help/v4.2/generator/Visual%20Studio%2018%202026.html)이 필요하다. preset을 과거 VS 버전으로 조용히 바꾸지 않는다. `cmake --version`, `cmake --help`, `vswhere`로 실제 설치를 확인한다. 도구가 없으면 정확한 누락 항목을 보고하고 가능한 비의존 검사를 계속한다.
 - CMake가 준비하는 OBS 의존성/Qt/CEF 버전을 사용한다. FFmpeg 실행 파일(`ffmpeg`, `ffprobe`)과 Python 3도 확인한다. Python 시험 의존성은 별도 가상환경에 `numpy`, `websocket-client`를 설치한다. 임의의 PyQt6 wheel을 OBS 프로세스에 로드하면 Qt 버전이 충돌할 수 있으므로 UI 자동화는 버전 호환이 확인된 경우에만 쓰고, 그 외에는 실제 UI로 검사한다.
 
 ## 2. 기존 preset으로 빌드와 CTest
@@ -22,7 +22,7 @@
 
 ```powershell
 $ErrorActionPreference = 'Stop'
-cmake --preset windows-x64 -DENABLE_AUDIO_TRACK_TESTS=ON -DENABLE_TEST_INPUT=ON -DOBS_BUILD_NUMBER=1 -DOBS_VERSION_OVERRIDE=32.2.2-dodeca
+cmake --preset windows-x64 '-DENABLE_AUDIO_TRACK_TESTS=ON' '-DENABLE_TEST_INPUT=ON' '-DOBS_BUILD_NUMBER=1' '-DOBS_VERSION_OVERRIDE=32.2.2-dodeca'
 if ($LASTEXITCODE) { throw 'CMake configure failed' }
 cmake --build --preset windows-x64 --parallel
 if ($LASTEXITCODE) { throw 'Build failed' }
@@ -35,6 +35,12 @@ if ($LASTEXITCODE) { throw 'CTest failed' }
 ```
 
 `ENABLE_BROWSER` 등 기본 번들 모듈을 유지한 전체 빌드를 우선한다. 환경상 모듈을 껐다면 이유와 미검증 범위를 별도로 기록한다. 테스트 DLL 탐색 오류는 실제 설치 경로와 DLL 의존성을 확인해 해결한다. CTest 목록에 `audio-tracks`가 있고 실제 실행되는지 확인한다.
+
+Windows PowerShell 5.1은 따옴표 없는 `-DOBS_VERSION_OVERRIDE=32.2.2-dodeca`를 두 인자로 나눌 수 있으므로 위 명령의 따옴표를 유지한다. 빌드 도구와 무관하게 시험 설정의 한글 경로·UTF-8 저장은 `python -m unittest discover -s test/audio-tracks -p test_prepare.py -v`로 확인할 수 있다.
+
+VS와 컴파일러가 설치되어 있는데도 CMake가 컴파일러를 찾지 못하면 `CMakeFiles/CMakeConfigureLog.yaml`의 실제 원인을 확인한다. 샌드박스의 MSBuild `FileTracker`에서 `E_ACCESSDENIED`가 발생한 경우에는 설치·재부팅 문제로 단정하지 말고, 허용된 실행 권한으로 같은 구성을 다시 확인한다.
+
+컴파일러 탐지에 실패했던 빌드 디렉터리를 재사용하면 `CMakeCache.txt`의 `CMAKE_CXX_FLAGS`와 구성별 최적화 옵션이 빈 값으로 남을 수 있다. 실제로 `/EHsc` 누락에 따른 C4530/C2220 오류가 발생하면 캐시를 보관하고 위 구성 명령에 `--fresh`를 추가해 기본 옵션을 다시 생성한다. 이 세션에서는 `/EHsc`, `/O2 /Ob1 /DNDEBUG`와 MSVC 링커 경로가 복원됐다. 경고 검사나 번들 모듈을 끄는 방식으로 처리하지 않는다.
 
 ## 3. 기존 사용자 설정과 분리하여 OBS 실행
 
@@ -64,7 +70,7 @@ python test/audio-tracks/verify_media.py C:/obs-dodeca-test/recordings/실제파
 - **선택과 재시작:** 1·7·12만 선택하면 그 순서의 3개 스트림, 12개를 녹화한 다음 12번만 선택하면 정확히 1개 스트림. 리플레이 재시작에서 7·12 두 트랙. 녹화 일시정지/재개와 지원 형식의 파일 분할에서도 동일하게 확인한다.
 - **출력 매트릭스:** 간단 AAC/Opus 다중 녹화, 고급 MKV/일반 MP4/Fragmented MP4/Hybrid MP4/Hybrid MOV, Opus/MKV, 사용자 지정 FFmpeg AAC/MKV·AAC/MP4, 일반 FLV의 12번 단독. 형식 자체의 기존 제한은 유지한다.
 - **방송:** 외부 서비스로 송출하지 않고 로컬 수신기 또는 출력 인코더 구성으로 검사한다. 고급 주 12/VOD 11, 둘 다 12, VOD 미지원 서비스, 간단 모드 주 1/VOD 2를 검사한다. 방송·녹화·리플레이를 동시에 켰다가 녹화/리플레이만 재시작해도 방송 선택이 유지되어야 한다. SRT/RIST 1·2·3·7·11·12는 허용, 7개 선택은 UI 및 외부 수정 프로필 양쪽에서 명확히 거절되어야 한다.
-- **UI:** 영어와 한국어, Windows 배율 100%/200%에서 고급 오디오 속성, 간단/고급 녹화, 사용자 지정 FFmpeg, FLV, 방송/VOD, 고급 오디오 이름·비트레이트를 검사한다. 10~12번이 잘리지 않고 두 행/스크롤로 접근되며 탭·스페이스·라디오 화살표 키로 선택되는지 확인한다. 접근성 검사 도구 또는 Windows 내레이터로 번호를 구분할 수 있어야 한다. 12번 체크를 바꾸면 obs-websocket 조회/이벤트와 실제 출력이 일치해야 한다.
+- **UI:** 영어와 한국어, Windows 배율 100%/200%에서 고급 오디오 속성, 간단/고급 녹화, 사용자 지정 FFmpeg, FLV, 방송/VOD, 고급 오디오 이름·비트레이트를 검사한다. 트랙 번호 선택은 1~12번이 한 행으로 표시되고, 좁은 창에서는 가로 스크롤로 10~12번까지 접근되며 탭·스페이스·라디오 좌우 화살표 키로 선택되는지 확인한다. 접근성 검사 도구 또는 Windows 내레이터로 번호를 구분할 수 있어야 한다. 12번 체크를 바꾸면 obs-websocket 조회/이벤트와 실제 출력이 일치해야 한다.
 - **보존:** 기존 6트랙 장면의 1~6 배정, 명시적 무배정과 프로필 이름/비트레이트는 유지되고 7~12는 꺼져야 한다. 새 소스의 기본 배정은 12개 모두 켜짐, 새 녹화 프로필 기본 선택은 1번이다. 10~12의 이름/비트레이트, 주/VOD 선택은 설정 재열기·프로필 전환·OBS 재시작 후 유지되어야 한다.
 - **장시간/성능:** 여건이 되면 같은 장면의 1/6/12트랙 CPU·메모리·파일 크기와 30분 이상 녹화의 초반/중반/후반 동기를 검사한다. 수행하지 않은 항목은 실행하지 않았다고 기록한다.
 

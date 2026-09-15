@@ -163,7 +163,7 @@ OBSAdvAudioCtrl::OBSAdvAudioCtrl(QGridLayout *, obs_source_t *source_) : source(
 		button->setObjectName(QString("audioTrack%1").arg(i + 1));
 		button->setChecked(mixers & (1u << i));
 		mixerButtons[i] = button;
-		mixerLayout->addWidget(button, i / 6, i % 6);
+		mixerLayout->addWidget(button, 0, i);
 		connect(button, &QCheckBox::clicked, this, [this, i](bool checked) { setMixer(source, i, checked); });
 	}
 	SetSourceName(sourceName);

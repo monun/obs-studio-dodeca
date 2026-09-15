@@ -109,6 +109,6 @@ clang-format 22.1.3, gersemi 0.25.0, Python 문법, Qt 폼 XML, `git diff --chec
 
 ## 남은 플랫폼 검증
 
-- **Windows:** 사용자가 별도 Windows 세션에서 실행하기로 했다. [실행 프롬프트](windows-validation-prompt.md)에 네이티브 빌드·실행·UI·결과 기록 절차를 작성했다. OpenSpec 7.4 미완료.
+- **Windows:** 2026-09-15 Community 2026 설치 후 재부팅 없이 기존 preset의 전체 빌드·설치·오디오 CTest 1/1이 통과했다. CMake 캐시를 복구하고, 설정 화면·회귀 테스트의 MSVC 정수 변환 경고를 수정했다. 시험 설정 인코딩과 FFmpeg 8 패킷 분석 문제도 수정·검증했다. 이후 사용자 요청으로 트랙 번호 선택을 한 행으로 바꾸고 빌드·CTest·새 portable ZIP 검사를 통과했다. 실제 녹화·리플레이·리먹스와 새 배치의 UI 검사는 남아 있으며 OpenSpec 7.4 미완료다. [Windows 결과와 최신 ZIP](windows-validation-results.md), [실행 절차](windows-validation-prompt.md)를 참고한다.
 - **macOS:** 사용할 환경이 없어 네이티브 빌드·실행·UI를 검사하지 않았다. OpenSpec 7.5 미완료.
 - 제삼자 플러그인의 기존 바이너리 호환은 합의한 범위 밖이다.

@@ -1018,7 +1018,7 @@ void OBSBasicSettings::UpdateVodTrackSetting()
 	QGridLayout *vodTrackLayout = new QGridLayout();
 	for (int i = 0; i < MAX_AUDIO_MIXES; i++) {
 		vodTrack[i] = new QRadioButton(QString::number(i + 1));
-		vodTrackLayout->addWidget(vodTrack[i], i / 6, i % 6);
+		vodTrackLayout->addWidget(vodTrack[i], 0, i);
 		vodTrack[i]->setObjectName(QString("vodTrack%1").arg(i + 1));
 		vodTrack[i]->setAccessibleName(
 			QTStr(("Basic.Settings.Output.Adv.Audio.Track" + std::to_string(i + 1)).c_str()));

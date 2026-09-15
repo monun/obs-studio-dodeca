@@ -1,0 +1,2265 @@
+{
+  "date": "2026-09-15",
+  "recorded_at": "2026-09-15T21:35:56.201729+09:00",
+  "status": "single_row_portable_built_gui_validation_pending",
+  "repository": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+  "branch": "feat/twelve-audio-tracks",
+  "head": "2bbadcd3651ea9ef09748f525c2548b733593b7b",
+  "evidence_root": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15",
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+    "default_text_encoding": "cp949",
+    "cpu_threads": 24,
+    "windows_registry": {
+      "ProductName": "Windows 10 Pro",
+      "DisplayVersion": "25H2",
+      "CurrentBuild": "26200",
+      "UBR": 9445
+    },
+    "cpu_registry": {
+      "ProcessorNameString": "Intel(R) Core(TM) Ultra 7 270K Plus"
+    },
+    "disk": {
+      "total": 3999596015616,
+      "used": 2105193242624,
+      "free": 1894402772992
+    },
+    "sdk_include_directories": [
+      "10.0.26100.0"
+    ],
+    "gpus": [
+      {
+        "DriverDesc": "NVIDIA GeForce RTX 5090",
+        "DriverVersion": "32.0.15.9649"
+      },
+      {
+        "DriverDesc": "Parsec Virtual Display Adapter",
+        "DriverVersion": "0.45.0.0"
+      }
+    ],
+    "powershell": "5.1.26100.9444",
+    "cmake_initial": "3.31.6-msvc6",
+    "cmake_prepared": "4.4.3",
+    "visual_studio_instances": [
+      {
+        "version": "17.14.37502.11",
+        "product": "Visual Studio Build Tools 2022",
+        "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+        "reboot_required": false
+      },
+      {
+        "version": "18.10.12201.205",
+        "product": "Visual Studio Community 2026",
+        "path": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community",
+        "reboot_required": false
+      }
+    ],
+    "python_packages": {
+      "cmake": "4.4.3",
+      "numpy": "2.2.6",
+      "websocket-client": "1.9.2"
+    },
+    "ffmpeg_cli": "8.0.1-essentials_build-www.gyan.dev",
+    "ffprobe": "8.0.1-essentials_build-www.gyan.dev",
+    "obs_linked_qt_ffmpeg_versions": null,
+    "sdk_files": [
+      {
+        "path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe",
+        "bytes": 55640
+      },
+      {
+        "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64\\kernel32.lib",
+        "bytes": 311908
+      },
+      {
+        "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64\\ucrt.lib",
+        "bytes": 285588
+      }
+    ],
+    "msvc": "19.51.36257.0",
+    "msbuild": "18.10.1.42706",
+    "configured_dependencies": {
+      "qt": "6.11.1",
+      "ffmpeg": "8.1",
+      "cef": "127.145.7",
+      "loaded_in_obs": false
+    }
+  },
+  "build": {
+    "preset": "windows-x64",
+    "generator": "Visual Studio 18 2026",
+    "sdk": "10.0.26100.0",
+    "configuration": "RelWithDebInfo",
+    "configure_exit_code": 0,
+    "reason": null,
+    "compilation": "passed",
+    "installation": "passed",
+    "ctest": "passed",
+    "obs_runtime": "extracted ZIP --portable --version passed; GUI and media not run",
+    "disabled_modules": [
+      "obs-libfdk"
+    ],
+    "browser_enabled_in_preset": true,
+    "all_module_builds": "all enabled modules built together with libobs and frontend",
+    "explicitly_disabled_modules": [],
+    "ctest_registration": "audio-tracks: listed and executed in RelWithDebInfo",
+    "compilation_exit_code": 0,
+    "installation_exit_code": 0,
+    "install_prefix": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_x64\\install_single_row",
+    "ctest_exit_code": 0,
+    "ctest_tests_passed": 1,
+    "parallel_projects": 2,
+    "compiler_parallel_count": 2,
+    "process_priority": "BelowNormal",
+    "reboot_performed": false,
+    "recovery": {
+      "initial_build_exit_code": 1,
+      "cause": "Cache retained empty compiler/linker flags after earlier compiler detection failure",
+      "configure_fresh_exit_code": 0,
+      "restored_cxx_flags": "/DWIN32 /D_WINDOWS /EHsc",
+      "restored_relwithdebinfo_flags": "/O2 /Ob1 /DNDEBUG",
+      "build_after_fresh_exit_code": 1,
+      "test_fix": "Preserve 64-bit OBS signal and JSON integers in the regression test; resolves MSVC C4244/C2220",
+      "frontend_fix": "Keep size_t track count; explicitly convert the bounded 0..12 count for replay bitrate arithmetic; resolves MSVC C4267/C2220",
+      "production_cpp_modified": [
+        "frontend/settings/OBSBasicSettings.cpp"
+      ],
+      "cmake_modified": false
+    }
+  },
+  "checks": {
+    "initial_linux_hash_matches": 48,
+    "initial_linux_hash_count": 48,
+    "python_regressions_passed": 4,
+    "python_syntax_files": 21,
+    "qt_xml_files": 2,
+    "changed_since_initial_hash_check": [
+      "frontend/components/OBSAdvAudioCtrl.cpp",
+      "frontend/settings/OBSBasicSettings.cpp",
+      "frontend/settings/OBSBasicSettings_Stream.cpp",
+      "test/audio-tracks/audio-tracks.cpp",
+      "test/audio-tracks/prepare.py",
+      "test/audio-tracks/ui_layout.py",
+      "test/audio-tracks/verify_continuity.py"
+    ],
+    "initial_uncommitted_diff_preserved": true,
+    "portable_fixture_variants_passed": 4,
+    "openspec_strict": "passed",
+    "git_diff_check": "passed",
+    "toolchain_tests_passed_without_reboot": 2,
+    "audio_tracks_ctest_passed": 1,
+    "clang_format_22_1_3": "passed"
+  },
+  "fixture_generation_only": true,
+  "synthetic_media_tools": {
+    "origin": "Four-second FFmpeg CLI synthetic audio-only controls; not OBS output",
+    "obs_runtime_validated": false,
+    "video_sync_validated": false,
+    "mp4_names": "Explicit handler_name CLI metadata for the positive control",
+    "files": [
+      {
+        "container": "mkv",
+        "audio_streams": 12,
+        "channels_per_stream": 2,
+        "sample_rate": 48000,
+        "bytes": 526895,
+        "frequencies_hz": [
+          300.0992063492064,
+          400.0496031746032,
+          500.0,
+          599.9503968253969,
+          699.9007936507936,
+          800.0992063492064,
+          900.0496031746032,
+          1000.0,
+          1099.9503968253969,
+          1199.9007936507937,
+          1300.0992063492065,
+          1400.0496031746031
+        ],
+        "worst_other_tone_db": -42.639942253053775,
+        "max_intertrack_ms": 0.0,
+        "packet_counts": [
+          189
+        ],
+        "inferred_priming_durations_per_track": [
+          1
+        ],
+        "inspection": "synthetic-ffmpeg/mkv-inspection.json",
+        "continuity": "synthetic-ffmpeg/mkv-continuity.json"
+      },
+      {
+        "container": "mp4",
+        "audio_streams": 12,
+        "channels_per_stream": 2,
+        "sample_rate": 48000,
+        "bytes": 535029,
+        "frequencies_hz": [
+          300.0992063492064,
+          400.0496031746032,
+          500.0,
+          599.9503968253969,
+          699.9007936507936,
+          800.0992063492064,
+          900.0496031746032,
+          1000.0,
+          1099.9503968253969,
+          1199.9007936507937,
+          1300.0992063492065,
+          1400.0496031746031
+        ],
+        "worst_other_tone_db": -42.639942253053775,
+        "max_intertrack_ms": 0.0,
+        "packet_counts": [
+          189
+        ],
+        "inferred_priming_durations_per_track": [
+          0
+        ],
+        "inspection": "synthetic-ffmpeg/mp4-inspection.json",
+        "continuity": "synthetic-ffmpeg/mp4-continuity-after.json"
+      }
+    ],
+    "remux": {
+      "streams": 12,
+      "all_payloads_identical": true,
+      "max_relative_timestamp_error_seconds": 0.0005000000000005174,
+      "report": "synthetic-ffmpeg/remux.json"
+    },
+    "negative_control": {
+      "file": "synthetic-ffmpeg/missing-packet-copyts.mkv",
+      "exit_code": 1,
+      "rejected_for": "missing or overlapping packet",
+      "gap_error_ms": 22
+    }
+  },
+  "pending": [
+    "OBS portable launch and module logs",
+    "OBS 12-track AAC/MKV recording, two replay saves, manual and automatic remux",
+    "Sparse selection, output restart, pause and file splitting",
+    "Output format and encoder matrix",
+    "Streaming/VOD and concurrent outputs; SRT/RIST selection limits",
+    "English/Korean UI at 100%/200%, keyboard/accessibility, websocket routing",
+    "Legacy/source/profile defaults and persistence through OBS restart",
+    "Windows 30-minute recording and 1/6/12-track performance comparison",
+    "macOS native validation"
+  ],
+  "openspec_tasks": {
+    "7.4": false,
+    "7.5": false,
+    "3.7": true
+  },
+  "production_obs_settings_used": false,
+  "obs_or_receiver_started": true,
+  "source_sha256": {
+    "AGENTS.md": "56c4b8b3f99b3809b8bcf36dc54029119fc060eade4069578132981145c6e701",
+    "CMakeLists.txt": "2898b72118184309e196c1ed4600db78fd2f5bad11f2791ce50e7bc2d67b8b97",
+    "docs/audio-tracks/README.md": "2efe0bcd776efb886847d440b02df081be1564ec6ad497558b290143214a557e",
+    "docs/audio-tracks/validation-results.md": "581b81db89d192bec4f7258f04e8bcff93910e73960c9e5715f13cd2c4db39e7",
+    "docs/audio-tracks/windows-validation-prompt.md": "610bd7c380005dcd7809832eb2546794551a5e3e41c00cbb5d24a79c842968b8",
+    "docs/audio-tracks/windows-validation-results.md": "a13aafdb5e4275e064cd264fa3fd7852f5a6463feccf3fbdcbd4361af230e2c7",
+    "frontend/components/OBSAdvAudioCtrl.cpp": "88138ea0defaab66a49fc303e153d99387d4dea6fff6f31fd29bcdef6b77de53",
+    "frontend/components/OBSAdvAudioCtrl.hpp": "84b016f188f56ce205e7f3103140297154f38aea52c69fb46bdc0f52f636ef1c",
+    "frontend/data/locale/en-US.ini": "9dd154758cf8bfb89ec58fa3e990b18275fc1e1da44a9b4f3316c9366365a17b",
+    "frontend/data/locale/ko-KR.ini": "5300b9ed82728faeb1fa52488d63789d5aa60824d8891fba25416f34f3e51260",
+    "frontend/forms/OBSBasicSettings.ui": "efc32f66021059d0554afeb4886e360e85de3940d3afac01153bdbc5b563dd01",
+    "frontend/settings/OBSBasicSettings.cpp": "accf79ac0f12dd1460309fab8b4017b1268b7f178d273674d087913905cf0002",
+    "frontend/settings/OBSBasicSettings.hpp": "be3c5bf967eff4c751cdc82ff1d1ee4c65fdfc22b38fc6d3461d9a95a6c5080d",
+    "frontend/settings/OBSBasicSettings_Stream.cpp": "230c794965461716c4cc0ca85d59bf18d17cd241abb34cdb1954488c8e881499",
+    "frontend/utility/AdvancedOutput.cpp": "12cb97a37dca578402caf44223083ea5964123ef1ab90e5da02c020a7712266c",
+    "frontend/utility/AudioTracks.hpp": "bffd61d0b897a87662e91dc10efeb06e60e83b15d1a48d119c03511e9eb5503d",
+    "frontend/utility/SimpleOutput.cpp": "deb4f0e12d4a19f13c786264e3d1f59550efea5e6c97f68543a0058c4a26a154",
+    "frontend/widgets/OBSBasic.cpp": "84011a96afef908b0e03e5e4be139a85b9bd7ed53f233a0c101107dcac356c61",
+    "libobs/media-io/audio-io.h": "0be24075bc11cff5a47b0d4650a0f1af0b121a556b433fa8d20ed74871fed439",
+    "libobs/media-io/media-remux.c": "00d894c2d242293b75c9d8aa7e6525ff7a813845f06deafe91f87e7e5ad63c7e",
+    "libobs/obs-output.h": "f9adc4ef5d3ddef9f87f722902270576eaf803a7fd105f64966b0125ef26c3cb",
+    "libobs/obs-source.c": "71f618dc05f2ccb2729374770a80549b4e3353e8581d36f4ae9a0678c699a17f",
+    "libobs/obs.c": "d63e45cdaf40b08ab0b0a0107d042750b5de140214d792436e4c9dd84c54b8b8",
+    "openspec/changes/expand-audio-tracks-to-twelve/design.md": "d834f47699789c5e3dc9c3d989ca6e1ce89baec8e0569ea82e012df60f746076",
+    "openspec/changes/expand-audio-tracks-to-twelve/specs/audio-track-configuration/spec.md": "d42ea97d0f813803a964db4981efef932c7185dbc785a09f8ca439d7f3adcb77",
+    "openspec/changes/expand-audio-tracks-to-twelve/tasks.md": "d87c8dc9585f6536e9cfaf68c7df244378e69a0566d86b8e4cdd06fe89b80763",
+    "plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c": "ad662ab483c155c4a73d346f0eb0ed5edfb6c330312364284326b89436fec5cb",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mpegts.c": "ef890771b21818f10c654c95dd94ca7a2315518bf750c11fddcf2746fe874a89",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mux.c": "50c37ef046b439f54dc80029c17c810910c703791c37fe153435c943422c7ba8",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mux.h": "7b0f0e55b13429f4666b8c873fdd42b881be602eac0559284b7d2cc9bbeb565b",
+    "plugins/obs-ffmpeg/obs-ffmpeg-output.c": "373ae6787607f5941899a5c039d25faef84502aca050a7e7ac2c5adf578727a4",
+    "plugins/obs-outputs/mp4-mux.c": "ba1b64dff1c9442dee683836512a1c49cee3ea5a5299e526a6f72b5a1012e88c",
+    "test/audio-tracks/CMakeLists.txt": "f0ae8022045cc81108840ffb1e1e70e9b7b8c8b4624fd7427de7d4ea73f8dd3f",
+    "test/audio-tracks/Dockerfile": "8dcfb733983b21fcae66b7c3f64ed7927a4f816be8c976a355ff15686dc1b601",
+    "test/audio-tracks/audio-tracks.cpp": "f7179c85dbbe2c11e21b774cae700d12c4d1791efa2a8f8ed0ae706aa1e65865",
+    "test/audio-tracks/fixtures/legacy-sources.json": "897a87253de5abffb6a6d0166866ebe79a27a07bf97fbc587fa87b8c45895a67",
+    "test/audio-tracks/integration.py": "2ad7c6f116ca4b515f176c694a2efc6b2fcd8d1bae0815f22e171b468a7673bd",
+    "test/audio-tracks/launch.py": "4e9f65773d2e1a790fa65e2fff233a17146266b719eed27be2d81eb4f9e77363",
+    "test/audio-tracks/matrix.py": "e1519813b55f3a6956906fbf15456b8d29573e5f6c06ee7390d93a3aa676c854",
+    "test/audio-tracks/metadata.py": "ed142c94db6a31ec5b4153207c1299b2cdad35634e49e400967ff50fbe2cdfa7",
+    "test/audio-tracks/performance.py": "5be924f0db265557a246d4d46457521022446e78a7256b8ab8b6a96e07743dba",
+    "test/audio-tracks/prepare.py": "effb9652b4787eab81957d002938f6a0626076bc4d4ea52ac97a7395460ddcb1",
+    "test/audio-tracks/profiles.py": "c055848307809eaceaee4603cc6ae8ad7d83d1ea9736bc1b0d4927a63be7ea5c",
+    "test/audio-tracks/routing.py": "dfda8cf7f4f8f7f3d912c997475d517545b7284436386e51e1b256a4a778d9b0",
+    "test/audio-tracks/scenarios.py": "4464f2522138984996fe72561e0974aa679e169e9ab114a570a81b63af5afeea",
+    "test/audio-tracks/stream_limit.py": "2e6de68d2b5c8ffae8c5042e79a89aee3c3fbc0d4ae32335f28358792a62a688",
+    "test/audio-tracks/streaming.py": "5ed2fc512b353eeb7f78fb7ec36b131448673e7f5dffc78f5b0c4d8272c18c35",
+    "test/audio-tracks/test_prepare.py": "b42f798c32bc14e6f13f4594dc354a0ed2419e599effe2b454de2442e6b8db15",
+    "test/audio-tracks/test_verify_continuity.py": "fae56cd2f308ccdc9fcc1315f9542ae9546d91635827312945bb53ac1c9e751d",
+    "test/audio-tracks/ui_bridge.py": "c818833d645ee7703f6b0673cf863fe5d4a7aa29b2ed9fbb834339c5e432f7b2",
+    "test/audio-tracks/ui_client.py": "20d47179484da493cecf184998bbb97d0416bd723b747583c53ae202c7c9652c",
+    "test/audio-tracks/ui_layout.py": "a04a7d9d0c62d527caccaadc1c905a2762ec2ef11f8ee443d3e338878c7dae72",
+    "test/audio-tracks/ui_modes.py": "2bb4a8f4acd31601265749883260ac964922f7e8af8a69c6a79acc8d0ae9461a",
+    "test/audio-tracks/ui_regression.py": "159b8ef6afc00c68cc4c6f3b1c13d3c27d0dac5d33a91511349d0a39430a38bc",
+    "test/audio-tracks/verify_continuity.py": "b999562fe1ec52d333c1f035526ed6a05227f2564b75829e9ca0e000367540c7",
+    "test/audio-tracks/verify_media.py": "768748789d2a960b3eea8f23fde62623314cfeddf3f80d2f266d0450889d4853",
+    "test/audio-tracks/verify_remux.py": "2347397e00c47ceabb2e4d5ac773e3640a9d2ee034447cf5d1a392a8624441e4",
+    "test/test-input/sync-pair-aud.c": "ba7661e5f166a3dd61e9b51504bd7df907428c4123f213a0937c0edadd4ae8b0"
+  },
+  "commands": [
+    {
+      "label": "artifact-ignore",
+      "argv": [
+        "git",
+        "check-ignore",
+        "-v",
+        "build_windows_validation/2026-09-15/preflight.json",
+        "build_x64/CMakeCache.txt"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:15.492005+09:00",
+      "finished": "2026-09-15T19:24:15.507807+09:00",
+      "exit_code": 0,
+      "stdout": "artifact-ignore.stdout.log",
+      "stderr": "artifact-ignore.stderr.log"
+    },
+    {
+      "label": "browser-status",
+      "argv": [
+        "git",
+        "-C",
+        "plugins/obs-browser",
+        "-c",
+        "core.safecrlf=false",
+        "status",
+        "--short"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:18.678187+09:00",
+      "finished": "2026-09-15T19:15:18.706452+09:00",
+      "exit_code": 0,
+      "stdout": "browser-status.stdout.log",
+      "stderr": "browser-status.stderr.log"
+    },
+    {
+      "label": "changes-review",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--",
+        "test/audio-tracks/prepare.py",
+        "test/audio-tracks/verify_continuity.py",
+        "docs/audio-tracks/windows-validation-prompt.md"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:15.286915+09:00",
+      "finished": "2026-09-15T19:24:15.308947+09:00",
+      "exit_code": 0,
+      "stdout": "changes-review.stdout.log",
+      "stderr": "changes-review.stderr.log"
+    },
+    {
+      "label": "cmake-help",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+        "--help"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.227067+09:00",
+      "finished": "2026-09-15T19:15:16.260426+09:00",
+      "exit_code": 0,
+      "stdout": "cmake-help.stdout.log",
+      "stderr": "cmake-help.stderr.log"
+    },
+    {
+      "label": "cmake-native-help",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--help"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:40.455525+09:00",
+      "finished": "2026-09-15T19:16:40.485350+09:00",
+      "exit_code": 0,
+      "stdout": "cmake-native-help.stdout.log",
+      "stderr": "cmake-native-help.stderr.log"
+    },
+    {
+      "label": "cmake-native-version",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:40.326789+09:00",
+      "finished": "2026-09-15T19:16:40.407047+09:00",
+      "exit_code": 0,
+      "stdout": "cmake-native-version.stdout.log",
+      "stderr": "cmake-native-version.stderr.log"
+    },
+    {
+      "label": "cmake-presets",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--list-presets"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:40.534726+09:00",
+      "finished": "2026-09-15T19:16:40.554378+09:00",
+      "exit_code": 0,
+      "stdout": "cmake-presets.stdout.log",
+      "stderr": "cmake-presets.stderr.log"
+    },
+    {
+      "label": "cmake-version",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.137081+09:00",
+      "finished": "2026-09-15T19:15:16.172649+09:00",
+      "exit_code": 0,
+      "stdout": "cmake-version.stdout.log",
+      "stderr": "cmake-version.stderr.log"
+    },
+    {
+      "label": "configure-bundled-quoted",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:23.830126+09:00",
+      "finished": "2026-09-15T19:16:23.861767+09:00",
+      "exit_code": 1,
+      "stdout": "configure-bundled-quoted.stdout.log",
+      "stderr": "configure-bundled-quoted.stderr.log"
+    },
+    {
+      "label": "configure-bundled",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32",
+        ".2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:53.676356+09:00",
+      "finished": "2026-09-15T19:15:53.699980+09:00",
+      "exit_code": 1,
+      "stdout": "configure-bundled.stdout.log",
+      "stderr": "configure-bundled.stderr.log"
+    },
+    {
+      "label": "configure-native",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:40.602794+09:00",
+      "finished": "2026-09-15T19:16:40.657807+09:00",
+      "exit_code": 1,
+      "stdout": "configure-native.stdout.log",
+      "stderr": "configure-native.stderr.log"
+    },
+    {
+      "label": "control-compare-packets",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_remux.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mkv",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mp4",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/remux.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:22:01.039436+09:00",
+      "finished": "2026-09-15T19:22:01.354344+09:00",
+      "exit_code": 0,
+      "stdout": "control-compare-packets.stdout.log",
+      "stderr": "control-compare-packets.stderr.log"
+    },
+    {
+      "label": "control-drop-packet-copyts",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+        "-n",
+        "-copyts",
+        "-i",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mkv",
+        "-map",
+        "0",
+        "-c",
+        "copy",
+        "-bsf:a:0",
+        "noise=drop=eq(n\\,50)",
+        "-avoid_negative_ts",
+        "disabled",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/missing-packet-copyts.mkv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:34.430242+09:00",
+      "finished": "2026-09-15T19:24:34.500214+09:00",
+      "exit_code": 0,
+      "stdout": "control-drop-packet-copyts.stdout.log",
+      "stderr": "control-drop-packet-copyts.stderr.log"
+    },
+    {
+      "label": "control-drop-packet",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+        "-n",
+        "-i",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mkv",
+        "-map",
+        "0",
+        "-c",
+        "copy",
+        "-bsf:a:0",
+        "noise=drop=eq(n\\,50)",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/missing-packet.mkv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:15.280408+09:00",
+      "finished": "2026-09-15T19:24:15.346960+09:00",
+      "exit_code": 0,
+      "stdout": "control-drop-packet.stdout.log",
+      "stderr": "control-drop-packet.stderr.log"
+    },
+    {
+      "label": "control-generate",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+        "-n",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track01.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track02.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track03.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track04.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track05.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track06.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track07.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track08.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track09.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track10.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track11.wav",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\Track12.wav",
+        "-map",
+        "0:a:0",
+        "-map",
+        "1:a:0",
+        "-map",
+        "2:a:0",
+        "-map",
+        "3:a:0",
+        "-map",
+        "4:a:0",
+        "-map",
+        "5:a:0",
+        "-map",
+        "6:a:0",
+        "-map",
+        "7:a:0",
+        "-map",
+        "8:a:0",
+        "-map",
+        "9:a:0",
+        "-map",
+        "10:a:0",
+        "-map",
+        "11:a:0",
+        "-c:a",
+        "aac",
+        "-b:a",
+        "160k",
+        "-metadata:s:a:0",
+        "title=Track01",
+        "-metadata:s:a:1",
+        "title=Track02",
+        "-metadata:s:a:2",
+        "title=Track03",
+        "-metadata:s:a:3",
+        "title=Track04",
+        "-metadata:s:a:4",
+        "title=Track05",
+        "-metadata:s:a:5",
+        "title=Track06",
+        "-metadata:s:a:6",
+        "title=Track07",
+        "-metadata:s:a:7",
+        "title=Track08",
+        "-metadata:s:a:8",
+        "title=Track09",
+        "-metadata:s:a:9",
+        "title=Track10",
+        "-metadata:s:a:10",
+        "title=Track11",
+        "-metadata:s:a:11",
+        "title=Track12",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mkv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:04.664363+09:00",
+      "finished": "2026-09-15T19:21:05.053355+09:00",
+      "exit_code": 0,
+      "stdout": "control-generate.stdout.log",
+      "stderr": "control-generate.stderr.log"
+    },
+    {
+      "label": "control-missing-packet-copyts-rejected",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/missing-packet-copyts.mkv",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/should-not-pass-copyts.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:34.549222+09:00",
+      "finished": "2026-09-15T19:24:34.728919+09:00",
+      "exit_code": 1,
+      "stdout": "control-missing-packet-copyts-rejected.stdout.log",
+      "stderr": "control-missing-packet-copyts-rejected.stderr.log"
+    },
+    {
+      "label": "control-missing-packet-rejected",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/missing-packet.mkv",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/should-not-pass.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:15.400055+09:00",
+      "finished": "2026-09-15T19:24:15.583251+09:00",
+      "exit_code": 1,
+      "stdout": "control-missing-packet-rejected.stdout.log",
+      "stderr": "control-missing-packet-rejected.stderr.log"
+    },
+    {
+      "label": "control-mkv-continuity-after",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mkv",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/mkv-continuity.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:23:36.805311+09:00",
+      "finished": "2026-09-15T19:23:36.987003+09:00",
+      "exit_code": 0,
+      "stdout": "control-mkv-continuity-after.stdout.log",
+      "stderr": "control-mkv-continuity-after.stderr.log"
+    },
+    {
+      "label": "control-mkv-continuity",
+      "argv": [
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\venv\\Scripts\\python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mkv",
+        "--report",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\mkv-continuity.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:06.395428+09:00",
+      "finished": "2026-09-15T19:21:06.511949+09:00",
+      "exit_code": 1,
+      "stdout": "control-mkv-continuity.stdout.log",
+      "stderr": "control-mkv-continuity.stderr.log"
+    },
+    {
+      "label": "control-mkv-ffprobe",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mkv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:05.216151+09:00",
+      "finished": "2026-09-15T19:21:05.300568+09:00",
+      "exit_code": 0,
+      "stdout": "control-mkv-ffprobe.stdout.log",
+      "stderr": "control-mkv-ffprobe.stderr.log"
+    },
+    {
+      "label": "control-mkv-inspect",
+      "argv": [
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\venv\\Scripts\\python.exe",
+        "test/audio-tracks/verify_media.py",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mkv",
+        "--names",
+        "Track01,Track02,Track03,Track04,Track05,Track06,Track07,Track08,Track09,Track10,Track11,Track12",
+        "--report",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\mkv-inspection.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:05.352666+09:00",
+      "finished": "2026-09-15T19:21:06.343346+09:00",
+      "exit_code": 0,
+      "stdout": "control-mkv-inspect.stdout.log",
+      "stderr": "control-mkv-inspect.stderr.log"
+    },
+    {
+      "label": "control-mp4-continuity-after",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mp4",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/mp4-continuity-after.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:23:37.033213+09:00",
+      "finished": "2026-09-15T19:23:37.215834+09:00",
+      "exit_code": 0,
+      "stdout": "control-mp4-continuity-after.stdout.log",
+      "stderr": "control-mp4-continuity-after.stderr.log"
+    },
+    {
+      "label": "control-mp4-continuity",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_continuity.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mp4",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/mp4-continuity.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:22:00.867167+09:00",
+      "finished": "2026-09-15T19:22:00.992865+09:00",
+      "exit_code": 0,
+      "stdout": "control-mp4-continuity.stdout.log",
+      "stderr": "control-mp4-continuity.stderr.log"
+    },
+    {
+      "label": "control-mp4-ffprobe",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mp4"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:59.733251+09:00",
+      "finished": "2026-09-15T19:21:59.791784+09:00",
+      "exit_code": 0,
+      "stdout": "control-mp4-ffprobe.stdout.log",
+      "stderr": "control-mp4-ffprobe.stderr.log"
+    },
+    {
+      "label": "control-mp4-inspect",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "test/audio-tracks/verify_media.py",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mp4",
+        "--names",
+        "Track01,Track02,Track03,Track04,Track05,Track06,Track07,Track08,Track09,Track10,Track11,Track12",
+        "--report",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/mp4-inspection.json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:59.835966+09:00",
+      "finished": "2026-09-15T19:22:00.822423+09:00",
+      "exit_code": 0,
+      "stdout": "control-mp4-inspect.stdout.log",
+      "stderr": "control-mp4-inspect.stderr.log"
+    },
+    {
+      "label": "control-packet-details",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-select_streams",
+        "a:0",
+        "-read_intervals",
+        "%+#3",
+        "-show_streams",
+        "-show_packets",
+        "-of",
+        "json",
+        "build_windows_validation/2026-09-15/synthetic-ffmpeg/control12.mkv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:59.620461+09:00",
+      "finished": "2026-09-15T19:21:59.682448+09:00",
+      "exit_code": 0,
+      "stdout": "control-packet-details.stdout.log",
+      "stderr": "control-packet-details.stderr.log"
+    },
+    {
+      "label": "control-remux",
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+        "-n",
+        "-i",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mkv",
+        "-map",
+        "0",
+        "-c",
+        "copy",
+        "-metadata:s:a:0",
+        "handler_name=Track01",
+        "-metadata:s:a:1",
+        "handler_name=Track02",
+        "-metadata:s:a:2",
+        "handler_name=Track03",
+        "-metadata:s:a:3",
+        "handler_name=Track04",
+        "-metadata:s:a:4",
+        "handler_name=Track05",
+        "-metadata:s:a:5",
+        "handler_name=Track06",
+        "-metadata:s:a:6",
+        "handler_name=Track07",
+        "-metadata:s:a:7",
+        "handler_name=Track08",
+        "-metadata:s:a:8",
+        "handler_name=Track09",
+        "-metadata:s:a:9",
+        "handler_name=Track10",
+        "-metadata:s:a:10",
+        "handler_name=Track11",
+        "-metadata:s:a:11",
+        "handler_name=Track12",
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\synthetic-ffmpeg\\control12.mp4"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:05.102958+09:00",
+      "finished": "2026-09-15T19:21:05.164078+09:00",
+      "exit_code": 0,
+      "stdout": "control-remux.stdout.log",
+      "stderr": "control-remux.stderr.log"
+    },
+    {
+      "label": "diff-check-final",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:28:43.420202+09:00",
+      "finished": "2026-09-15T19:28:44.218429+09:00",
+      "exit_code": 0,
+      "stdout": "diff-check-final.stdout.log",
+      "stderr": "diff-check-final.stderr.log"
+    },
+    {
+      "label": "diff-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:25:30.121141+09:00",
+      "finished": "2026-09-15T19:25:30.928572+09:00",
+      "exit_code": 0,
+      "stdout": "diff-check.stdout.log",
+      "stderr": "diff-check.stderr.log"
+    },
+    {
+      "label": "existing-changes-preserved",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--",
+        ".github/scripts/.build.zsh",
+        ".github/scripts/.package.zsh",
+        ".github/scripts/build-macos",
+        ".github/scripts/build-ubuntu",
+        ".github/scripts/package-macos",
+        ".github/scripts/package-ubuntu",
+        "build-aux/.run-format.zsh",
+        "build-aux/run-clang-format",
+        "build-aux/run-gersemi",
+        "build-aux/run-swift-format",
+        "plugins/obs-browser",
+        "plugins/obs-websocket"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:24:15.357475+09:00",
+      "finished": "2026-09-15T19:24:15.447520+09:00",
+      "exit_code": 0,
+      "stdout": "existing-changes-preserved.stdout.log",
+      "stderr": "existing-changes-preserved.stderr.log"
+    },
+    {
+      "label": "ffmpeg-version",
+      "argv": [
+        "ffmpeg",
+        "-version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.448642+09:00",
+      "finished": "2026-09-15T19:15:16.922224+09:00",
+      "exit_code": 0,
+      "stdout": "ffmpeg-version.stdout.log",
+      "stderr": "ffmpeg-version.stderr.log"
+    },
+    {
+      "label": "ffprobe-version",
+      "argv": [
+        "ffprobe",
+        "-version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.972748+09:00",
+      "finished": "2026-09-15T19:15:17.021184+09:00",
+      "exit_code": 0,
+      "stdout": "ffprobe-version.stdout.log",
+      "stderr": "ffprobe-version.stderr.log"
+    },
+    {
+      "label": "git-branch",
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:17.072612+09:00",
+      "finished": "2026-09-15T19:15:17.085693+09:00",
+      "exit_code": 0,
+      "stdout": "git-branch.stdout.log",
+      "stderr": "git-branch.stderr.log"
+    },
+    {
+      "label": "git-diff",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--ignore-submodules=none"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:17.132050+09:00",
+      "finished": "2026-09-15T19:15:17.970617+09:00",
+      "exit_code": 0,
+      "stdout": "git-diff.stdout.log",
+      "stderr": "git-diff.stderr.log"
+    },
+    {
+      "label": "git-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:17.012154+09:00",
+      "finished": "2026-09-15T19:15:17.028202+09:00",
+      "exit_code": 0,
+      "stdout": "git-head.stdout.log",
+      "stderr": "git-head.stderr.log"
+    },
+    {
+      "label": "git-status",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "status",
+        "--short"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.317677+09:00",
+      "finished": "2026-09-15T19:15:16.965729+09:00",
+      "exit_code": 0,
+      "stdout": "git-status.stdout.log",
+      "stderr": "git-status.stderr.log"
+    },
+    {
+      "label": "git-submodules",
+      "argv": [
+        "git",
+        "submodule",
+        "status"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:18.017403+09:00",
+      "finished": "2026-09-15T19:15:18.630835+09:00",
+      "exit_code": 0,
+      "stdout": "git-submodules.stdout.log",
+      "stderr": "git-submodules.stderr.log"
+    },
+    {
+      "label": "media-tools",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "build_windows_validation/2026-09-15/check_media_tools.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:21:04.104221+09:00",
+      "finished": "2026-09-15T19:21:06.539963+09:00",
+      "exit_code": 1,
+      "stdout": "media-tools.stdout.log",
+      "stderr": "media-tools.stderr.log"
+    },
+    {
+      "label": "openspec-final-docs",
+      "argv": [
+        "node",
+        "C:\\Users\\monun\\AppData\\Roaming\\npm\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:28:42.378525+09:00",
+      "finished": "2026-09-15T19:28:43.373408+09:00",
+      "exit_code": 0,
+      "stdout": "openspec-final-docs.stdout.log",
+      "stderr": "openspec-final-docs.stderr.log"
+    },
+    {
+      "label": "openspec-final",
+      "argv": [
+        "node",
+        "C:\\Users\\monun\\AppData\\Roaming\\npm\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:25:29.078407+09:00",
+      "finished": "2026-09-15T19:25:30.075997+09:00",
+      "exit_code": 0,
+      "stdout": "openspec-final.stdout.log",
+      "stderr": "openspec-final.stderr.log"
+    },
+    {
+      "label": "openspec",
+      "argv": [
+        "node",
+        "C:\\Users\\monun\\AppData\\Roaming\\npm\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.503118+09:00",
+      "finished": "2026-09-15T19:15:17.547098+09:00",
+      "exit_code": 0,
+      "stdout": "openspec.stdout.log",
+      "stderr": "openspec.stderr.log"
+    },
+    {
+      "label": "preflight",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/preflight.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:18:37.211647+09:00",
+      "finished": "2026-09-15T19:18:37.498622+09:00",
+      "exit_code": 0,
+      "stdout": "preflight.stdout.log",
+      "stderr": "preflight.stderr.log"
+    },
+    {
+      "label": "prepare-after",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/check_prepare.py",
+        "prepare-after"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:20:13.934021+09:00",
+      "finished": "2026-09-15T19:20:14.076961+09:00",
+      "exit_code": 0,
+      "stdout": "prepare-after.stdout.log",
+      "stderr": "prepare-after.stderr.log"
+    },
+    {
+      "label": "prepare-before",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/check_prepare.py",
+        "prepare-before"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:18:37.355291+09:00",
+      "finished": "2026-09-15T19:18:37.491317+09:00",
+      "exit_code": 1,
+      "stdout": "prepare-before.stdout.log",
+      "stderr": "prepare-before.stderr.log"
+    },
+    {
+      "label": "prepare-regression-after",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "test/audio-tracks",
+        "-p",
+        "test_prepare.py",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:20:13.775224+09:00",
+      "finished": "2026-09-15T19:20:13.884020+09:00",
+      "exit_code": 0,
+      "stdout": "prepare-regression-after.stdout.log",
+      "stderr": "prepare-regression-after.stderr.log"
+    },
+    {
+      "label": "prepare-regression-before",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "test/audio-tracks",
+        "-p",
+        "test_prepare.py",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:19:23.747224+09:00",
+      "finished": "2026-09-15T19:19:23.850167+09:00",
+      "exit_code": 1,
+      "stdout": "prepare-regression-before.stdout.log",
+      "stderr": "prepare-regression-before.stderr.log"
+    },
+    {
+      "label": "python-dependencies",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-cache-dir",
+        "numpy",
+        "websocket-client",
+        "cmake>=4.2,<5"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:02.344254+09:00",
+      "finished": "2026-09-15T19:16:14.318107+09:00",
+      "exit_code": 0,
+      "stdout": "python-dependencies.stdout.log",
+      "stderr": "python-dependencies.stderr.log"
+    },
+    {
+      "label": "python-packages",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:18:37.509241+09:00",
+      "finished": "2026-09-15T19:18:37.966176+09:00",
+      "exit_code": 0,
+      "stdout": "python-packages.stdout.log",
+      "stderr": "python-packages.stderr.log"
+    },
+    {
+      "label": "python-regressions",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "test/audio-tracks",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:23:36.617801+09:00",
+      "finished": "2026-09-15T19:23:36.757588+09:00",
+      "exit_code": 0,
+      "stdout": "python-regressions.stdout.log",
+      "stderr": "python-regressions.stderr.log"
+    },
+    {
+      "label": "python-version",
+      "argv": [
+        "python",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.389429+09:00",
+      "finished": "2026-09-15T19:15:16.399563+09:00",
+      "exit_code": 0,
+      "stdout": "python-version.stdout.log",
+      "stderr": "python-version.stderr.log"
+    },
+    {
+      "label": "venv-create",
+      "argv": [
+        "python",
+        "-m",
+        "venv",
+        "build_windows_validation/2026-09-15/venv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:53.682373+09:00",
+      "finished": "2026-09-15T19:16:02.291436+09:00",
+      "exit_code": 0,
+      "stdout": "venv-create.stdout.log",
+      "stderr": "venv-create.stderr.log"
+    },
+    {
+      "label": "vswhere-utf8",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe",
+        "-all",
+        "-products",
+        "*",
+        "-utf8",
+        "-format",
+        "json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:16:23.907789+09:00",
+      "finished": "2026-09-15T19:16:23.932226+09:00",
+      "exit_code": 0,
+      "stdout": "vswhere-utf8.stdout.log",
+      "stderr": "vswhere-utf8.stderr.log"
+    },
+    {
+      "label": "vswhere",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe",
+        "-all",
+        "-products",
+        "*",
+        "-format",
+        "json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:16.310431+09:00",
+      "finished": "2026-09-15T19:15:16.337104+09:00",
+      "exit_code": 0,
+      "stdout": "vswhere.stdout.log",
+      "stderr": "vswhere.stderr.log"
+    },
+    {
+      "label": "websocket-status",
+      "argv": [
+        "git",
+        "-C",
+        "plugins/obs-websocket",
+        "-c",
+        "core.safecrlf=false",
+        "status",
+        "--short"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T19:15:18.752410+09:00",
+      "finished": "2026-09-15T19:15:18.788623+09:00",
+      "exit_code": 0,
+      "stdout": "websocket-status.stdout.log",
+      "stderr": "websocket-status.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/compiler",
+      "argv": [
+        "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe",
+        "/Bv"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:14:15.517824+09:00",
+      "finished": "2026-09-15T20:14:15.558813+09:00",
+      "exit_code": 2,
+      "stdout": "toolchain-after-install/compiler.stdout.log",
+      "stderr": "toolchain-after-install/compiler.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/diff-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:19:13.695490+09:00",
+      "finished": "2026-09-15T20:19:13.823594+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/diff-check.stdout.log",
+      "stderr": "toolchain-after-install/diff-check.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/msbuild",
+      "argv": [
+        "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
+        "-version",
+        "-nologo"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:14:15.604100+09:00",
+      "finished": "2026-09-15T20:14:15.716738+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/msbuild.stdout.log",
+      "stderr": "toolchain-after-install/msbuild.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/obs-configure-unsandboxed",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:15:44.161156+09:00",
+      "finished": "2026-09-15T20:16:45.769589+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/obs-configure-unsandboxed.stdout.log",
+      "stderr": "toolchain-after-install/obs-configure-unsandboxed.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/obs-configure",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:14:15.540714+09:00",
+      "finished": "2026-09-15T20:14:18.637490+09:00",
+      "exit_code": 1,
+      "stdout": "toolchain-after-install/obs-configure.stdout.log",
+      "stderr": "toolchain-after-install/obs-configure.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/openspec",
+      "argv": [
+        "node",
+        "C:\\Users\\monun\\AppData\\Roaming\\npm\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:19:13.872029+09:00",
+      "finished": "2026-09-15T20:19:14.922054+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/openspec.stdout.log",
+      "stderr": "toolchain-after-install/openspec.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/smoke-build-unsandboxed",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--build",
+        "build_windows_validation/2026-09-15/toolchain-after-install/build",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:15:13.990084+09:00",
+      "finished": "2026-09-15T20:15:16.532712+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/smoke-build-unsandboxed.stdout.log",
+      "stderr": "toolchain-after-install/smoke-build-unsandboxed.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/smoke-configure-unsandboxed",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "-S",
+        "build_windows_validation/2026-09-15/toolchain-after-install/source",
+        "-B",
+        "build_windows_validation/2026-09-15/toolchain-after-install/build",
+        "-G",
+        "Visual Studio 18 2026",
+        "-A",
+        "x64,version=10.0.26100.0"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:15:10.602380+09:00",
+      "finished": "2026-09-15T20:15:13.934144+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/smoke-configure-unsandboxed.stdout.log",
+      "stderr": "toolchain-after-install/smoke-configure-unsandboxed.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/smoke-configure",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "-S",
+        "build_windows_validation/2026-09-15/toolchain-after-install/source",
+        "-B",
+        "build_windows_validation/2026-09-15/toolchain-after-install/build",
+        "-G",
+        "Visual Studio 18 2026",
+        "-A",
+        "x64,version=10.0.26100.0"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:14:15.762685+09:00",
+      "finished": "2026-09-15T20:14:18.641495+09:00",
+      "exit_code": 1,
+      "stdout": "toolchain-after-install/smoke-configure.stdout.log",
+      "stderr": "toolchain-after-install/smoke-configure.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/smoke-test-unsandboxed",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/ctest.exe",
+        "--test-dir",
+        "build_windows_validation/2026-09-15/toolchain-after-install/build",
+        "-C",
+        "RelWithDebInfo",
+        "-V",
+        "--output-on-failure"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:15:16.579620+09:00",
+      "finished": "2026-09-15T20:15:16.737777+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/smoke-test-unsandboxed.stdout.log",
+      "stderr": "toolchain-after-install/smoke-test-unsandboxed.stderr.log"
+    },
+    {
+      "label": "toolchain-after-install/vswhere",
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe",
+        "-all",
+        "-products",
+        "*",
+        "-utf8",
+        "-format",
+        "json"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T20:14:15.449871+09:00",
+      "finished": "2026-09-15T20:14:15.471640+09:00",
+      "exit_code": 0,
+      "stdout": "toolchain-after-install/vswhere.stdout.log",
+      "stderr": "toolchain-after-install/vswhere.stderr.log"
+    },
+    {
+      "label": "portable-build/build-after-fresh",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--build",
+        "--preset",
+        "windows-x64",
+        "--parallel",
+        "2",
+        "--",
+        "/nodeReuse:false",
+        "/p:CL_MPCount=2"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:29:52.120474+00:00",
+      "finished": "2026-09-15T11:37:12.770513+00:00",
+      "exit_code": 1,
+      "stdout": "portable-build/build-after-fresh.stdout.log",
+      "stderr": "portable-build/build-after-fresh.stderr.log"
+    },
+    {
+      "label": "portable-build/build-final",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--build",
+        "--preset",
+        "windows-x64",
+        "--parallel",
+        "2",
+        "--",
+        "/nodeReuse:false",
+        "/p:CL_MPCount=2"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:39:09.920194+00:00",
+      "finished": "2026-09-15T11:39:50.607057+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/build-final.stdout.log",
+      "stderr": "portable-build/build-final.stderr.log"
+    },
+    {
+      "label": "portable-build/build",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--build",
+        "--preset",
+        "windows-x64",
+        "--parallel",
+        "2",
+        "--",
+        "/nodeReuse:false",
+        "/p:CL_MPCount=2"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:26:30.970402+00:00",
+      "finished": "2026-09-15T11:27:57.279659+00:00",
+      "exit_code": 1,
+      "stdout": "portable-build/build.stdout.log",
+      "stderr": "portable-build/build.stderr.log"
+    },
+    {
+      "label": "portable-build/configure-fresh",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--fresh",
+        "--preset",
+        "windows-x64",
+        "-DENABLE_AUDIO_TRACK_TESTS=ON",
+        "-DENABLE_TEST_INPUT=ON",
+        "-DOBS_BUILD_NUMBER=1",
+        "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:28:58.351411+00:00",
+      "finished": "2026-09-15T11:29:31.143803+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/configure-fresh.stdout.log",
+      "stderr": "portable-build/configure-fresh.stderr.log"
+    },
+    {
+      "label": "portable-build/ctest-list",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/ctest.exe",
+        "--test-dir",
+        "build_x64",
+        "-C",
+        "RelWithDebInfo",
+        "-N"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:40:29.681488+00:00",
+      "finished": "2026-09-15T11:40:29.769329+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/ctest-list.stdout.log",
+      "stderr": "portable-build/ctest-list.stderr.log"
+    },
+    {
+      "label": "portable-build/ctest",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/ctest.exe",
+        "--test-dir",
+        "build_x64",
+        "-C",
+        "RelWithDebInfo",
+        "--output-on-failure"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:40:29.824654+00:00",
+      "finished": "2026-09-15T11:40:30.031326+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/ctest.stdout.log",
+      "stderr": "portable-build/ctest.stderr.log"
+    },
+    {
+      "label": "portable-build/diff-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:44:37.194315+00:00",
+      "finished": "2026-09-15T11:44:37.345624+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/diff-check.stdout.log",
+      "stderr": "portable-build/diff-check.stderr.log"
+    },
+    {
+      "label": "portable-build/format-cpp-direct",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/clang_format/data/bin/clang-format.exe",
+        "--dry-run",
+        "--Werror",
+        "test/audio-tracks/audio-tracks.cpp"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:34:46.276774+00:00",
+      "finished": "2026-09-15T11:34:46.287832+00:00",
+      "exit_code": 1,
+      "stdout": "portable-build/format-cpp-direct.stdout.log",
+      "stderr": "portable-build/format-cpp-direct.stderr.log"
+    },
+    {
+      "label": "portable-build/format-cpp-final",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/clang_format/data/bin/clang-format.exe",
+        "--dry-run",
+        "--Werror",
+        "frontend/settings/OBSBasicSettings.cpp",
+        "test/audio-tracks/audio-tracks.cpp"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:39:09.538256+00:00",
+      "finished": "2026-09-15T11:39:09.864784+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/format-cpp-final.stdout.log",
+      "stderr": "portable-build/format-cpp-final.stderr.log"
+    },
+    {
+      "label": "portable-build/format-cpp-unsandboxed",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/clang_format/data/bin/clang-format.exe",
+        "--dry-run",
+        "--Werror",
+        "test/audio-tracks/audio-tracks.cpp"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:35:03.428054+00:00",
+      "finished": "2026-09-15T11:35:03.452340+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/format-cpp-unsandboxed.stdout.log",
+      "stderr": "portable-build/format-cpp-unsandboxed.stderr.log"
+    },
+    {
+      "label": "portable-build/format-cpp",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/clang-format.exe",
+        "--dry-run",
+        "--Werror",
+        "test/audio-tracks/audio-tracks.cpp"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:34:36.461642+00:00",
+      "finished": "2026-09-15T11:34:36.585832+00:00",
+      "exit_code": 1,
+      "stdout": "portable-build/format-cpp.stdout.log",
+      "stderr": "portable-build/format-cpp.stderr.log"
+    },
+    {
+      "label": "portable-build/fresh-toolchain-configure",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "-S",
+        "build_windows_validation/2026-09-15/toolchain-after-install/source",
+        "-B",
+        "build_windows_validation/2026-09-15/portable-build/fresh-toolchain",
+        "-G",
+        "Visual Studio 18 2026",
+        "-A",
+        "x64,version=10.0.26100.0"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:28:16.838914+00:00",
+      "finished": "2026-09-15T11:28:20.546048+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/fresh-toolchain-configure.stdout.log",
+      "stderr": "portable-build/fresh-toolchain-configure.stderr.log"
+    },
+    {
+      "label": "portable-build/install-formatter",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-cache-dir",
+        "clang-format==22.1.3"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:34:26.176935+00:00",
+      "finished": "2026-09-15T11:34:27.628075+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/install-formatter.stdout.log",
+      "stderr": "portable-build/install-formatter.stderr.log"
+    },
+    {
+      "label": "portable-build/install",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--install",
+        "build_x64",
+        "--prefix",
+        "build_x64/install",
+        "--config",
+        "RelWithDebInfo"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:40:25.524822+00:00",
+      "finished": "2026-09-15T11:40:29.586005+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/install.stdout.log",
+      "stderr": "portable-build/install.stderr.log"
+    },
+    {
+      "label": "portable-build/openspec",
+      "argv": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/monun/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:44:37.045162+00:00",
+      "finished": "2026-09-15T11:44:38.125002+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/openspec.stdout.log",
+      "stderr": "portable-build/openspec.stderr.log"
+    },
+    {
+      "label": "portable-build/package",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/portable-build/package_portable.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:41:06.997055+00:00",
+      "finished": "2026-09-15T11:41:41.357439+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/package.stdout.log",
+      "stderr": "portable-build/package.stderr.log"
+    },
+    {
+      "label": "portable-build/zip-runtime",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/portable-build/check_zip_runtime.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T11:42:09.761408+00:00",
+      "finished": "2026-09-15T11:42:09.872245+00:00",
+      "exit_code": 0,
+      "stdout": "portable-build/zip-runtime.stdout.log",
+      "stderr": "portable-build/zip-runtime.stderr.log"
+    },
+    {
+      "label": "single-row/build-final",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--build",
+        "--preset",
+        "windows-x64",
+        "--parallel",
+        "2",
+        "--",
+        "/nodeReuse:false",
+        "/p:CL_MPCount=2"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:31:06.552635+00:00",
+      "finished": "2026-09-15T12:31:37.954300+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/build-final.stdout.log",
+      "stderr": "single-row/build-final.stderr.log"
+    },
+    {
+      "label": "single-row/ctest",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/ctest.exe",
+        "--test-dir",
+        "build_x64",
+        "-C",
+        "RelWithDebInfo",
+        "--output-on-failure"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:32:27.345797+00:00",
+      "finished": "2026-09-15T12:32:27.541105+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/ctest.stdout.log",
+      "stderr": "single-row/ctest.stderr.log"
+    },
+    {
+      "label": "single-row/diff-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:34:55.876498+00:00",
+      "finished": "2026-09-15T12:34:56.030607+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/diff-check.stdout.log",
+      "stderr": "single-row/diff-check.stderr.log"
+    },
+    {
+      "label": "single-row/format-cpp",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/clang_format/data/bin/clang-format.exe",
+        "--dry-run",
+        "--Werror",
+        "frontend/components/OBSAdvAudioCtrl.cpp",
+        "frontend/settings/OBSBasicSettings.cpp",
+        "frontend/settings/OBSBasicSettings_Stream.cpp"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:31:06.134563+00:00",
+      "finished": "2026-09-15T12:31:06.495229+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/format-cpp.stdout.log",
+      "stderr": "single-row/format-cpp.stderr.log"
+    },
+    {
+      "label": "single-row/install",
+      "argv": [
+        "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+        "--install",
+        "build_x64",
+        "--prefix",
+        "build_x64/install_single_row",
+        "--config",
+        "RelWithDebInfo"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:32:23.632724+00:00",
+      "finished": "2026-09-15T12:32:27.259958+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/install.stdout.log",
+      "stderr": "single-row/install.stderr.log"
+    },
+    {
+      "label": "single-row/openspec",
+      "argv": [
+        "C:/Program Files/nodejs/node.exe",
+        "C:/Users/monun/AppData/Roaming/npm/node_modules/@fission-ai/openspec/bin/openspec.js",
+        "validate",
+        "expand-audio-tracks-to-twelve",
+        "--type",
+        "change",
+        "--strict",
+        "--no-interactive"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:34:56.034113+00:00",
+      "finished": "2026-09-15T12:34:57.061511+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/openspec.stdout.log",
+      "stderr": "single-row/openspec.stderr.log"
+    },
+    {
+      "label": "single-row/package",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/single-row/package_portable.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:32:27.595095+00:00",
+      "finished": "2026-09-15T12:33:01.664046+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/package.stdout.log",
+      "stderr": "single-row/package.stderr.log"
+    },
+    {
+      "label": "single-row/ui-script-syntax",
+      "argv": [
+        "python",
+        "-c",
+        "import ast; from pathlib import Path; ast.parse(Path('test/audio-tracks/ui_layout.py').read_text(encoding='utf-8')); print('UI script syntax passed')"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:34:56.080600+00:00",
+      "finished": "2026-09-15T12:34:56.124039+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/ui-script-syntax.stdout.log",
+      "stderr": "single-row/ui-script-syntax.stderr.log"
+    },
+    {
+      "label": "single-row/zip-runtime",
+      "argv": [
+        "python",
+        "build_windows_validation/2026-09-15/single-row/check_zip_runtime.py"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca",
+      "started": "2026-09-15T12:33:01.721918+00:00",
+      "finished": "2026-09-15T12:33:01.845290+00:00",
+      "exit_code": 0,
+      "stdout": "single-row/zip-runtime.stdout.log",
+      "stderr": "single-row/zip-runtime.stderr.log"
+    }
+  ],
+  "initial_validation": {
+    "recorded_at": "2026-09-15T19:30:26.422718+09:00",
+    "status": "blocked_before_compilation",
+    "build": {
+      "preset": "windows-x64",
+      "generator": "Visual Studio 18 2026",
+      "sdk": "10.0.26100.0",
+      "configuration": "RelWithDebInfo",
+      "configure_exit_code": 1,
+      "reason": "Visual Studio 2026 instance not installed",
+      "compilation": "not_run",
+      "installation": "not_run",
+      "ctest": "not_run",
+      "obs_runtime": "not_run",
+      "disabled_modules": [],
+      "browser_enabled_in_preset": true,
+      "all_module_builds": "unverified"
+    },
+    "environment": {
+      "platform": "Windows-10-10.0.26200-SP0",
+      "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+      "default_text_encoding": "cp949",
+      "cpu_threads": 24,
+      "windows_registry": {
+        "ProductName": "Windows 10 Pro",
+        "DisplayVersion": "25H2",
+        "CurrentBuild": "26200",
+        "UBR": 9445
+      },
+      "cpu_registry": {
+        "ProcessorNameString": "Intel(R) Core(TM) Ultra 7 270K Plus"
+      },
+      "disk": {
+        "total": 3999596015616,
+        "used": 2105193242624,
+        "free": 1894402772992
+      },
+      "sdk_include_directories": [
+        "10.0.26100.0"
+      ],
+      "gpus": [
+        {
+          "DriverDesc": "NVIDIA GeForce RTX 5090",
+          "DriverVersion": "32.0.15.9649"
+        },
+        {
+          "DriverDesc": "Parsec Virtual Display Adapter",
+          "DriverVersion": "0.45.0.0"
+        }
+      ],
+      "powershell": "5.1.26100.9444",
+      "cmake_initial": "3.31.6-msvc6",
+      "cmake_prepared": "4.4.3",
+      "visual_studio_instances": [
+        {
+          "version": "17.14.37502.11",
+          "product": "Build Tools 2022"
+        }
+      ],
+      "python_packages": {
+        "cmake": "4.4.3",
+        "numpy": "2.2.6",
+        "websocket-client": "1.9.2"
+      },
+      "ffmpeg_cli": "8.0.1-essentials_build-www.gyan.dev",
+      "ffprobe": "8.0.1-essentials_build-www.gyan.dev",
+      "obs_linked_qt_ffmpeg_versions": null,
+      "sdk_files": [
+        {
+          "path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe",
+          "bytes": 55640
+        },
+        {
+          "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\um\\x64\\kernel32.lib",
+          "bytes": 311908
+        },
+        {
+          "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.26100.0\\ucrt\\x64\\ucrt.lib",
+          "bytes": 285588
+        }
+      ]
+    }
+  },
+  "toolchain_recheck": {
+    "reboot_performed": false,
+    "scope": "Small C/C++20 programs and Windows RC, followed by OBS preset configure; full OBS build not run",
+    "build_parallelism": 2,
+    "sandbox_attempt": "MSBuild FileTracker E_ACCESSDENIED",
+    "successful_execution": "Approved execution outside sandbox",
+    "evidence_directory": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\toolchain-after-install"
+  },
+  "portable_package": {
+    "zip": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\artifacts\\obs-studio-32.2.2-dodeca-windows-x64-portable-single-row.zip",
+    "size_bytes": 178798714,
+    "sha256": "2d2d363095b8ebc93bbe386975e7b4e65dbbb0afdb8a845fb79d9ebc7453be78",
+    "entries": 2072,
+    "uncompressed_bytes": 436749561,
+    "crc_verified": true,
+    "extracted_files_match_install": true,
+    "extracted_to": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\single-row\\zip-check\\obs-studio",
+    "portable_marker": true,
+    "updater_disabled": true,
+    "personal_config_included": false,
+    "omitted_debug_symbols": [
+      "bin/64bit/libobs-d3d11.pdb",
+      "bin/64bit/libobs-opengl.pdb",
+      "bin/64bit/libobs-winrt.pdb",
+      "bin/64bit/obs-amf-test.pdb",
+      "bin/64bit/obs-ffmpeg-mux.pdb",
+      "bin/64bit/obs-frontend-api.pdb",
+      "bin/64bit/obs-nvenc-test.pdb",
+      "bin/64bit/obs-qsv-test.pdb",
+      "bin/64bit/obs-scripting.pdb",
+      "bin/64bit/obs.pdb",
+      "bin/64bit/obs64.pdb",
+      "bin/64bit/w32-pthreads.pdb",
+      "data/obs-plugins/win-capture/get-graphics-offsets32.pdb",
+      "data/obs-plugins/win-capture/get-graphics-offsets64.pdb",
+      "data/obs-plugins/win-capture/graphics-hook32.pdb",
+      "data/obs-plugins/win-capture/graphics-hook64.pdb",
+      "data/obs-plugins/win-capture/inject-helper32.pdb",
+      "data/obs-plugins/win-capture/inject-helper64.pdb",
+      "data/obs-plugins/win-dshow/obs-virtualcam-module32.pdb",
+      "data/obs-plugins/win-dshow/obs-virtualcam-module64.pdb",
+      "data/obs-scripting/64bit/_obspython.pdb",
+      "data/obs-scripting/64bit/obslua.pdb",
+      "obs-plugins/64bit/aja-output-ui.pdb",
+      "obs-plugins/64bit/aja.pdb",
+      "obs-plugins/64bit/coreaudio-encoder.pdb",
+      "obs-plugins/64bit/decklink-captions.pdb",
+      "obs-plugins/64bit/decklink-output-ui.pdb",
+      "obs-plugins/64bit/decklink.pdb",
+      "obs-plugins/64bit/frontend-tools.pdb",
+      "obs-plugins/64bit/image-source.pdb",
+      "obs-plugins/64bit/nv-filters.pdb",
+      "obs-plugins/64bit/obs-browser-page.pdb",
+      "obs-plugins/64bit/obs-browser.pdb",
+      "obs-plugins/64bit/obs-ffmpeg.pdb",
+      "obs-plugins/64bit/obs-filters.pdb",
+      "obs-plugins/64bit/obs-nvenc.pdb",
+      "obs-plugins/64bit/obs-outputs.pdb",
+      "obs-plugins/64bit/obs-qsv11.pdb",
+      "obs-plugins/64bit/obs-text.pdb",
+      "obs-plugins/64bit/obs-transitions.pdb",
+      "obs-plugins/64bit/obs-vst.pdb",
+      "obs-plugins/64bit/obs-webrtc.pdb",
+      "obs-plugins/64bit/obs-websocket.pdb",
+      "obs-plugins/64bit/obs-x264.pdb",
+      "obs-plugins/64bit/rtmp-services.pdb",
+      "obs-plugins/64bit/test-input.pdb",
+      "obs-plugins/64bit/text-freetype2.pdb",
+      "obs-plugins/64bit/vlc-video.pdb",
+      "obs-plugins/64bit/win-capture.pdb",
+      "obs-plugins/64bit/win-dshow.pdb",
+      "obs-plugins/64bit/win-wasapi.pdb"
+    ],
+    "source_commit": "2bbadcd3651ea9ef09748f525c2548b733593b7b",
+    "executable_check": {
+      "argv": [
+        "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\single-row\\zip-check\\obs-studio\\bin\\64bit\\obs64.exe",
+        "--portable",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\single-row\\zip-check\\obs-studio\\bin\\64bit",
+      "path": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\single-row\\zip-check\\obs-studio\\bin\\64bit;C:\\WINDOWS\\System32;C:\\WINDOWS",
+      "exit_code": 0,
+      "stdout": "OBS Studio - 32.2.2-dodeca",
+      "stderr": "",
+      "portable_config_created": false,
+      "scope": "Extracted executable version and startup DLL loading only; no OBS GUI or recording started"
+    }
+  },
+  "obs_gui_or_receiver_started": false,
+  "obs_version_process_started": true,
+  "previous_portable_packages": [
+    {
+      "zip": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\artifacts\\obs-studio-32.2.2-dodeca-windows-x64-portable.zip",
+      "size_bytes": 178798670,
+      "sha256": "eb260a44aa185d7ccef4db8c2d83d4b5f7a74146f54506d41102f7e88e7917e3",
+      "entries": 2072,
+      "uncompressed_bytes": 436749456,
+      "crc_verified": true,
+      "extracted_files_match_install": true,
+      "extracted_to": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\portable-build\\zip-check\\obs-studio",
+      "portable_marker": true,
+      "updater_disabled": true,
+      "personal_config_included": false,
+      "omitted_debug_symbols": [
+        "bin/64bit/libobs-d3d11.pdb",
+        "bin/64bit/libobs-opengl.pdb",
+        "bin/64bit/libobs-winrt.pdb",
+        "bin/64bit/obs-amf-test.pdb",
+        "bin/64bit/obs-ffmpeg-mux.pdb",
+        "bin/64bit/obs-frontend-api.pdb",
+        "bin/64bit/obs-nvenc-test.pdb",
+        "bin/64bit/obs-qsv-test.pdb",
+        "bin/64bit/obs-scripting.pdb",
+        "bin/64bit/obs.pdb",
+        "bin/64bit/obs64.pdb",
+        "bin/64bit/w32-pthreads.pdb",
+        "data/obs-plugins/win-capture/get-graphics-offsets32.pdb",
+        "data/obs-plugins/win-capture/get-graphics-offsets64.pdb",
+        "data/obs-plugins/win-capture/graphics-hook32.pdb",
+        "data/obs-plugins/win-capture/graphics-hook64.pdb",
+        "data/obs-plugins/win-capture/inject-helper32.pdb",
+        "data/obs-plugins/win-capture/inject-helper64.pdb",
+        "data/obs-plugins/win-dshow/obs-virtualcam-module32.pdb",
+        "data/obs-plugins/win-dshow/obs-virtualcam-module64.pdb",
+        "data/obs-scripting/64bit/_obspython.pdb",
+        "data/obs-scripting/64bit/obslua.pdb",
+        "obs-plugins/64bit/aja-output-ui.pdb",
+        "obs-plugins/64bit/aja.pdb",
+        "obs-plugins/64bit/coreaudio-encoder.pdb",
+        "obs-plugins/64bit/decklink-captions.pdb",
+        "obs-plugins/64bit/decklink-output-ui.pdb",
+        "obs-plugins/64bit/decklink.pdb",
+        "obs-plugins/64bit/frontend-tools.pdb",
+        "obs-plugins/64bit/image-source.pdb",
+        "obs-plugins/64bit/nv-filters.pdb",
+        "obs-plugins/64bit/obs-browser-page.pdb",
+        "obs-plugins/64bit/obs-browser.pdb",
+        "obs-plugins/64bit/obs-ffmpeg.pdb",
+        "obs-plugins/64bit/obs-filters.pdb",
+        "obs-plugins/64bit/obs-nvenc.pdb",
+        "obs-plugins/64bit/obs-outputs.pdb",
+        "obs-plugins/64bit/obs-qsv11.pdb",
+        "obs-plugins/64bit/obs-text.pdb",
+        "obs-plugins/64bit/obs-transitions.pdb",
+        "obs-plugins/64bit/obs-vst.pdb",
+        "obs-plugins/64bit/obs-webrtc.pdb",
+        "obs-plugins/64bit/obs-websocket.pdb",
+        "obs-plugins/64bit/obs-x264.pdb",
+        "obs-plugins/64bit/rtmp-services.pdb",
+        "obs-plugins/64bit/test-input.pdb",
+        "obs-plugins/64bit/text-freetype2.pdb",
+        "obs-plugins/64bit/vlc-video.pdb",
+        "obs-plugins/64bit/win-capture.pdb",
+        "obs-plugins/64bit/win-dshow.pdb",
+        "obs-plugins/64bit/win-wasapi.pdb"
+      ],
+      "source_commit": "2bbadcd3651ea9ef09748f525c2548b733593b7b",
+      "executable_check": {
+        "argv": [
+          "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\portable-build\\zip-check\\obs-studio\\bin\\64bit\\obs64.exe",
+          "--portable",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\portable-build\\zip-check\\obs-studio\\bin\\64bit",
+        "path": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-09-15\\portable-build\\zip-check\\obs-studio\\bin\\64bit;C:\\WINDOWS\\System32;C:\\WINDOWS",
+        "exit_code": 0,
+        "stdout": "OBS Studio - 32.2.2-dodeca",
+        "stderr": "",
+        "portable_config_created": false,
+        "scope": "Extracted executable version and startup DLL loading only; no OBS GUI or recording started"
+      }
+    }
+  ],
+  "single_row_update": {
+    "user_request": "Display audio track selectors in one horizontal row",
+    "surfaces": [
+      "advanced audio properties",
+      "simple recording",
+      "advanced recording",
+      "custom FFmpeg",
+      "FLV",
+      "streaming",
+      "multi-track streaming",
+      "VOD"
+    ],
+    "layout": "Tracks 1 through 12 in grid row 0; existing scrolling retained",
+    "build_exit_code": 0,
+    "ctest_passed": 1,
+    "package_verified": true,
+    "changed_runtime_files": [
+      "bin/64bit/obs64.exe"
+    ],
+    "obs64_sha256": "687e66461293428b21c3e626552b6b18715efdbf8cb992356dfeddaeb84fee3c",
+    "ui_script": "Updated per-control scroll checks and right-arrow navigation; syntax passed; live UI not run",
+    "user_obs_process_modified": false,
+    "previous_zip_preserved": true,
+    "source_files": [
+      "frontend/components/OBSAdvAudioCtrl.cpp",
+      "frontend/settings/OBSBasicSettings.cpp",
+      "frontend/settings/OBSBasicSettings_Stream.cpp",
+      "test/audio-tracks/ui_layout.py"
+    ],
+    "openspec_progress": {
+      "completed": 30,
+      "total": 32,
+      "remaining": [
+        "7.4",
+        "7.5"
+      ]
+    }
+  }
+}

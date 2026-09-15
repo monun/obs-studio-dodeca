@@ -344,7 +344,7 @@ static void CreateTrackButtons(QWidget *container, std::array<Button *, MAX_AUDI
 		button->setObjectName(prefix + QString::number(i + 1));
 		button->setAccessibleName(
 			QTStr(("Basic.Settings.Output.Adv.Audio.Track" + std::to_string(i + 1)).c_str()));
-		layout->addWidget(button, i / 6, i % 6);
+		layout->addWidget(button, 0, i);
 		buttons[i] = button;
 	}
 	buttons[0]->setChecked(true);
@@ -4704,7 +4704,7 @@ void OBSBasicSettings::AdvOutRecCheckWarnings()
 {
 	QString errorMsg;
 	QString warningMsg;
-	uint32_t tracks = AudioTrackCount(SelectedAudioTracks(advRecTracks));
+	const auto tracks = AudioTrackCount(SelectedAudioTracks(advRecTracks));
 
 	bool useStreamEncoder = ui->advOutRecEncoder->currentIndex() == 0;
 	if (useStreamEncoder) {
@@ -5080,7 +5080,7 @@ void OBSBasicSettings::SimpleReplayBufferChanged()
 		abitrate = ui->simpleOutputABitrate->currentText().toInt();
 	} else {
 		int delta = ui->simpleOutputABitrate->currentText().toInt();
-		abitrate = delta * AudioTrackCount(SelectedAudioTracks(simpleRecTracks));
+		abitrate = delta * static_cast<int>(AudioTrackCount(SelectedAudioTracks(simpleRecTracks)));
 	}
 
 	int vbitrate = ui->simpleOutputVBitrate->value();

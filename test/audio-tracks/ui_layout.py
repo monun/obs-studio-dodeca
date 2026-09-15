@@ -10,9 +10,12 @@ from ui_client import UI
 
 
 def check_controls(ui, names, expected_scale, prefix, legacy_prefix):
-    widgets = ui.call("snapshot", names=names)["widgets"]
-    for index, widget in enumerate(widgets.values(), 1):
-        assert widget["visible"] and widget["exposed"], (names[index - 1], widget)
+    widgets = {}
+    for index, name in enumerate(names, 1):
+        ui.call("ensure_visible", object=name)
+        widget = ui.call("snapshot", names=[name])["widgets"][name]
+        widgets[name] = widget
+        assert widget["visible"] and widget["exposed"], (name, widget)
         assert widget["width"] >= widget["minimum_width"], widget
         assert widget["scale"] == expected_scale, widget
         expected = f"{legacy_prefix if index <= 6 else prefix} {index}"
@@ -45,10 +48,11 @@ if __name__ == "__main__":
     result["streaming"] = check_controls(ui, [f"advOutTrack{i}" for i in range(1, 13)], args.scale, prefix, legacy_prefix)
     result["vod"] = check_controls(ui, [f"vodTrack{i}" for i in range(1, 13)], args.scale, prefix, legacy_prefix)
     for group in ("advOutTrack", "vodTrack"):
-        for index, key in ((6, "Key_Down"), (11, "Key_Right")):
+        for index, key, expected in ((6, "Key_Right", 7), (11, "Key_Right", 12)):
             ui.call("set", values={f"{group}{index}": True})
             ui.call("key", object=f"{group}{index}", key=key)
-            assert ui.call("snapshot", names=[f"{group}12"])["widgets"][f"{group}12"]["checked"]
+            name = f"{group}{expected}"
+            assert ui.call("snapshot", names=[name])["widgets"][name]["checked"]
     ui.call("screenshot", object="OBSBasicSettings", file=f"streaming-{args.locale}-{args.scale}x.png")
     ui.call("set", values={"advOutTabs": 2})
     ui.call("key", object="advOutTrack11Name", key="Key_Tab")
