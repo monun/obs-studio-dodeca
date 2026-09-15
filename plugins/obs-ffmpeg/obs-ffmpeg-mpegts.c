@@ -942,10 +942,10 @@ static bool setup_audio_settings(struct ffmpeg_output *stream, struct ffmpeg_cfg
 {
 	/* Audio settings */
 	/* a) get audio encoders & retrieve number of tracks */
-	obs_encoder_t *aencoders[MAX_AUDIO_MIXES];
+	obs_encoder_t *aencoders[MAX_OUTPUT_AUDIO_ENCODERS];
 	int num_tracks = 0;
 
-	for (;;) {
+	while (num_tracks < MAX_OUTPUT_AUDIO_ENCODERS) {
 		obs_encoder_t *aencoder = obs_output_get_audio_encoder(stream->output, num_tracks);
 		if (!aencoder)
 			break;

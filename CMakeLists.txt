@@ -32,6 +32,12 @@ add_subdirectory(plugins)
 
 add_subdirectory(test/test-input)
 
+option(ENABLE_AUDIO_TRACK_TESTS "Build audio track regression tests" OFF)
+if(ENABLE_AUDIO_TRACK_TESTS)
+  enable_testing()
+  add_subdirectory(test/audio-tracks)
+endif()
+
 add_subdirectory(frontend)
 
 message_configuration()

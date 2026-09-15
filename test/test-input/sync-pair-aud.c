@@ -10,10 +10,9 @@ struct sync_pair_aud {
 	pthread_t thread;
 	os_event_t *event;
 	obs_source_t *source;
+	double frequency;
+	uint64_t buffer_ns;
 };
-
-/* middle C */
-static const double rate = 261.63 / 48000.0;
 
 #ifndef M_PI
 #define M_PI 3.1415926535897932384626433832795
@@ -25,8 +24,9 @@ extern uint64_t starting_time;
 
 static inline bool whitelist_time(uint64_t ts, uint64_t interval, uint64_t fps_num, uint64_t fps_den)
 {
-	if (!starting_time)
+	if (!starting_time) {
 		return false;
+	}
 
 	uint64_t count = (ts - starting_time) / interval;
 	uint64_t sec = count * fps_den / fps_num;
@@ -38,7 +38,8 @@ static void *sync_pair_aud_thread(void *pdata)
 	struct sync_pair_aud *spa = pdata;
 	uint32_t sample_rate = audio_output_get_sample_rate(obs_get_audio());
 	uint32_t frames = sample_rate / 100;
-	uint64_t last_time = obs_get_video_frame_time();
+	double rate = spa->frequency / sample_rate;
+	uint64_t last_time = os_gettime_ns();
 	double cos_val = 0.0;
 	float *samples = malloc(frames * sizeof(float));
 
@@ -48,16 +49,17 @@ static void *sync_pair_aud_thread(void *pdata)
 	uint64_t fps_den = voi->fps_den;
 
 	while (os_event_try(spa->event) == EAGAIN) {
-		if (!os_sleepto_ns(last_time += 10000000))
-			last_time = obs_get_video_frame_time();
+		/* Keep a continuous sample clock even if the thread wakes up late. */
+		os_sleepto_ns(last_time += 10000000);
 
 		for (uint64_t i = 0; i < frames; i++) {
-			uint64_t ts = last_time + util_mul_div64(i, 1000000000ULL, sample_rate);
+			uint64_t ts = last_time + spa->buffer_ns + util_mul_div64(i, 1000000000ULL, sample_rate);
 
 			if (whitelist_time(ts, interval, fps_num, fps_den)) {
 				cos_val += rate * M_PI_X2;
-				if (cos_val > M_PI_X2)
+				if (cos_val > M_PI_X2) {
 					cos_val -= M_PI_X2;
+				}
 
 				samples[i] = (float)(cos(cos_val) * 0.5);
 			} else {
@@ -70,7 +72,7 @@ static void *sync_pair_aud_thread(void *pdata)
 		data.frames = frames;
 		data.speakers = SPEAKERS_MONO;
 		data.samples_per_sec = sample_rate;
-		data.timestamp = last_time;
+		data.timestamp = last_time + spa->buffer_ns;
 		data.format = AUDIO_FORMAT_FLOAT;
 		obs_source_output_audio(spa->source, &data);
 	}
@@ -108,11 +110,17 @@ static void *sync_pair_aud_create(obs_data_t *settings, obs_source_t *source)
 {
 	struct sync_pair_aud *spa = bzalloc(sizeof(struct sync_pair_aud));
 	spa->source = source;
+	obs_data_set_default_double(settings, "frequency", 261.63);
+	spa->frequency = obs_data_get_double(settings, "frequency");
+	/* Optional lookahead lets regression fixtures tolerate scheduler stalls. */
+	spa->buffer_ns = (uint64_t)obs_data_get_int(settings, "buffer_ms") * 1000000;
 
-	if (os_event_init(&spa->event, OS_EVENT_TYPE_MANUAL) != 0)
+	if (os_event_init(&spa->event, OS_EVENT_TYPE_MANUAL) != 0) {
 		goto fail;
-	if (pthread_create(&spa->thread, NULL, sync_pair_aud_thread, spa) != 0)
+	}
+	if (pthread_create(&spa->thread, NULL, sync_pair_aud_thread, spa) != 0) {
 		goto fail;
+	}
 
 	spa->initialized_thread = true;
 

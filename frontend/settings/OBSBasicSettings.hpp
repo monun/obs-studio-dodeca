@@ -24,6 +24,8 @@
 
 #include <QPointer>
 
+#include <array>
+
 #define VOLUME_METER_DECAY_FAST 23.53
 #define VOLUME_METER_DECAY_MEDIUM 11.76
 #define VOLUME_METER_DECAY_SLOW 8.57
@@ -55,6 +57,19 @@ private:
 	OBSBasic *main;
 
 	std::unique_ptr<Ui::OBSBasicSettings> ui;
+
+	std::array<QCheckBox *, MAX_AUDIO_MIXES> simpleRecTracks{};
+	std::array<QCheckBox *, MAX_AUDIO_MIXES> advRecTracks{};
+	std::array<QCheckBox *, MAX_AUDIO_MIXES> ffTracks{};
+	std::array<QCheckBox *, MAX_AUDIO_MIXES> streamMultiTracks{};
+	std::array<QRadioButton *, MAX_AUDIO_MIXES> streamTracks{};
+	std::array<QRadioButton *, MAX_AUDIO_MIXES> flvTracks{};
+	std::vector<QComboBox *> trackBitrates;
+	std::array<QLineEdit *, MAX_AUDIO_MIXES> trackNames{};
+	std::array<QLabel *, MAX_AUDIO_MIXES> trackBitrateLabels{};
+
+	void CreateAudioTrackWidgets();
+	void UpdateStreamingTrackLimit();
 
 	std::shared_ptr<Auth> auth;
 

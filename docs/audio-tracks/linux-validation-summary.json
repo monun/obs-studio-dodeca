@@ -1,0 +1,712 @@
+{
+  "date": "2026-09-15",
+  "base_commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "branch": "feat/twelve-audio-tracks",
+  "working_tree": "uncommitted",
+  "platform": "Linux in WSL2/Docker; Windows and macOS pending",
+  "fixture_buffer_ms": 200,
+  "formats": [
+    {
+      "case": "flv12",
+      "audio_streams": 1,
+      "mixes": [
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-22-18.flv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0,
+          "max_audio_video_ms": 12.0
+        }
+      ]
+    },
+    {
+      "case": "fragmented_mp4",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-21-33.mp4",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 0.0
+        }
+      ]
+    },
+    {
+      "case": "hybrid_mov",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-21-55.mov",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 0.6666666666669698
+        }
+      ]
+    },
+    {
+      "case": "hybrid_mp4",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-21-44.mp4",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 0.3333333333334849
+        }
+      ]
+    },
+    {
+      "case": "mkv12",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-21-11.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 34.0
+        }
+      ]
+    },
+    {
+      "case": "mp4",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-21-22.mp4",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 0.3333333333334849
+        }
+      ]
+    },
+    {
+      "case": "opus_mkv",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-recordings/tracks-2026-09-15-09-22-06.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 20.66666666666697
+        }
+      ]
+    },
+    {
+      "case": "simple_aac",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-matrix/tracks-2026-09-15-09-22-28.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 33.333333333333485
+        }
+      ]
+    },
+    {
+      "case": "simple_opus",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-matrix/tracks-2026-09-15-09-22-39.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 20.0
+        }
+      ]
+    },
+    {
+      "case": "custom_mkv",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-custom/tracks-2026-09-15-09-49-11.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "max_audio_video_ms": 49.333333333333485
+        }
+      ]
+    },
+    {
+      "case": "custom_mkv_12",
+      "audio_streams": 1,
+      "mixes": [
+        12
+      ],
+      "path": "/work/buffered-custom/tracks-2026-09-15-09-51-20.mkv",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0,
+          "audio_window_ms": 7893,
+          "video_window_ms": 7266.666666666667,
+          "compared_video_pulses": 4,
+          "max_audio_video_ms": 50.0
+        }
+      ]
+    },
+    {
+      "case": "custom_mp4",
+      "audio_streams": 12,
+      "mixes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "path": "/work/buffered-custom/tracks-2026-09-15-09-51-10.mp4",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "audio_window_ms": 7850,
+          "video_window_ms": 7100.0,
+          "compared_video_pulses": 3,
+          "max_audio_video_ms": 26.0
+        }
+      ]
+    },
+    {
+      "case": "custom_mp4_12",
+      "audio_streams": 1,
+      "mixes": [
+        12
+      ],
+      "path": "/work/buffered-custom/tracks-2026-09-15-09-51-30.mp4",
+      "windows": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0,
+          "audio_window_ms": 7893,
+          "video_window_ms": 7233.333333333333,
+          "compared_video_pulses": 4,
+          "max_audio_video_ms": 33.333333333333485
+        }
+      ]
+    }
+  ],
+  "long_twelve": {
+    "path": "/work/buffered-long-recordings/tracks-2026-09-15-09-20-39.mkv",
+    "tracks": {
+      "1": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "2": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "3": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "4": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "5": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "6": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "7": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "8": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "9": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "10": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "11": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "12": {
+        "packets": 84844,
+        "first": -0.021,
+        "last": 1809.963,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      }
+    },
+    "windows": [
+      {
+        "start": 0.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 33.66666666666697
+      },
+      {
+        "start": 900.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 12.66666666666697
+      },
+      {
+        "start": 1800.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 12.66666666666697
+      }
+    ]
+  },
+  "performance": [
+    {
+      "tracks": 1,
+      "mean_cpu_percent": 1.6676474957659568,
+      "mean_memory_mb": 405.6953125,
+      "file_bytes": 4070756
+    },
+    {
+      "tracks": 6,
+      "mean_cpu_percent": 1.8983607148004036,
+      "mean_memory_mb": 407.3678385416667,
+      "file_bytes": 5700187
+    },
+    {
+      "tracks": 12,
+      "mean_cpu_percent": 2.0594127226425987,
+      "mean_memory_mb": 411.04296875,
+      "file_bytes": 7645208
+    }
+  ],
+  "source_sha256": {
+    "CMakeLists.txt": "2898b72118184309e196c1ed4600db78fd2f5bad11f2791ce50e7bc2d67b8b97",
+    "frontend/components/OBSAdvAudioCtrl.cpp": "193fc0bbe1629a6e5776c4c4bb93110f21ab7535a7a01b64aa33b29af1f54066",
+    "frontend/components/OBSAdvAudioCtrl.hpp": "84b016f188f56ce205e7f3103140297154f38aea52c69fb46bdc0f52f636ef1c",
+    "frontend/data/locale/en-US.ini": "9dd154758cf8bfb89ec58fa3e990b18275fc1e1da44a9b4f3316c9366365a17b",
+    "frontend/data/locale/ko-KR.ini": "5300b9ed82728faeb1fa52488d63789d5aa60824d8891fba25416f34f3e51260",
+    "frontend/forms/OBSBasicSettings.ui": "efc32f66021059d0554afeb4886e360e85de3940d3afac01153bdbc5b563dd01",
+    "frontend/settings/OBSBasicSettings.cpp": "32a8d700dce56b531b70dbddfa7a41344c454783ec4f3a155dda0afcd5f21d15",
+    "frontend/settings/OBSBasicSettings.hpp": "be3c5bf967eff4c751cdc82ff1d1ee4c65fdfc22b38fc6d3461d9a95a6c5080d",
+    "frontend/settings/OBSBasicSettings_Stream.cpp": "ba115b601060f23aade61a62fedb54803c30ed306c8452ef79187ae60e7439f8",
+    "frontend/utility/AdvancedOutput.cpp": "12cb97a37dca578402caf44223083ea5964123ef1ab90e5da02c020a7712266c",
+    "frontend/utility/AudioTracks.hpp": "bffd61d0b897a87662e91dc10efeb06e60e83b15d1a48d119c03511e9eb5503d",
+    "frontend/utility/SimpleOutput.cpp": "deb4f0e12d4a19f13c786264e3d1f59550efea5e6c97f68543a0058c4a26a154",
+    "frontend/widgets/OBSBasic.cpp": "84011a96afef908b0e03e5e4be139a85b9bd7ed53f233a0c101107dcac356c61",
+    "libobs/media-io/audio-io.h": "0be24075bc11cff5a47b0d4650a0f1af0b121a556b433fa8d20ed74871fed439",
+    "libobs/media-io/media-remux.c": "00d894c2d242293b75c9d8aa7e6525ff7a813845f06deafe91f87e7e5ad63c7e",
+    "libobs/obs-output.h": "f9adc4ef5d3ddef9f87f722902270576eaf803a7fd105f64966b0125ef26c3cb",
+    "libobs/obs-source.c": "71f618dc05f2ccb2729374770a80549b4e3353e8581d36f4ae9a0678c699a17f",
+    "libobs/obs.c": "d63e45cdaf40b08ab0b0a0107d042750b5de140214d792436e4c9dd84c54b8b8",
+    "plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c": "ad662ab483c155c4a73d346f0eb0ed5edfb6c330312364284326b89436fec5cb",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mpegts.c": "ef890771b21818f10c654c95dd94ca7a2315518bf750c11fddcf2746fe874a89",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mux.c": "50c37ef046b439f54dc80029c17c810910c703791c37fe153435c943422c7ba8",
+    "plugins/obs-ffmpeg/obs-ffmpeg-mux.h": "7b0f0e55b13429f4666b8c873fdd42b881be602eac0559284b7d2cc9bbeb565b",
+    "plugins/obs-ffmpeg/obs-ffmpeg-output.c": "373ae6787607f5941899a5c039d25faef84502aca050a7e7ac2c5adf578727a4",
+    "plugins/obs-outputs/mp4-mux.c": "ba1b64dff1c9442dee683836512a1c49cee3ea5a5299e526a6f72b5a1012e88c",
+    "test/audio-tracks/CMakeLists.txt": "f0ae8022045cc81108840ffb1e1e70e9b7b8c8b4624fd7427de7d4ea73f8dd3f",
+    "test/audio-tracks/Dockerfile": "8dcfb733983b21fcae66b7c3f64ed7927a4f816be8c976a355ff15686dc1b601",
+    "test/audio-tracks/audio-tracks.cpp": "f7e6f4dfa3e38e9cb436b9e104ef334e7961fff1d0e8725d0559991c3947af29",
+    "test/audio-tracks/fixtures/legacy-sources.json": "897a87253de5abffb6a6d0166866ebe79a27a07bf97fbc587fa87b8c45895a67",
+    "test/audio-tracks/integration.py": "2ad7c6f116ca4b515f176c694a2efc6b2fcd8d1bae0815f22e171b468a7673bd",
+    "test/audio-tracks/launch.py": "4e9f65773d2e1a790fa65e2fff233a17146266b719eed27be2d81eb4f9e77363",
+    "test/audio-tracks/matrix.py": "e1519813b55f3a6956906fbf15456b8d29573e5f6c06ee7390d93a3aa676c854",
+    "test/audio-tracks/metadata.py": "ed142c94db6a31ec5b4153207c1299b2cdad35634e49e400967ff50fbe2cdfa7",
+    "test/audio-tracks/performance.py": "5be924f0db265557a246d4d46457521022446e78a7256b8ab8b6a96e07743dba",
+    "test/audio-tracks/prepare.py": "51bf0b1e32e9c25151677448c3492881e2199d3648a8d63ae516b53ddc09ee48",
+    "test/audio-tracks/profiles.py": "c055848307809eaceaee4603cc6ae8ad7d83d1ea9736bc1b0d4927a63be7ea5c",
+    "test/audio-tracks/routing.py": "dfda8cf7f4f8f7f3d912c997475d517545b7284436386e51e1b256a4a778d9b0",
+    "test/audio-tracks/scenarios.py": "4464f2522138984996fe72561e0974aa679e169e9ab114a570a81b63af5afeea",
+    "test/audio-tracks/stream_limit.py": "2e6de68d2b5c8ffae8c5042e79a89aee3c3fbc0d4ae32335f28358792a62a688",
+    "test/audio-tracks/streaming.py": "5ed2fc512b353eeb7f78fb7ec36b131448673e7f5dffc78f5b0c4d8272c18c35",
+    "test/audio-tracks/ui_bridge.py": "c818833d645ee7703f6b0673cf863fe5d4a7aa29b2ed9fbb834339c5e432f7b2",
+    "test/audio-tracks/ui_client.py": "20d47179484da493cecf184998bbb97d0416bd723b747583c53ae202c7c9652c",
+    "test/audio-tracks/ui_layout.py": "c0a3d3a9f2d52cd7e8ce1d9e7813cfb02f53eba72a5e46210295d7c2e4147b10",
+    "test/audio-tracks/ui_modes.py": "2bb4a8f4acd31601265749883260ac964922f7e8af8a69c6a79acc8d0ae9461a",
+    "test/audio-tracks/ui_regression.py": "159b8ef6afc00c68cc4c6f3b1c13d3c27d0dac5d33a91511349d0a39430a38bc",
+    "test/audio-tracks/verify_continuity.py": "a61e382463adf5dac6713f09eaf24b8532b814280dc014c8670bf6ed15a234e0",
+    "test/audio-tracks/verify_media.py": "768748789d2a960b3eea8f23fde62623314cfeddf3f80d2f266d0450889d4853",
+    "test/audio-tracks/verify_remux.py": "2347397e00c47ceabb2e4d5ac773e3640a9d2ee034447cf5d1a392a8624441e4",
+    "test/test-input/sync-pair-aud.c": "ba7661e5f166a3dd61e9b51504bd7df907428c4123f213a0937c0edadd4ae8b0"
+  },
+  "long_original_six": {
+    "path": "/baseline/buffered-recordings/tracks-2026-09-15-09-26-40.mkv",
+    "tracks": {
+      "1": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "2": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "3": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "4": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "5": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      },
+      "6": {
+        "packets": 84845,
+        "first": -0.021,
+        "last": 1809.984,
+        "duration": 0.021,
+        "max_gap_error_ms": 1.0000000001618887
+      }
+    },
+    "windows": [
+      {
+        "start": 0.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 34.0
+      },
+      {
+        "start": 900.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 13.0
+      },
+      {
+        "start": 1800.0,
+        "max_intertrack_ms": 0.0,
+        "audio_window_ms": 8000,
+        "video_window_ms": 8000.0,
+        "compared_video_pulses": 4,
+        "max_audio_video_ms": 13.0
+      }
+    ]
+  },
+  "final_install": {
+    "files": {
+      "/work/final-recordings/tracks-2026-09-15-09-54-49.mkv": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "audio_window_ms": 8000,
+          "video_window_ms": 8000.0,
+          "compared_video_pulses": 4,
+          "max_audio_video_ms": 33.66666666666697
+        }
+      ],
+      "/work/final-recordings/Replay tracks-2026-09-15-09-55-10.mkv": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "audio_window_ms": 7978,
+          "video_window_ms": 8000.0,
+          "compared_video_pulses": 4,
+          "max_audio_video_ms": 11.333333333333485
+        }
+      ],
+      "/work/final-recordings/Replay tracks-2026-09-15-09-55-12.mkv": [
+        {
+          "start": 0,
+          "max_intertrack_ms": 0.0,
+          "audio_window_ms": 7978,
+          "video_window_ms": 8000.0,
+          "compared_video_pulses": 4,
+          "max_audio_video_ms": 16.333333333333485
+        }
+      ]
+    },
+    "remux": {
+      "source": "/work/final-recordings/tracks-2026-09-15-09-54-49.mkv",
+      "target": "/work/final-recordings/tracks-2026-09-15-09-54-49.mp4",
+      "tracks": [
+        {
+          "name": "Track01",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track02",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track03",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track04",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track05",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track06",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track07",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track08",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Track09",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Music 10",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Game 11",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        },
+        {
+          "name": "Microphone 12",
+          "packets": 1125,
+          "payloads_identical": true,
+          "offset_seconds": 0.0,
+          "max_timestamp_error_seconds": 0.0
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Both long comparisons use a 200ms lookahead in the test input and twelve input threads.",
+    "Without lookahead, timing checks failed on both original six-track and twelve-track builds; see validation-results.md.",
+    "Windows and macOS native builds and execution are pending.",
+    "RTMP primary audio was decoded; VOD roles were checked in OBS output configuration."
+  ]
+}

@@ -267,10 +267,10 @@ static void add_muxer_params(os_process_args_t *args, struct ffmpeg_muxer *strea
 static void build_command_line(struct ffmpeg_muxer *stream, os_process_args_t **args, const char *path)
 {
 	obs_encoder_t *vencoder = obs_output_get_video_encoder(stream->output);
-	obs_encoder_t *aencoders[MAX_AUDIO_MIXES];
+	obs_encoder_t *aencoders[MAX_OUTPUT_AUDIO_ENCODERS];
 	int num_tracks = 0;
 
-	for (;;) {
+	while (num_tracks < MAX_OUTPUT_AUDIO_ENCODERS) {
 		obs_encoder_t *aencoder = obs_output_get_audio_encoder(stream->output, num_tracks);
 		if (!aencoder)
 			break;

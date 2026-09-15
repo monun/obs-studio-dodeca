@@ -104,6 +104,10 @@ static inline bool init_output(media_remux_job_t job, const char *out_filename)
 		}
 
 		if (in_stream->codecpar->codec_type == AVMEDIA_TYPE_AUDIO) {
+			/* MOV/MP4 stores the track name in the handler description. */
+			const AVDictionaryEntry *title = av_dict_get(in_stream->metadata, "title", NULL, 0);
+			if (title)
+				av_dict_set(&out_stream->metadata, "handler_name", title->value, 0);
 
 			av_channel_layout_default(&out_stream->codecpar->ch_layout,
 						  in_stream->codecpar->ch_layout.nb_channels);

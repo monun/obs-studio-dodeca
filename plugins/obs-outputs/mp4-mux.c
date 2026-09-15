@@ -339,11 +339,19 @@ static size_t mp4_write_hdlr(struct mp4_mux *mux, struct mp4_track *track)
 	else if (track->type == TRACK_CHAPTERS)
 		handler_name = "OBS Chapter Handler";
 	else
+		handler_name = obs_encoder_get_name(track->encoder);
+	if (!handler_name || !*handler_name)
 		handler_name = "OBS Audio Handler";
 
 	// name (null-terminated for MP4, pascal string for MOV)
 	size_t handler_len = strlen(handler_name);
 	if (mux->flavor == FLAVOR_MOV) {
+		/* A Pascal string has a one-byte length. Keep UTF-8 characters whole. */
+		if (handler_len > UINT8_MAX) {
+			handler_len = UINT8_MAX;
+			while (((uint8_t)handler_name[handler_len] & 0xC0) == 0x80)
+				handler_len--;
+		}
 		s_w8(s, (uint8_t)handler_len);
 		s_write(s, handler_name, handler_len);
 	} else {

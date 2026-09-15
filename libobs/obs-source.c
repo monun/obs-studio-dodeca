@@ -257,7 +257,7 @@ static bool obs_source_init(struct obs_source *source)
 	obs_context_init_control(&source->context, source, (obs_destroy_cb)obs_source_destroy);
 
 	source->deinterlace_top_first = true;
-	source->audio_mixers = 0xFF;
+	source->audio_mixers = AUDIO_MIXES_MASK;
 
 	source->private_settings = obs_data_create();
 	return true;
@@ -4823,6 +4823,7 @@ void obs_source_set_audio_mixers(obs_source_t *source, uint32_t mixers)
 	if (!source->owns_info_id && (source->info.output_flags & OBS_SOURCE_AUDIO) == 0)
 		return;
 
+	mixers &= AUDIO_MIXES_MASK;
 	if (source->audio_mixers == mixers)
 		return;
 
@@ -4834,7 +4835,7 @@ void obs_source_set_audio_mixers(obs_source_t *source, uint32_t mixers)
 
 	mixers = (uint32_t)calldata_int(&data, "mixers");
 
-	source->audio_mixers = mixers;
+	source->audio_mixers = mixers & AUDIO_MIXES_MASK;
 }
 
 uint32_t obs_source_get_audio_mixers(const obs_source_t *source)

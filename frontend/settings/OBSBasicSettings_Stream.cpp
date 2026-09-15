@@ -993,6 +993,7 @@ void OBSBasicSettings::UpdateVodTrackSetting()
 	bool vodTrackEnabled = config_get_bool(main->Config(), "SimpleOutput", "VodTrackEnabled");
 
 	simpleVodTrack = new QCheckBox(this);
+	simpleVodTrack->setObjectName("simpleVodTrack");
 	simpleVodTrack->setText(QTStr("Basic.Settings.Output.Simple.TwitchVodTrack"));
 	simpleVodTrack->setVisible(simpleAdv);
 	simpleVodTrack->setChecked(vodTrackEnabled);
@@ -1003,26 +1004,33 @@ void OBSBasicSettings::UpdateVodTrackSetting()
 
 	HookWidget(simpleVodTrack.data(), &QCheckBox::clicked, &OBSBasicSettings::OutputsChanged);
 	connect(ui->simpleOutAdvanced, &QCheckBox::toggled, simpleVodTrack.data(), &QCheckBox::setVisible);
+	connect(simpleVodTrack, &QCheckBox::toggled, this, &OBSBasicSettings::UpdateStreamDelayEstimate);
 
 	/* -------------------------------------- */
 	/* advanced output mode vod track widgets */
 
 	vodTrackCheckbox = new QCheckBox(this);
+	vodTrackCheckbox->setObjectName("vodTrackEnabled");
 	vodTrackCheckbox->setText(QTStr("Basic.Settings.Output.Adv.TwitchVodTrack"));
 	vodTrackCheckbox->setLayoutDirection(Qt::RightToLeft);
 
 	vodTrackContainer = new QWidget(this);
-	QHBoxLayout *vodTrackLayout = new QHBoxLayout();
+	QGridLayout *vodTrackLayout = new QGridLayout();
 	for (int i = 0; i < MAX_AUDIO_MIXES; i++) {
 		vodTrack[i] = new QRadioButton(QString::number(i + 1));
-		vodTrackLayout->addWidget(vodTrack[i]);
+		vodTrackLayout->addWidget(vodTrack[i], i / 6, i % 6);
+		vodTrack[i]->setObjectName(QString("vodTrack%1").arg(i + 1));
+		vodTrack[i]->setAccessibleName(
+			QTStr(("Basic.Settings.Output.Adv.Audio.Track" + std::to_string(i + 1)).c_str()));
+		connect(vodTrack[i], &QRadioButton::toggled, this, &OBSBasicSettings::UpdateMultitrackVideo);
+		connect(vodTrack[i], &QRadioButton::toggled, this, &OBSBasicSettings::UpdateStreamDelayEstimate);
 
 		HookWidget(vodTrack[i].data(), &QRadioButton::clicked, &OBSBasicSettings::OutputsChanged);
 	}
 
 	HookWidget(vodTrackCheckbox.data(), &QCheckBox::clicked, &OBSBasicSettings::OutputsChanged);
+	connect(vodTrackCheckbox, &QCheckBox::toggled, this, &OBSBasicSettings::UpdateStreamDelayEstimate);
 
-	vodTrackLayout->addStretch();
 	vodTrackLayout->setContentsMargins(0, 0, 0, 0);
 
 	vodTrackContainer->setLayout(vodTrackLayout);

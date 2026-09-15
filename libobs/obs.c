@@ -23,6 +23,9 @@
 #include "obs.h"
 #include "obs-internal.h"
 
+#define LEGACY_AUDIO_MIXES_MASK 0x3Fu
+#define DODECA_AUDIO_TRACKS_VERSION 1
+
 struct obs_core *obs = NULL;
 
 static THREAD_LOCAL bool is_ui_thread = false;
@@ -2312,8 +2315,15 @@ static obs_source_t *obs_load_source_type(obs_data_t *source_data, bool is_priva
 	sync = obs_data_get_int(source_data, "sync");
 	obs_source_set_sync_offset(source, sync);
 
-	obs_data_set_default_int(source_data, "mixers", 0x3F);
-	mixers = (uint32_t)obs_data_get_int(source_data, "mixers");
+	/* Unmarked sources used only six mixes, even when they saved 0xFF. */
+	int64_t tracks_version = obs_data_get_int(source_data, "dodeca_audio_tracks_version");
+	uint32_t mixers_mask = tracks_version == DODECA_AUDIO_TRACKS_VERSION ? AUDIO_MIXES_MASK
+									     : LEGACY_AUDIO_MIXES_MASK;
+	if (tracks_version != 0 && tracks_version != DODECA_AUDIO_TRACKS_VERSION)
+		blog(LOG_WARNING, "Source '%s': unknown audio tracks version %lld; preserving legacy six-track routing",
+		     name, (long long)tracks_version);
+	obs_data_set_default_int(source_data, "mixers", mixers_mask);
+	mixers = (uint32_t)obs_data_get_int(source_data, "mixers") & mixers_mask;
 	obs_source_set_audio_mixers(source, mixers);
 
 	obs_data_set_default_int(source_data, "flags", source->default_flags);
@@ -2351,7 +2361,7 @@ static obs_source_t *obs_load_source_type(obs_data_t *source_data, bool is_priva
 			 * automatically if they added monitoring by default in
 			 * version 24 */
 			monitoring_type = OBS_MONITORING_TYPE_MONITOR_ONLY;
-			obs_source_set_audio_mixers(source, 0x3F);
+			obs_source_set_audio_mixers(source, LEGACY_AUDIO_MIXES_MASK);
 		}
 	}
 	obs_source_set_monitoring_type(source, (enum obs_monitoring_type)monitoring_type);
@@ -2478,7 +2488,8 @@ obs_data_t *obs_save_source(obs_source_t *source)
 	obs_data_set_string(source_data, "id", id);
 	obs_data_set_string(source_data, "versioned_id", v_id);
 	obs_data_set_obj(source_data, "settings", settings);
-	obs_data_set_int(source_data, "mixers", mixers);
+	obs_data_set_int(source_data, "dodeca_audio_tracks_version", DODECA_AUDIO_TRACKS_VERSION);
+	obs_data_set_int(source_data, "mixers", mixers & AUDIO_MIXES_MASK);
 	obs_data_set_int(source_data, "sync", sync);
 	obs_data_set_int(source_data, "flags", flags);
 	obs_data_set_double(source_data, "volume", volume);

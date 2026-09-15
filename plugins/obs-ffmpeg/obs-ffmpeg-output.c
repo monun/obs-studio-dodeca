@@ -355,8 +355,10 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
 	data->audio_infos[idx].stream = stream;
 	data->audio_infos[idx].ctx = context;
 
-	if (data->config.audio_stream_names[idx] && *data->config.audio_stream_names[idx] != '\0')
+	if (data->config.audio_stream_names[idx] && *data->config.audio_stream_names[idx] != '\0') {
 		av_dict_set(&stream->metadata, "title", data->config.audio_stream_names[idx], 0);
+		av_dict_set(&stream->metadata, "handler_name", data->config.audio_stream_names[idx], 0);
+	}
 
 	return open_audio_codec(data, idx);
 }

@@ -1,5 +1,7 @@
 #include "AdvancedOutput.hpp"
 
+#include <utility/AudioTracks.hpp>
+
 #include <utility/audio-encoders.hpp>
 #include <utility/StartMultiTrackVideoStreamingGuard.hpp>
 #include <widgets/OBSBasic.hpp>
@@ -156,11 +158,10 @@ AdvancedOutput::AdvancedOutput(OBSBasic *main_) : BasicOutputHandler(main_)
 		      astrcmpi(rate_control, "ABR") == 0;
 
 	for (int i = 0; i < MAX_AUDIO_MIXES; i++) {
-		char name[19];
-		snprintf(name, sizeof(name), "adv_record_audio_%d", i);
+		std::string name = "adv_record_audio_" + std::to_string(i);
 
 		recordTrack[i] = obs_audio_encoder_create(useStreamAudioEncoder ? streamAudioEncoder : recAudioEncoder,
-							  name, nullptr, i, nullptr);
+							  name.c_str(), nullptr, i, nullptr);
 
 		if (!recordTrack[i]) {
 			throw "Failed to create audio encoder "
@@ -169,8 +170,8 @@ AdvancedOutput::AdvancedOutput(OBSBasic *main_) : BasicOutputHandler(main_)
 
 		obs_encoder_release(recordTrack[i]);
 
-		snprintf(name, sizeof(name), "adv_stream_audio_%d", i);
-		streamTrack[i] = obs_audio_encoder_create(streamAudioEncoder, name, nullptr, i, nullptr);
+		name = "adv_stream_audio_" + std::to_string(i);
+		streamTrack[i] = obs_audio_encoder_create(streamAudioEncoder, name.c_str(), nullptr, i, nullptr);
 
 		if (!streamTrack[i]) {
 			throw "Failed to create streaming audio encoders "
@@ -308,6 +309,13 @@ inline void AdvancedOutput::SetupStreaming()
 	int idx = 0;
 	bool is_multitrack_output = allowsMultiTrack();
 
+	if (is_multitrack_output && !ValidStreamingAudioTracks(multiTrackAudioMixes)) {
+		lastError = Str("OutputWarnings.StreamAudioTrackLimit");
+		blog(LOG_WARNING, "%s", lastError.c_str());
+		return;
+	}
+	ClearUnusedAudioEncoders(streamOutput);
+
 	if (rescaleFilter != OBS_SCALE_DISABLE && rescaleRes && *rescaleRes) {
 		if (sscanf(rescaleRes, "%ux%u", &cx, &cy) != 2) {
 			cx = 0;
@@ -351,7 +359,7 @@ inline void AdvancedOutput::SetupRecording()
 	bool flv = strcmp(recFormat, "flv") == 0;
 
 	if (flv) {
-		tracks = config_get_int(main->Config(), "AdvOut", "FLVTrack");
+		tracks = std::clamp<int>(config_get_int(main->Config(), "AdvOut", "FLVTrack"), 1, MAX_AUDIO_MIXES);
 	} else {
 		tracks = config_get_int(main->Config(), "AdvOut", "RecTracks");
 	}
@@ -366,7 +374,9 @@ inline void AdvancedOutput::SetupRecording()
 	 * configurations might still have this configured and we don't want to
 	 * just break them. */
 	if (tracks == 0) {
-		tracks = config_get_int(main->Config(), "AdvOut", "TrackIndex");
+		int trackIndex =
+			std::clamp<int>(config_get_int(main->Config(), "AdvOut", "TrackIndex"), 1, MAX_AUDIO_MIXES);
+		tracks = flv ? trackIndex : (1u << (trackIndex - 1));
 	}
 
 	if (useStreamEncoder) {
@@ -389,6 +399,9 @@ inline void AdvancedOutput::SetupRecording()
 			obs_output_set_video_encoder(replayBuffer, videoRecording);
 		}
 	}
+
+	ClearUnusedAudioEncoders(fileOutput);
+	ClearUnusedAudioEncoders(replayBuffer);
 
 	if (!flv) {
 		for (int i = 0; i < MAX_AUDIO_MIXES; i++) {
@@ -584,10 +597,8 @@ void AdvancedOutput::SetupOutputs()
 
 int AdvancedOutput::GetAudioBitrate(size_t i, const char *id) const
 {
-	static const char *names[] = {
-		"Track1Bitrate", "Track2Bitrate", "Track3Bitrate", "Track4Bitrate", "Track5Bitrate", "Track6Bitrate",
-	};
-	int bitrate = (int)config_get_uint(main->Config(), "AdvOut", names[i]);
+	const std::string key = "Track" + std::to_string(i + 1) + "Bitrate";
+	int bitrate = (int)config_get_uint(main->Config(), "AdvOut", key.c_str());
 	return FindClosestAvailableAudioBitrate(id, bitrate);
 }
 
@@ -630,6 +641,13 @@ std::shared_future<void> AdvancedOutput::SetupStreaming(obs_service_t *service,
 	int multiTrackAudioMixes = config_get_int(main->Config(), "AdvOut", "StreamMultiTrackAudioMixes");
 
 	bool is_multitrack_output = allowsMultiTrack();
+
+	if (is_multitrack_output && !ValidStreamingAudioTracks(multiTrackAudioMixes)) {
+		lastError = Str("OutputWarnings.StreamAudioTrackLimit");
+		blog(LOG_WARNING, "%s", lastError.c_str());
+		continuation(false);
+		return StartMultitrackVideoStreamingGuard::MakeReadyFuture();
+	}
 
 	if (!useStreamEncoder || (!ffmpegOutput && !obs_output_active(fileOutput))) {
 		UpdateStreamSettings();
@@ -693,7 +711,7 @@ std::shared_future<void> AdvancedOutput::SetupStreaming(obs_service_t *service,
 		if (whipSimulcastEncoders != nullptr) {
 			whipSimulcastEncoders->SetStreamOutput(streamOutput);
 		}
-		obs_output_set_audio_encoder(streamOutput, streamAudioEnc, 0);
+		ClearUnusedAudioEncoders(streamOutput);
 
 		if (!is_multitrack_output) {
 			obs_output_set_audio_encoder(streamOutput, streamAudioEnc, 0);
@@ -718,6 +736,13 @@ std::shared_future<void> AdvancedOutput::SetupStreaming(obs_service_t *service,
 
 bool AdvancedOutput::StartStreaming(obs_service_t *service)
 {
+	if (allowsMultiTrack() &&
+	    !ValidStreamingAudioTracks(config_get_int(main->Config(), "AdvOut", "StreamMultiTrackAudioMixes"))) {
+		lastError = Str("OutputWarnings.StreamAudioTrackLimit");
+		blog(LOG_WARNING, "%s", lastError.c_str());
+		return false;
+	}
+
 	obs_output_set_service(streamOutput, service);
 
 	bool reconnect = config_get_bool(main->Config(), "Output", "Reconnect");

@@ -1,5 +1,7 @@
 #include "SimpleOutput.hpp"
 
+#include <utility/AudioTracks.hpp>
+
 #include <utility/audio-encoders.hpp>
 #include <utility/StartMultiTrackVideoStreamingGuard.hpp>
 #include <widgets/OBSBasic.hpp>
@@ -169,13 +171,13 @@ void SimpleOutput::LoadRecordingPreset()
 			      "(simple output)";
 		}
 		for (int i = 0; i < MAX_AUDIO_MIXES; i++) {
-			char name[23];
+			std::string name;
 			if (strcmp(audio_encoder, "opus") == 0) {
-				snprintf(name, sizeof name, "simple_opus_recording%d", i);
-				success = CreateSimpleOpusEncoder(audioTrack[i], GetAudioBitrate(), name, i);
+				name = "simple_opus_recording" + std::to_string(i);
+				success = CreateSimpleOpusEncoder(audioTrack[i], GetAudioBitrate(), name.c_str(), i);
 			} else {
-				snprintf(name, sizeof name, "simple_aac_recording%d", i);
-				success = CreateSimpleAACEncoder(audioTrack[i], GetAudioBitrate(), name, i);
+				name = "simple_aac_recording" + std::to_string(i);
+				success = CreateSimpleAACEncoder(audioTrack[i], GetAudioBitrate(), name.c_str(), i);
 			}
 			if (!success) {
 				throw "Failed to create multi-track audio recording encoder "
@@ -792,6 +794,11 @@ void SimpleOutput::UpdateRecording()
 	if (!Active()) {
 		SetupOutputs();
 	}
+
+	if (!ffmpegOutput) {
+		ClearUnusedAudioEncoders(fileOutput);
+	}
+	ClearUnusedAudioEncoders(replayBuffer);
 
 	if (!ffmpegOutput) {
 		obs_output_set_video_encoder(fileOutput, videoRecording);

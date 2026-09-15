@@ -25,7 +25,11 @@
 extern "C" {
 #endif
 
-#define MAX_AUDIO_MIXES 6
+#define MAX_AUDIO_MIXES 12
+#define AUDIO_MIXES_MASK ((1u << MAX_AUDIO_MIXES) - 1u)
+#if MAX_AUDIO_MIXES >= 32
+#error Audio mixes must fit in the source routing mask
+#endif
 #define MAX_AUDIO_CHANNELS 8
 #define MAX_DEVICE_INPUT_CHANNELS 64
 #define AUDIO_OUTPUT_FRAMES 1024

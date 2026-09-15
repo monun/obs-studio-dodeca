@@ -1,0 +1,13 @@
+{"cases":[
+  {"name":"legacy-muted-routing","mixers":0,"expected":0},
+  {"name":"legacy-sparse","mixers":37,"expected":37},
+  {"name":"legacy-default-255","mixers":255,"expected":63},
+  {"name":"legacy-missing","expected":63},
+  {"name":"legacy-high-bits","mixers":4294967295,"expected":63},
+  {"name":"future-marker","dodeca_audio_tracks_version":2,"mixers":4095,"expected":63},
+  {"name":"new-muted-routing","dodeca_audio_tracks_version":1,"mixers":0,"expected":0},
+  {"name":"new-missing","dodeca_audio_tracks_version":1,"expected":4095},
+  {"name":"new-sparse","dodeca_audio_tracks_version":1,"mixers":2113,"expected":2113},
+  {"name":"new-high-bits","dodeca_audio_tracks_version":1,"mixers":4294967295,"expected":4095},
+  {"name":"legacy-monitor","id":"track-test-monitor","prev_ver":1507328,"mixers":0,"expected":63}
+]}
