@@ -1,79 +1,54 @@
-OBS Studio <https://obsproject.com>
-===================================
+OBS Studio Dodeca
+=================
 
-.. image:: https://github.com/obsproject/obs-studio/actions/workflows/push.yaml/badge.svg?branch=master
-   :alt: OBS Studio Build Status - GitHub Actions
-   :target: https://github.com/obsproject/obs-studio/actions/workflows/push.yaml?query=branch%3Amaster
+한국어
+------
 
-.. image:: https://badges.crowdin.net/obs-studio/localized.svg
-   :alt: OBS Studio Translation Project Progress
-   :target: https://crowdin.com/project/obs-studio
+OBS Studio **32.2.2** 기반 포크입니다. ``gpt-6-astra`` 모델로 오디오 트랙을 **6개에서 12개로** 확장했습니다.
 
-.. image:: https://img.shields.io/discord/348973006581923840.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
-   :alt: OBS Studio Discord Server
-   :target: https://obsproject.com/discord
+원본: `obsproject/obs-studio <https://github.com/obsproject/obs-studio>`_ · 라이선스: `GPL-2.0-or-later <COPYING>`_
 
-What is OBS Studio?
--------------------
+빌드 (Windows x64)
+~~~~~~~~~~~~~~~~~~
 
-OBS Studio is software designed for capturing, compositing, encoding,
-recording, and streaming video content, efficiently.
+- Git, CMake **4.2 이상** (PATH에 추가)
+- Visual Studio **2026** — **C++를 사용한 데스크톱 개발** 워크로드
+- Windows SDK **10.0.26100.0**
 
-It's distributed under the GNU General Public License v2 (or any later
-version) - see the accompanying COPYING file for more details.
+PowerShell에서 실행합니다. 빌드 의존성은 자동으로 내려받습니다.
 
-Quick Links
------------
+.. code-block:: powershell
 
-- Website: https://obsproject.com
+   git clone --recurse-submodules https://github.com/monun/obs-studio-dodeca.git
+   cd obs-studio-dodeca
+   cmake --preset windows-x64 '-DOBS_VERSION_OVERRIDE=32.2.2-dodeca'
+   cmake --build --preset windows-x64 --parallel
+   cmake --install build_x64 --prefix build_x64/install --config RelWithDebInfo
 
-- Help/Documentation/Guides: https://github.com/obsproject/obs-studio/wiki
+실행 파일: ``build_x64/install/bin/64bit/obs64.exe``
 
-- Forums: https://obsproject.com/forum/
+English
+-------
 
-- Build Instructions: https://github.com/obsproject/obs-studio/wiki/Install-Instructions
+A fork of OBS Studio **32.2.2**, modified using the ``gpt-6-astra`` model to expand audio tracks from **6 to 12**.
 
-- Developer/API Documentation: https://obsproject.com/docs
+Upstream: `obsproject/obs-studio <https://github.com/obsproject/obs-studio>`_ · License: `GPL-2.0-or-later <COPYING>`_
 
-- Donating/backing/sponsoring: https://obsproject.com/contribute
+Build (Windows x64)
+~~~~~~~~~~~~~~~~~~~
 
-- Bug Tracker: https://github.com/obsproject/obs-studio/issues
+- Git, CMake **4.2+** (on PATH)
+- Visual Studio **2026** — **Desktop development with C++** workload
+- Windows SDK **10.0.26100.0**
 
-Contributing
-------------
+Run in PowerShell. Build dependencies are downloaded automatically.
 
-- If you would like to help fund or sponsor the project, you can do so
-  via `Patreon <https://www.patreon.com/obsproject>`_, `OpenCollective
-  <https://opencollective.com/obsproject>`_, or `PayPal
-  <https://www.paypal.me/obsproject>`_.  See our `contribute page
-  <https://obsproject.com/contribute>`_ for more information.
+.. code-block:: powershell
 
-- If you wish to contribute code to the project, please make sure to
-  read the coding and commit guidelines:
-  https://github.com/obsproject/obs-studio/blob/master/CONTRIBUTING.md
-  
-- Code for the project follows the code style guidelines, located
-  here: https://github.com/obsproject/obs-studio/blob/master/CODESTYLE.md
+   git clone --recurse-submodules https://github.com/monun/obs-studio-dodeca.git
+   cd obs-studio-dodeca
+   cmake --preset windows-x64 '-DOBS_VERSION_OVERRIDE=32.2.2-dodeca'
+   cmake --build --preset windows-x64 --parallel
+   cmake --install build_x64 --prefix build_x64/install --config RelWithDebInfo
 
-- Developer/API documentation can be found here:
-  https://obsproject.com/docs
-
-- If you wish to contribute translations, do not submit pull requests.
-  Instead, please use Crowdin.  For more information read this page:
-  https://obsproject.com/wiki/How-To-Contribute-Translations-For-OBS
-
-- Contributors to OBS Studio and related repositories are expected to
-  follow our Code of Conduct, which can be read here:
-  https://github.com/obsproject/obs-studio/blob/master/COC.rst
-
-- Other ways to contribute are by helping people out with support on
-  our forums or in our community chat.  Please limit support to topics
-  you fully understand -- bad advice is worse than no advice.  When it
-  comes to something that you don't fully know or understand, please
-  defer to the official help or official channels.
-
-
-SAST Tools
-----------
-
-`PVS-Studio <https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source>`_ - static analyzer for C, C++, C#, and Java code.
+Executable: ``build_x64/install/bin/64bit/obs64.exe``

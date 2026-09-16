@@ -7,6 +7,7 @@
 - 고급 방송·VOD는 1~12번 중 선택한다. SRT/RIST의 동시 전송은 최대 6개이며, 간단 방송의 주 1/VOD 2 배정은 유지한다.
 - 공개 오디오 구조체 크기가 바뀌므로 libobs·프런트엔드·번들 모듈을 함께 다시 빌드한다. 기존 제삼자 플러그인 바이너리 호환은 검증 범위 밖이다.
 - 명세와 진행 상태는 `openspec/changes/expand-audio-tracks-to-twelve/`에 있다. Linux 결과로 Windows·macOS 검증 항목을 완료 처리하지 않는다.
+- `README.rst`는 한국어 다음 영어 순서로 간결하게 유지한다. OBS Studio Dodeca 이름, 32.2.2 기반 포크와 원본 저장소, 12트랙 확장과 `gpt-6-astra` 수정 사실, Windows 빌드 필수 요소와 명령을 안내한다.
 
 ## 코드 위치와 주의점
 
