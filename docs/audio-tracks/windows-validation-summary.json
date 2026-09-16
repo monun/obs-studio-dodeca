@@ -2422,5 +2422,42 @@
       "Normal mode is not validated; do not repeat without guaranteed configuration isolation.",
       "The short MKV check does not replace the earlier full-format, replay, remux, long-duration or scale/accessibility matrix."
     ]
+  },
+  "portable_build_script": {
+    "date": "2026-09-16",
+    "evidence_root": "build_windows_validation/2026-09-16/portable-script",
+    "files_sha256": {
+      "build-portable.ps1": "421ad9369532bf8dfb414943cb0b1b5d14aa7a9639eec02db40cc4c30040e819"
+    },
+    "powershell_version": "5.1.26100.9444",
+    "cmake_version": "4.4.3",
+    "preset": "windows-x64",
+    "configuration": "RelWithDebInfo",
+    "parallel": 4,
+    "enable_audio_track_tests": false,
+    "enable_test_input": false,
+    "script_exit_code": 0,
+    "zip": "artifacts/obs-studio-32.2.2-dodeca-windows-x64-portable-20260916-184603-001.zip",
+    "zip_size_bytes": 178443832,
+    "uncompressed_size_bytes": 435831986,
+    "file_count": 2066,
+    "sha256": "a78ae2dacdfa6d53a579f2f9cef644b298df9e48347be516f1361870b5aee651",
+    "zip_content_hashes_match_installation": true,
+    "zip_crc_verified": true,
+    "extracted_version": "OBS Studio - 32.2.2-dodeca",
+    "sha256_sidecar_verified": true,
+    "failure_cases_checked": [
+      "old-cmake",
+      "git",
+      "configure",
+      "build",
+      "install",
+      "missing-runtime",
+      "pipelined-build-failure"
+    ],
+    "limits": [
+      "Build and package script validation only; GUI, recording and CTest were not run.",
+      "Earlier platform validation records and OpenSpec completion states are unchanged."
+    ]
   }
 }

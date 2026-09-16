@@ -27,6 +27,17 @@ PowerShell에서 실행합니다. 빌드 의존성은 자동으로 내려받습�
 
 실행 파일: ``build_x64/install/bin/64bit/obs64.exe``
 
+포터블 ZIP까지 한 번에 만들려면 PowerShell 5.1 이상에서 실행합니다.
+
+.. code-block:: powershell
+
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\build-portable.ps1
+
+빌드부터 새 폴더 설치, 포터블 버전 확인, ZIP 내용 검증까지 실행합니다. 결과 ZIP과 SHA-256 파일은
+``artifacts/``에 생성하며, 압축을 풀고 ``Start-OBS.bat``로 실행합니다. 시험 모듈은 끄고 ZIP에서
+디버그 심볼을 제외합니다. ``-Parallel 4``로 병렬 수를 변경할 수 있습니다(기본 2).
+CMake는 PATH 또는 기존 빌드 캐시에서 찾으며, ``-CMakePath 'C:\Program Files\CMake\bin\cmake.exe'``로 지정할 수도 있습니다.
+
 English
 -------
 
@@ -52,3 +63,15 @@ Run in PowerShell. Build dependencies are downloaded automatically.
    cmake --install build_x64 --prefix build_x64/install --config RelWithDebInfo
 
 Executable: ``build_x64/install/bin/64bit/obs64.exe``
+
+To build and package a portable ZIP in one step, use PowerShell 5.1 or later:
+
+.. code-block:: powershell
+
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\build-portable.ps1
+
+The script builds, installs into a new folder, checks the portable version, and verifies the ZIP contents.
+ZIPs and SHA-256 files are created in ``artifacts/``; extract a ZIP and run ``Start-OBS.bat``.
+Test modules are disabled and debug symbols are excluded from the ZIP. Use ``-Parallel 4`` to change
+the parallelism (default: 2). CMake is found on PATH or in the existing build cache;
+``-CMakePath 'C:\Program Files\CMake\bin\cmake.exe'`` selects an explicit executable.

@@ -33,6 +33,8 @@
 - 명세 검사: `openspec validate expand-audio-tracks-to-twelve --type change --strict --no-interactive`.
 - Windows 네이티브 검증은 `docs/audio-tracks/windows-validation-prompt.md`를 따른다. 실제 플랫폼별 실행 결과와 제한은 `docs/audio-tracks/validation-results.md`와 OpenSpec 작업 목록을 확인한다.
 - Windows portable ZIP은 같은 설치의 `bin/`, `data/`, `obs-plugins/`와 루트의 `portable_mode.txt`를 포함한다. ZIP 무결성 및 `obs64 --portable --version` 성공과 실제 GUI·녹화 검증 결과를 각각 기록한다.
+- 포터블 일괄 빌드는 `powershell -NoProfile -ExecutionPolicy Bypass -File .\build-portable.ps1`을 사용한다. `build_x64/portable/<timestamp>`에 새로 설치하고 `artifacts/`에 검증한 ZIP·SHA-256을 만든다. 병렬 수는 `-Parallel`(기본 2), CMake 경로는 `-CMakePath`로 지정한다.
+- PowerShell 5.1에서 GUI 실행 파일의 출력을 수집할 때는 네이티브 명령에 직접 파이프를 연결하고 `$LASTEXITCODE`를 확인한다. ZIP API를 쓰려면 `System.IO.Compression`과 `System.IO.Compression.FileSystem`을 모두 로드한다.
 
 ## 시험 실행과 인계
 

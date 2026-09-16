@@ -25,6 +25,7 @@
 !AGENTS.md
 !AUTHORS
 !buildspec.json
+!build-portable.ps1
 !CMakeLists.txt
 !CMakePresets.json
 !COC.rst
