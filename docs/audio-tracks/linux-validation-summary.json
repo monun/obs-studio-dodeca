@@ -708,5 +708,54 @@
     "Without lookahead, timing checks failed on both original six-track and twelve-track builds; see validation-results.md.",
     "Windows and macOS native builds and execution are pending.",
     "RTMP primary audio was decoded; VOD roles were checked in OBS output configuration."
-  ]
+  ],
+  "application_updates_followup": {
+    "date": "2026-09-16",
+    "recorded_at": "2026-09-16T17:30:40.610416+09:00",
+    "change": "disable-application-updates",
+    "head": "b6ee3db5307c7cb54f332807f983448db842b1e0",
+    "working_tree": "uncommitted implementation",
+    "evidence_root": "build_windows_validation/2026-09-16/disable-updates",
+    "source_sha256": {
+      "cmake/macos/helpers.cmake": "4174d5b24db044f0d1469ad80744a4309e79c614e4b29cdfc852cb6fc876bf0a",
+      "frontend/OBSApp.cpp": "4fdb54e238150f4055d77db6e64fbf74c52da19113cb17a55f3f42d320d0efbf",
+      "frontend/OBSApp.hpp": "fb4d17feefa05b86d0b5476a6a5fedd7ed43318658d76774a0853d21f44efe0e",
+      "frontend/cmake/feature-macos-update.cmake": "f96bac0a577c589e7133e737313e8b9d82be7e868c961fccdf1bb4338222cd95",
+      "frontend/cmake/feature-sparkle.cmake": "4a225f80958ee1bcbfa3ac9976c2dc23c9a2be8bba98022a0bb7c43d3822375b",
+      "frontend/cmake/feature-whatsnew.cmake": "2d1ed6dded1b23fcab64e3a8ed7766854bc81108961e6443d48fda92dbb28c03",
+      "frontend/cmake/macos/Info.plist.in": "0796a2413026ae0dc631e8f092a4725735125b0595c789ec7c309feaea24d113",
+      "frontend/cmake/os-windows.cmake": "8a07d190793b5e7901d1801aba9b7365bab290fc9cb03ee2e1d7900c9ef465be",
+      "frontend/cmake/ui-dialogs.cmake": "05bef5c092c310652e0b1beff711af76f010d90317024d02bd671b8da021a78b",
+      "frontend/cmake/ui-widgets.cmake": "a2e1e4c82e5281f2843ab918d4f937a594219eb66e5a3d5298e64e934be59f25",
+      "frontend/forms/OBSBasic.ui": "26597c651795c496cc05639b0f1fe0746e07c05c3eb3cbccbfa1120e63acfcce",
+      "frontend/forms/OBSBasicSettings.ui": "8a27fd5adf1b8bae5930b341819ee7762c82f05f7b175a3646c8b6072169c5c9",
+      "frontend/obs-main.cpp": "dcc341be695d1813b8db295ce2f150357b7282f95f533c1503a38e80641ab1f2",
+      "frontend/settings/OBSBasicSettings.cpp": "268a0e422760d7b8cb355939d605c4aab80765b7fba4084cbfb1166f7a69fc08",
+      "frontend/settings/OBSBasicSettings.hpp": "6eb12d4e4b0f2057360f3d6d8e18ccb39e408ee4f1812c2ed1a8babcbbb8e0ef",
+      "frontend/widgets/OBSBasic.cpp": "91665709a0bfa457cea6400ffc760035f0c93aa1667851f6d1ec19c80f5fd415",
+      "frontend/widgets/OBSBasic.hpp": "27b895ef265bea71a0d2022db528823fb654f7a12ba16b11239a43762921ee5c",
+      "frontend/widgets/OBSBasic_MainControls.cpp": "480aac47139a2ed6109ae8b0c31459fbef666996963d13de1041d7a51bd5e81b",
+      "test/audio-tracks/audio-tracks.cpp": "7e27e3468c925db5bbdc250abec5834b8dc878dfdc109648a7ae653a375db86c",
+      "test/audio-tracks/integration.py": "07623d3223ab12987f08ced4702e798b86f50151c9d8d3d90e82233991d2b29d",
+      "test/audio-tracks/verify_media.py": "a596f6bec1f15c4f5e4a1e245677412aa200c9e8240a6d48c9890663e296d3a0",
+      "test/audio-tracks/verify_continuity.py": "733199d11d891ece0e2418d0919be854dda993de94799fc5dacdfe4dd8879a3a"
+    },
+    "status": "browser_off_build_install_ctest_passed",
+    "command": {
+      "exit_code": 0,
+      "record": "build_windows_validation/2026-09-16/disable-updates/linux-build-no-browser.command.json"
+    },
+    "browser": false,
+    "whatsnew_option": true,
+    "ctest": {
+      "passed": 1,
+      "total": 1
+    },
+    "gui_tested": false,
+    "limits": [
+      "Browser ON configure failed because CEF_ROOT_DIR and a compiled CEF wrapper were unavailable.",
+      "Browser ON GUI validation remains pending.",
+      "The read-only bind mount caused Git ownership warnings; OBS_VERSION_OVERRIDE and OBS_BUILD_NUMBER were explicitly provided."
+    ]
+  }
 }

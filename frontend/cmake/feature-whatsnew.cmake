@@ -2,6 +2,7 @@ include_guard(DIRECTORY)
 
 option(ENABLE_WHATSNEW "Enable WhatsNew dialog" ON)
 
+#[=[ Dodeca: What's New is disabled even when an existing cache enables it.
 if(ENABLE_WHATSNEW AND TARGET OBS::browser-panels)
   if(OS_MACOS)
     include(cmake/feature-macos-update.cmake)
@@ -34,3 +35,6 @@ if(ENABLE_WHATSNEW AND TARGET OBS::browser-panels)
 
   target_enable_feature(obs-studio "What's New panel" WHATSNEW_ENABLED)
 endif()
+]=]
+
+target_disable_feature(obs-studio "What's New panel")

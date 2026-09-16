@@ -55,6 +55,7 @@ enum class LogFileState { NoState, New, Uploaded };
 class PluginManager;
 } // namespace OBS
 
+#if 0 // Dodeca: Application update channels are disabled.
 struct UpdateBranch {
 	QString name;
 	QString display_name;
@@ -62,6 +63,7 @@ struct UpdateBranch {
 	bool is_enabled;
 	bool is_visible;
 };
+#endif
 
 class OBSApp : public QApplication {
 	Q_OBJECT
@@ -79,8 +81,10 @@ private:
 	TextLookup textLookup;
 	QPointer<OBSMainWindow> mainWindow;
 	profiler_name_store_t *profilerNameStore = nullptr;
+#if 0 // Dodeca: Application update channels are disabled.
 	std::vector<UpdateBranch> updateBranches;
 	bool branches_loaded = false;
+#endif
 
 	bool libobs_initialized = false;
 
@@ -172,8 +176,10 @@ public:
 	bool IsThemeDark() const { return currentTheme ? currentTheme->isDark : false; }
 	QStyle *GetInvisibleCursorStyle();
 
+#if 0 // Dodeca: Application update channels are disabled.
 	void SetBranchData(const std::string &data);
 	std::vector<UpdateBranch> GetBranches();
+#endif
 
 	inline lookup_t *GetTextLookup() const { return textLookup; }
 

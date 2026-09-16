@@ -41,6 +41,7 @@ target_sources(
     dialogs/OBSMissingFiles.hpp
     dialogs/OBSRemux.cpp
     dialogs/OBSRemux.hpp
-    dialogs/OBSWhatsNew.cpp
-    dialogs/OBSWhatsNew.hpp
+  # Dodeca: What's New is disabled.
+  # dialogs/OBSWhatsNew.cpp
+  # dialogs/OBSWhatsNew.hpp
 )

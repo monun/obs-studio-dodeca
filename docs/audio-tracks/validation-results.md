@@ -1,5 +1,11 @@
 # 12트랙 확장 검증 결과
 
+## 2026-09-16 추가 변경 이후 확인
+
+본체 업데이트를 제외한 현재 코드는 기존 Ubuntu 24.04 검증 이미지에서 `ENABLE_BROWSER=OFF`, `ENABLE_WHATSNEW=ON`으로 전체 빌드·설치와 Xvfb CTest `audio-tracks` 1/1을 통과했다. CEF 배포본이 없어 브라우저 ON 구성은 실패했으며 해당 GUI 검증은 남아 있다. 이전 상세 녹화·UI·장시간 결과는 이번 변경으로 재실행한 것으로 간주하지 않는다.
+
+현재 코드와 실행 증거는 [Linux 요약 JSON](linux-validation-summary.json)의 `application_updates_followup`에 추가했고 아래의 이전 기록은 보존했다. 같은 변경의 Windows 짧은 12트랙 녹화·portable GUI 결과 및 일반 모드 설정 격리 실패는 [Windows 기록](windows-validation-results.md)과 [본체 업데이트 문서](../application-updates.md)에 구분했다.
+
 검증일: 2026-09-15. 기준은 OBS 32.2.2 커밋 `ba2f32bdf791005443988a4955e963663e16b1ed`에 `feat/twelve-audio-tracks`의 변경을 적용한 작업 파일이다. 검증은 커밋 전에 수행했으며, 당시 구현·테스트 파일의 SHA-256은 [검증 요약 JSON](linux-validation-summary.json)에 기록했다. Windows·macOS 실기 검증은 아직 수행하지 않았다.
 
 ## 환경과 재현 위치

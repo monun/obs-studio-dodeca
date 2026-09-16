@@ -438,8 +438,9 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
 
 	/* clang-format off */
 	HookWidget(ui->language,             COMBO_CHANGED,  GENERAL_CHANGED);
-	HookWidget(ui->updateChannelBox,     COMBO_CHANGED,  GENERAL_CHANGED);
-	HookWidget(ui->enableAutoUpdates,    CHECK_CHANGED,  GENERAL_CHANGED);
+	// Dodeca: Application updates are disabled.
+	// HookWidget(ui->updateChannelBox,     COMBO_CHANGED,  GENERAL_CHANGED);
+	// HookWidget(ui->enableAutoUpdates,    CHECK_CHANGED,  GENERAL_CHANGED);
 	HookWidget(ui->openStatsOnStartup,   CHECK_CHANGED,  GENERAL_CHANGED);
 	HookWidget(ui->hideOBSFromCapture,   CHECK_CHANGED,  GENERAL_CHANGED);
 	HookWidget(ui->warnBeforeStreamStart,CHECK_CHANGED,  GENERAL_CHANGED);
@@ -650,6 +651,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
 	ui->advOutFFVBitrate->setSuffix(" Kbps");
 	ui->advOutFFABitrate->setSuffix(" Kbps");
 
+#if 0 // Dodeca: The update settings group is excluded from the UI.
 #if !defined(_WIN32) && !defined(ENABLE_SPARKLE_UPDATER)
 	delete ui->updateSettingsGroupBox;
 	ui->updateSettingsGroupBox = nullptr;
@@ -661,6 +663,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
 	if (App()->IsUpdaterDisabled()) {
 		ui->updateSettingsGroupBox->hide();
 	}
+#endif
 #endif
 
 	// Remove the Advanced Audio section if monitoring is not supported, as the monitoring device selection is the only item in the group box.
@@ -1248,6 +1251,7 @@ void OBSBasicSettings::LoadLanguageList()
 	ui->language->model()->sort(0);
 }
 
+#if 0 // Dodeca: Application update channels are disabled.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 void TranslateBranchInfo(const QString &name, QString &displayName, QString &description)
 {
@@ -1311,17 +1315,21 @@ void OBSBasicSettings::LoadBranchesList()
 #endif
 }
 
+#endif
+
 void OBSBasicSettings::LoadGeneralSettings()
 {
 	loading = true;
 
 	LoadLanguageList();
 
+#if 0 // Dodeca: Application updates are disabled; preserve stored settings.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 	bool enableAutoUpdates = config_get_bool(App()->GetAppConfig(), "General", "EnableAutoUpdates");
 	ui->enableAutoUpdates->setChecked(enableAutoUpdates);
 
 	LoadBranchesList();
+#endif
 #endif
 	bool openStatsOnStartup = config_get_bool(main->Config(), "General", "OpenStatsOnStartup");
 	ui->openStatsOnStartup->setChecked(openStatsOnStartup);
@@ -2986,6 +2994,7 @@ void OBSBasicSettings::SaveGeneralSettings()
 		config_set_string(App()->GetUserConfig(), "General", "Language", language.c_str());
 	}
 
+#if 0 // Dodeca: Application updates are disabled; preserve stored settings.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 	if (WidgetChanged(ui->enableAutoUpdates)) {
 		config_set_bool(App()->GetAppConfig(), "General", "EnableAutoUpdates",
@@ -2998,6 +3007,7 @@ void OBSBasicSettings::SaveGeneralSettings()
 		config_set_string(App()->GetAppConfig(), "General", "UpdateBranch", QT_TO_UTF8(branchName));
 		forceUpdateCheck = true;
 	}
+#endif
 #endif
 #ifdef _WIN32
 	if (ui->hideOBSFromCapture && WidgetChanged(ui->hideOBSFromCapture)) {
@@ -4152,10 +4162,12 @@ bool OBSBasicSettings::AskIfCanCloseSettings()
 		forceAuthReload = false;
 	}
 
+#if 0 // Dodeca: Application updates are disabled.
 	if (forceUpdateCheck) {
 		main->CheckForUpdates(false);
 		forceUpdateCheck = false;
 	}
+#endif
 
 	return canCloseSettings;
 }

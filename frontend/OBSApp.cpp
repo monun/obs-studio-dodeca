@@ -23,8 +23,10 @@
 #include <utility/CrashHandler.hpp>
 #include <utility/OBSEventFilter.hpp>
 #include <utility/OBSProxyStyle.hpp>
+#if 0 // Dodeca: Application update channels are disabled.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 #include <utility/models/branches.hpp>
+#endif
 #endif
 #include <widgets/OBSBasic.hpp>
 
@@ -38,8 +40,10 @@
 
 #include <QCheckBox>
 #include <QDesktopServices>
+#if 0 // Dodeca: Application update caches are no longer read.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 #include <QFile>
+#endif
 #endif
 
 #include <QSessionManager>
@@ -70,7 +74,8 @@ extern bool portable_mode;
 extern bool safe_mode;
 extern bool multi;
 extern bool disable_3p_plugins;
-extern bool opt_disable_updater;
+// Dodeca: The legacy CLI option remains accepted, but application updates are always disabled.
+// extern bool opt_disable_updater;
 extern bool opt_disable_missing_files_check;
 extern string opt_starting_collection;
 extern string opt_starting_profile;
@@ -298,9 +303,11 @@ std::array<int, 2> OBSApp::sigQuitFileDescriptor{0, 0};
 bool OBSApp::InitGlobalConfigDefaults()
 {
 	config_set_default_uint(appConfig, "General", "MaxLogs", 10);
-	config_set_default_int(appConfig, "General", "InfoIncrement", -1);
+	// Dodeca: What's New is disabled; preserve existing stored settings.
+	// config_set_default_int(appConfig, "General", "InfoIncrement", -1);
 	config_set_default_string(appConfig, "General", "ProcessPriority", "Normal");
-	config_set_default_bool(appConfig, "General", "EnableAutoUpdates", true);
+	// Dodeca: Application updates are disabled; preserve existing stored settings.
+	// config_set_default_bool(appConfig, "General", "EnableAutoUpdates", true);
 
 #if _WIN32
 	config_set_default_string(appConfig, "Video", "Renderer", "Direct3D 11");
@@ -439,12 +446,15 @@ static bool MakeUserDirs()
 	}
 #endif
 
+#if 0 // Dodeca: Application updates and What's New no longer need a cache directory.
 	if (GetAppConfigPath(path, sizeof(path), "obs-studio/updates") <= 0) {
 		return false;
 	}
 	if (!do_mkdir(path)) {
 		return false;
 	}
+
+#endif
 
 	if (GetAppConfigPath(path, sizeof(path), "obs-studio/plugin_config") <= 0) {
 		return false;
@@ -794,6 +804,7 @@ bool OBSApp::InitLocale()
 	return true;
 }
 
+#if 0 // Dodeca: Application update channels and caches are disabled.
 #if defined(_WIN32) || defined(ENABLE_SPARKLE_UPDATER)
 void ParseBranchesJson(const std::string &jsonString, vector<UpdateBranch> &out, std::string &error)
 {
@@ -906,6 +917,8 @@ std::vector<UpdateBranch> OBSApp::GetBranches()
 
 	return out;
 }
+
+#endif
 
 OBSApp::OBSApp(int &argc, char **argv, profiler_name_store_t *store)
 	: QApplication(argc, argv),
@@ -1364,7 +1377,9 @@ bool OBSApp::IsPortableMode()
 
 bool OBSApp::IsUpdaterDisabled()
 {
-	return opt_disable_updater;
+	// Dodeca: Application updates cannot be enabled by legacy flags or settings.
+	// return opt_disable_updater;
+	return true;
 }
 
 bool OBSApp::IsMissingFilesCheckDisabled()
