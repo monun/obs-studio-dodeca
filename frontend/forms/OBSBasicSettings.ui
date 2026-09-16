@@ -277,6 +277,7 @@
                   </layout>
                  </widget>
                 </item>
+                <!-- Dodeca: Application updates are disabled.
                 <item>
                  <widget class="QGroupBox" name="updateSettingsGroupBox">
                   <property name="title">
@@ -338,6 +339,7 @@
                   </layout>
                  </widget>
                 </item>
+                -->
                 <item>
                  <widget class="QGroupBox" name="groupBox_16">
                   <property name="title">
@@ -7512,8 +7514,10 @@
   <tabstop>language</tabstop>
   <tabstop>openStatsOnStartup</tabstop>
   <tabstop>hideOBSFromCapture</tabstop>
+  <!-- Dodeca: Application updates are disabled.
   <tabstop>updateChannelBox</tabstop>
   <tabstop>enableAutoUpdates</tabstop>
+  -->
   <tabstop>warnBeforeStreamStart</tabstop>
   <tabstop>warnBeforeStreamStop</tabstop>
   <tabstop>warnBeforeRecordStop</tabstop>

@@ -77,9 +77,11 @@ function(set_target_properties_obs target)
       get_property(obs_frameworks GLOBAL PROPERTY _OBS_FRAMEWORKS)
       set_property(TARGET ${target} APPEND PROPERTY XCODE_EMBED_FRAMEWORKS ${obs_frameworks})
 
+      #[=[ Dodeca: Application updates are disabled; do not embed Sparkle.
       if(SPARKLE_APPCAST_URL AND SPARKLE_PUBLIC_KEY)
         set_property(TARGET ${target} APPEND PROPERTY XCODE_EMBED_FRAMEWORKS ${SPARKLE})
       endif()
+      ]=]
 
       if(TARGET mac-syphon)
         set_property(TARGET ${target} APPEND PROPERTY XCODE_EMBED_FRAMEWORKS ${SYPHON})

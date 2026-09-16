@@ -623,9 +623,11 @@ private slots:
 	void on_actionUploadCurrentLog_triggered();
 	void on_actionUploadLastLog_triggered();
 	void on_actionViewCurrentLog_triggered();
+#if 0 // Dodeca: Application updates and What's New are disabled.
 	void on_actionCheckForUpdates_triggered();
 	void on_actionRepair_triggered();
 	void on_actionShowWhatsNew_triggered();
+#endif
 	void on_actionRestartSafe_triggered();
 
 	void on_actionShowCrashLogs_triggered();
@@ -654,7 +656,8 @@ private slots:
 
 	void logUploadFinished(const std::string &text, const std::string &error, OBS::LogFileType uploadType);
 
-	void updateCheckFinished();
+	// Dodeca: Application updates are disabled.
+	// void updateCheckFinished();
 
 public slots:
 	void on_actionAdvAudioProperties_triggered();
@@ -1606,6 +1609,7 @@ public:
 	 * -------------------------------------
 	 */
 private:
+#if 0 // Dodeca: Application updates and What's New are disabled.
 	QScopedPointer<QThread> whatsNewInitThread;
 	QScopedPointer<QThread> updateCheckThread;
 	QScopedPointer<QThread> introCheckThread;
@@ -1616,6 +1620,7 @@ private:
 	void MacBranchesFetched(const QString &branch, bool manualUpdate);
 	void ReceivedIntroJson(const std::string &text);
 	void ShowWhatsNew(const QString &url);
+#endif
 
 	/* -------------------------------------
 	 * MARK: - OBSBasic_VirtualCam

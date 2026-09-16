@@ -1,3 +1,4 @@
+#[=[ Dodeca: Application updates are disabled even with a configured feed and key.
 if(SPARKLE_APPCAST_URL AND SPARKLE_PUBLIC_KEY)
   find_library(SPARKLE Sparkle)
   mark_as_advanced(SPARKLE)
@@ -28,3 +29,7 @@ else()
   set(SPARKLE_UPDATE_INTERVAL 0) # Set anything that's not an empty integer
   target_disable_feature(obs-studio "Sparkle updater")
 endif()
+]=]
+
+set(SPARKLE_UPDATE_INTERVAL 0)
+target_disable_feature(obs-studio "Sparkle updater")

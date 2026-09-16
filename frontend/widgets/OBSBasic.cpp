@@ -41,8 +41,10 @@
 #include <settings/OBSBasicSettings.hpp>
 #include <utility/QuickTransition.hpp>
 #include <utility/SceneRenameDelegate.hpp>
+#if 0 // Dodeca: What's New is disabled.
 #if defined(_WIN32) || defined(WHATSNEW_ENABLED)
 #include <utility/WhatsNewInfoThread.hpp>
+#endif
 #endif
 #include <widgets/AudioMixer.hpp>
 #include <widgets/OBSProjector.hpp>
@@ -487,7 +489,8 @@ OBSBasic::OBSBasic(QWidget *parent) : OBSMainWindow(parent), undo_s(ui), ui(new 
 	ui->actionRemoveSource->setShortcuts({Qt::Key_Backspace, Qt::Key_Delete});
 	ui->actionRemoveScene->setShortcuts({Qt::Key_Backspace, Qt::Key_Delete});
 
-	ui->actionCheckForUpdates->setMenuRole(QAction::AboutQtRole);
+	// Dodeca: Application updates are disabled.
+	// ui->actionCheckForUpdates->setMenuRole(QAction::AboutQtRole);
 	ui->action_Settings->setMenuRole(QAction::PreferencesRole);
 	ui->actionShowMacPermissions->setMenuRole(QAction::ApplicationSpecificRole);
 	delete ui->actionE_xit;
@@ -1294,6 +1297,7 @@ void OBSBasic::OBSInit()
 		QMetaObject::invokeMethod(this, "on_autoConfigure_triggered", Qt::QueuedConnection);
 	}
 
+#if 0 // Dodeca: Application updates are disabled.
 #if (defined(_WIN32) || defined(__APPLE__)) && (OBS_RELEASE_CANDIDATE > 0 || OBS_BETA > 0)
 	/* Automatically set branch to "beta" the first time a pre-release build is run. */
 	if (!config_get_bool(App()->GetAppConfig(), "General", "AutoBetaOptIn")) {
@@ -1303,6 +1307,7 @@ void OBSBasic::OBSInit()
 	}
 #endif
 	TimedCheckForUpdates();
+#endif
 
 	emit userSettingChanged("BasicWindow", "VerticalVolumeControl");
 
@@ -1323,17 +1328,18 @@ void OBSBasic::OBSInit()
 	ui->sources->UpdateIcons();
 
 #if !defined(_WIN32)
-	delete ui->actionRepair;
-	ui->actionRepair = nullptr;
+	// Dodeca: Application update actions are excluded from the UI.
+	// delete ui->actionRepair;
+	// ui->actionRepair = nullptr;
 #if !defined(__APPLE__)
 	delete ui->actionShowCrashLogs;
 	delete ui->actionUploadLastCrashLog;
 	delete ui->menuCrashLogs;
-	delete ui->actionCheckForUpdates;
+	// delete ui->actionCheckForUpdates;
 	ui->actionShowCrashLogs = nullptr;
 	ui->actionUploadLastCrashLog = nullptr;
 	ui->menuCrashLogs = nullptr;
-	ui->actionCheckForUpdates = nullptr;
+	// ui->actionCheckForUpdates = nullptr;
 #endif
 #endif
 
@@ -1347,6 +1353,7 @@ void OBSBasic::OBSInit()
 	ui->actionShowMacPermissions = nullptr;
 #endif
 
+#if 0 // Dodeca: Application update and What's New actions are excluded from the UI.
 #if defined(_WIN32) || defined(__APPLE__)
 	if (App()->IsUpdaterDisabled()) {
 		ui->actionCheckForUpdates->setEnabled(false);
@@ -1359,6 +1366,7 @@ void OBSBasic::OBSInit()
 #ifndef WHATSNEW_ENABLED
 	delete ui->actionShowWhatsNew;
 	ui->actionShowWhatsNew = nullptr;
+#endif
 #endif
 
 	if (safe_mode) {
@@ -1394,6 +1402,7 @@ void OBSBasic::OnFirstLoad()
 {
 	OnEvent(OBS_FRONTEND_EVENT_FINISHED_LOADING);
 
+#if 0 // Dodeca: What's New is disabled.
 #ifdef WHATSNEW_ENABLED
 	/* Attempt to load init screen if available */
 	if (cef) {
@@ -1403,6 +1412,7 @@ void OBSBasic::OnFirstLoad()
 		introCheckThread.reset(wnit);
 		introCheckThread->start();
 	}
+#endif
 #endif
 
 	Auth::Load();
@@ -1424,9 +1434,11 @@ void OBSBasic::applicationShutdown() noexcept
 	QApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
 #endif
 
+#if 0 // Dodeca: Application updates are disabled.
 	if (updateCheckThread && updateCheckThread->isRunning()) {
 		updateCheckThread->wait();
 	}
+#endif
 
 	if (patronJsonThread && patronJsonThread->isRunning()) {
 		patronJsonThread->wait();
@@ -1992,6 +2004,7 @@ void OBSBasic::closeWindow()
 		outputHandler->StopVirtualCam();
 	}
 
+#if 0 // Dodeca: Application updates and What's New are disabled.
 	if (introCheckThread) {
 		introCheckThread->wait();
 	}
@@ -2001,6 +2014,7 @@ void OBSBasic::closeWindow()
 	if (updateCheckThread) {
 		updateCheckThread->wait();
 	}
+#endif
 	if (logUploadThread) {
 		logUploadThread->wait();
 	}

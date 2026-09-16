@@ -36,12 +36,16 @@
 #endif
 #include <dialogs/OBSRemux.hpp>
 #include <settings/OBSBasicSettings.hpp>
+#if 0 // Dodeca: Application updates are disabled.
 #ifdef _WIN32
 #include <utility/AutoUpdateThread.hpp>
 #endif
+#endif
 #include <utility/RemoteTextThread.hpp>
+#if 0 // Dodeca: What's New is disabled.
 #if defined(_WIN32) || defined(WHATSNEW_ENABLED)
 #include <utility/WhatsNewInfoThread.hpp>
+#endif
 #endif
 #include <wizards/AutoConfig.hpp>
 
@@ -117,11 +121,13 @@ void OBSBasic::CreateFiltersWindow(obs_source_t *source)
 	filters->setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
+#if 0 // Dodeca: Application updates are disabled.
 void OBSBasic::updateCheckFinished()
 {
 	ui->actionCheckForUpdates->setEnabled(true);
 	ui->actionRepair->setEnabled(true);
 }
+#endif
 
 void OBSBasic::ResetUI()
 {
@@ -371,6 +377,7 @@ void OBSBasic::on_actionUploadLastCrashLog_triggered()
 	ui->menuCrashLogs->setEnabled(true);
 }
 
+#if 0 // Dodeca: Application updates and repair are disabled.
 void OBSBasic::on_actionCheckForUpdates_triggered()
 {
 	CheckForUpdates(true);
@@ -390,6 +397,8 @@ void OBSBasic::on_actionRepair_triggered()
 	updateCheckThread->start();
 #endif
 }
+
+#endif
 
 void OBSBasic::on_actionRestartSafe_triggered()
 {
@@ -435,6 +444,7 @@ void OBSBasic::on_actionDiscord_triggered()
 	QDesktopServices::openUrl(url);
 }
 
+#if 0 // Dodeca: What's New is disabled.
 void OBSBasic::on_actionShowWhatsNew_triggered()
 {
 #ifdef WHATSNEW_ENABLED
@@ -454,6 +464,8 @@ void OBSBasic::on_actionShowWhatsNew_triggered()
 	introCheckThread->start();
 #endif
 }
+
+#endif
 
 void OBSBasic::on_actionReleaseNotes_triggered()
 {

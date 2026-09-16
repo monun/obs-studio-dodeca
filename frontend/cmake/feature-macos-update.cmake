@@ -1,5 +1,6 @@
 include_guard(DIRECTORY)
 
+#[=[ Dodeca: Application updates and What's New are disabled.
 find_package(nlohmann_json 3.11 REQUIRED)
 
 if(NOT TARGET OBS::blake2)
@@ -25,3 +26,4 @@ target_link_libraries(
   obs-studio
   PRIVATE "$<LINK_LIBRARY:FRAMEWORK,Security.framework>" nlohmann_json::nlohmann_json OBS::blake2
 )
+]=]

@@ -8,11 +8,13 @@
 	<true/>
 	<key>LSAppNapIsDisabled</key>
 	<true/>
+	<!-- Dodeca: Application updates are disabled.
 	<key>SUFeedURL</key>
 	<string>${SPARKLE_APPCAST_URL}</string>
 	<key>SUPublicEDKey</key>
 	<string>${SPARKLE_PUBLIC_KEY}</string>
 	<key>SUScheduledCheckInterval</key>
 	<integer>${SPARKLE_UPDATE_INTERVAL}</integer>
+	-->
 </dict>
 </plist>

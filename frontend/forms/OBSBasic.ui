@@ -757,12 +757,16 @@
     <addaction name="menuLogFiles"/>
     <addaction name="menuCrashLogs"/>
     <addaction name="separator"/>
+    <!-- Dodeca: Application updates are disabled.
     <addaction name="actionRepair"/>
     <addaction name="actionCheckForUpdates"/>
+    -->
     <addaction name="actionRestartSafe"/>
     <addaction name="actionShowMacPermissions"/>
     <addaction name="separator"/>
+    <!-- Dodeca: What's New is disabled.
     <addaction name="actionShowWhatsNew"/>
+    -->
     <addaction name="actionReleaseNotes"/>
     <addaction name="actionShowAbout"/>
     <addaction name="separator"/>
@@ -1837,21 +1841,25 @@
     <string>Ctrl+End</string>
    </property>
   </action>
+  <!-- Dodeca: Application updates are disabled.
   <action name="actionCheckForUpdates">
    <property name="text">
     <string>Basic.MainMenu.Help.CheckForUpdates</string>
    </property>
   </action>
+  -->
   <action name="actionShowMacPermissions">
    <property name="text">
     <string>MacPermissions.MenuAction</string>
    </property>
   </action>
+  <!-- Dodeca: Repair uses the application updater.
   <action name="actionRepair">
    <property name="text">
     <string>Basic.MainMenu.Help.Repair</string>
    </property>
   </action>
+  -->
   <action name="actionRestartSafe">
    <property name="text">
     <string>Basic.MainMenu.Help.RestartSafeMode</string>
@@ -2099,11 +2107,13 @@
     <string>Basic.MainMenu.Help.Discord</string>
    </property>
   </action>
+  <!-- Dodeca: What's New is disabled.
   <action name="actionShowWhatsNew">
    <property name="text">
     <string>Basic.MainMenu.Help.WhatsNew</string>
    </property>
   </action>
+  -->
   <action name="actionShowAbout">
    <property name="text">
     <string>Basic.MainMenu.Help.About</string>

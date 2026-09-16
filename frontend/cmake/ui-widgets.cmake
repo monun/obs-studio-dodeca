@@ -41,7 +41,8 @@ target_sources(
     widgets/OBSBasic_StudioMode.cpp
     widgets/OBSBasic_SysTray.cpp
     widgets/OBSBasic_Transitions.cpp
-    widgets/OBSBasic_Updater.cpp
+    # Dodeca: Application updates and What's New are disabled.
+    # widgets/OBSBasic_Updater.cpp
     widgets/OBSBasic_VirtualCam.cpp
     widgets/OBSBasic_YouTube.cpp
     widgets/OBSBasicControls.cpp
