@@ -1,5 +1,15 @@
 # Windows 검증 결과
 
+## 2026-09-16: 포터블 빌드 스크립트
+
+루트의 `build-portable.ps1`을 PowerShell 5.1에서 `-Parallel 4`로 실행해 서브모듈 준비, `windows-x64` 구성·전체 빌드, 새 폴더 설치, portable 버전 조회, ZIP 생성·내용 비교까지 **종료 코드 0**을 확인했다. CMake 4.4.3, Visual Studio 2026, `RelWithDebInfo` 구성이며 `ENABLE_AUDIO_TRACK_TESTS=OFF`, `ENABLE_TEST_INPUT=OFF`인 일반 배포용이다.
+
+[생성한 ZIP](../../artifacts/obs-studio-32.2.2-dodeca-windows-x64-portable-20260916-184603-001.zip)은 **178,443,832 bytes**, 2,066개 파일이다. ZIP의 모든 파일을 설치 원본과 SHA-256으로 비교했고, 별도 CRC 검사와 전체 압축 해제 후 `obs64.exe --portable --version` 실행도 통과했다. SHA-256 파일을 확인했으며 설정 폴더·PDB·test-input·updater는 ZIP에 포함하지 않았다.
+
+구형 CMake, Git·구성·빌드·설치 실패, 설치 파일 누락의 6가지 조건에서 후속 작업 중단과 ZIP 미생성을 확인했다. PowerShell의 GUI 실행 파일 출력 수집과 ZIP 어셈블리 로딩을 수정한 최종본으로 전체 절차를 재실행했다. 이번 검사는 빌드·패키징 범위이며 GUI·녹화·CTest는 실행하지 않았다.
+
+원시 로그와 `result.json`은 `build_windows_validation/2026-09-16/portable-script/`에 있다. 스크립트·ZIP 해시와 검사 범위는 [요약 JSON](windows-validation-summary.json)의 `portable_build_script`에 추가했으며 이전 플랫폼별 검증 기록은 보존했다.
+
 ## 2026-09-16: 본체 업데이트 비활성화 후 회귀 검사
 
 `disable-application-updates` 변경 후 브라우저를 포함한 Windows 전체 빌드·별도 설치, CTest `audio-tracks` 1/1, portable 버전 조회가 통과했다. Portable 모드의 업데이트 플래그·표식 네 조합, 저장 후 재시작, 새 업데이트 설정 등 6회 실행에서 업데이트 UI·요청·실행기 부재 및 기존 업데이트 설정·캐시 보존을 확인했다.
