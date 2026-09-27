@@ -8,7 +8,7 @@
 - 본체 업데이트·Windows 복구·새 소식은 원본을 보존한 주석과 빌드 제외로 비활성화한다. 방송 서비스·게임 캡처 데이터 갱신과 포터블 배포 방식은 유지한다. 명세는 `openspec/changes/disable-application-updates/`, 구현·검증 범위는 `docs/application-updates.md`를 따른다.
 - 공개 오디오 구조체 크기가 바뀌므로 libobs·프런트엔드·번들 모듈을 함께 다시 빌드한다. 기존 제삼자 플러그인 바이너리 호환은 검증 범위 밖이다.
 - 명세와 진행 상태는 `openspec/changes/expand-audio-tracks-to-twelve/`에 있다. Linux 결과로 Windows·macOS 검증 항목을 완료 처리하지 않는다.
-- `README.rst`는 한국어 다음 영어 순서로 간결하게 유지한다. 문장형 제목으로 OBS Studio 비공식 포크임을 밝히고, 32.2.2 기반과 원본 저장소, 12트랙 확장과 `gpt-6-astra` 수정 사실, Windows 빌드 필수 요소와 명령을 안내한다.
+- `README.rst`는 영어 다음 한국어 순서로 간결하게 유지한다. 문장형 제목으로 OBS Studio 비공식 포크임을 밝히고, 32.2.2 기반과 원본 저장소, 12트랙 확장과 `gpt-6-astra` 수정 사실, Windows 빌드 필수 요소와 명령을 안내한다.
 
 ## 코드 위치와 주의점
 
