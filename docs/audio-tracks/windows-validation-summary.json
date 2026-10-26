@@ -2459,5 +2459,27 @@
       "Build and package script validation only; GUI, recording and CTest were not run.",
       "Earlier platform validation records and OpenSpec completion states are unchanged."
     ]
+  },
+  "video_defaults_update": {
+    "date": "2026-10-26",
+    "source_sha256": {
+      "frontend/widgets/OBSBasic.cpp": "2423302f1e56e56c7108fd2bd0e103fa956caff74cee9c6fd4ec40014db3109a"
+    },
+    "base_resolution": [1920, 1080],
+    "output_resolution": [1920, 1080],
+    "fps_common": "60",
+    "saved_user_values_take_precedence": true,
+    "preset": "windows-x64",
+    "configuration": "RelWithDebInfo",
+    "build_command": "cmake --build build_x64 --config RelWithDebInfo --target obs-studio --parallel 2 -- /nodeReuse:false /p:CL_MPCount=2",
+    "build_exit_code": 0,
+    "sandbox_build_error": "MSBuild FileTracker E_ACCESSDENIED; the same build passed outside the sandbox.",
+    "clang_format_version": "22.1.3",
+    "clang_format_exit_code": 0,
+    "limits": [
+      "Build, formatting and configuration-path review only; GUI, recording and CTest were not run.",
+      "No new installation or portable ZIP was produced; Linux and macOS were not tested.",
+      "Earlier platform validation records and OpenSpec completion states are unchanged."
+    ]
   }
 }
