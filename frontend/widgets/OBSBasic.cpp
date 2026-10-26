@@ -599,8 +599,6 @@ OBSBasic::OBSBasic(QWidget *parent) : OBSMainWindow(parent), undo_s(ui), ui(new 
 	UpdatePreviewOverflowSettings();
 }
 
-static const double scaled_vals[] = {1.0, 1.25, (1.0 / 0.75), 1.5, (1.0 / 0.6), 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 0.0};
-
 #ifdef __APPLE__ // macOS
 #define DEFAULT_CONTAINER "hybrid_mov"
 #else // Windows/Linux
@@ -617,23 +615,8 @@ bool OBSBasic::InitBasicConfigDefaults()
 		return false;
 	}
 
-	QScreen *primaryScreen = QGuiApplication::primaryScreen();
-
-	uint32_t cx = primaryScreen->size().width();
-	uint32_t cy = primaryScreen->size().height();
-
-	cx *= devicePixelRatioF();
-	cy *= devicePixelRatioF();
-
-	bool oldResolutionDefaults = config_get_bool(App()->GetUserConfig(), "General", "Pre19Defaults");
-
-	/* use 1920x1080 for new default base res if main monitor is above
-	 * 1920x1080, but don't apply for people from older builds -- only to
-	 * new users */
-	if (!oldResolutionDefaults && (cx * cy) > (1920 * 1080)) {
-		cx = 1920;
-		cy = 1080;
-	}
+	const uint32_t cx = 1920;
+	const uint32_t cy = 1080;
 
 	bool changed = false;
 
@@ -829,32 +812,20 @@ bool OBSBasic::InitBasicConfigDefaults()
 	config_set_default_bool(activeConfiguration, "Output", "NewSocketLoopEnable", false);
 	config_set_default_bool(activeConfiguration, "Output", "LowLatencyEnable", false);
 
-	int i = 0;
-	uint32_t scale_cx = cx;
-	uint32_t scale_cy = cy;
-
-	/* use a default scaled resolution that has a pixel count no higher
-	 * than 1280x720 */
-	while (((scale_cx * scale_cy) > (1280 * 720)) && scaled_vals[i] > 0.0) {
-		double scale = scaled_vals[i++];
-		scale_cx = uint32_t(double(cx) / scale);
-		scale_cy = uint32_t(double(cy) / scale);
-	}
-
-	config_set_default_uint(activeConfiguration, "Video", "OutputCX", scale_cx);
-	config_set_default_uint(activeConfiguration, "Video", "OutputCY", scale_cy);
+	config_set_default_uint(activeConfiguration, "Video", "OutputCX", cx);
+	config_set_default_uint(activeConfiguration, "Video", "OutputCY", cy);
 
 	/* don't allow OutputCX/OutputCY to be susceptible to defaults
 	 * changing */
 	if (!config_has_user_value(activeConfiguration, "Video", "OutputCX") ||
 	    !config_has_user_value(activeConfiguration, "Video", "OutputCY")) {
-		config_set_uint(activeConfiguration, "Video", "OutputCX", scale_cx);
-		config_set_uint(activeConfiguration, "Video", "OutputCY", scale_cy);
+		config_set_uint(activeConfiguration, "Video", "OutputCX", cx);
+		config_set_uint(activeConfiguration, "Video", "OutputCY", cy);
 		config_save_safe(activeConfiguration, "tmp", nullptr);
 	}
 
 	config_set_default_uint(activeConfiguration, "Video", "FPSType", 0);
-	config_set_default_string(activeConfiguration, "Video", "FPSCommon", "30");
+	config_set_default_string(activeConfiguration, "Video", "FPSCommon", "60");
 	config_set_default_uint(activeConfiguration, "Video", "FPSInt", 30);
 	config_set_default_uint(activeConfiguration, "Video", "FPSNum", 30);
 	config_set_default_uint(activeConfiguration, "Video", "FPSDen", 1);

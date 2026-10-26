@@ -1,5 +1,13 @@
 # Windows 검증 결과
 
+## 2026-10-26: 비디오 기본값
+
+새 프로필의 기본·출력 해상도를 모두 1920×1080으로, 표준 FPS 값을 60으로 변경했다. 저장된 사용자 값이 우선하는 기존 설정 경로를 유지했다.
+
+기존 `windows-x64` 구성에서 `cmake --build build_x64 --config RelWithDebInfo --target obs-studio --parallel 2 -- /nodeReuse:false /p:CL_MPCount=2`가 종료 코드 0으로 완료됐다. 최초 샌드박스 실행의 MSBuild FileTracker `E_ACCESSDENIED`는 샌드박스 밖에서 같은 명령을 실행해 해소했다. clang-format 22.1.3의 `--dry-run --Werror`와 `git diff --check`도 통과했다.
+
+이번 검증은 빌드·형식·설정 경로 검토 범위다. GUI·녹화·CTest·Linux·macOS 검사는 실행하지 않았고 새 설치본이나 ZIP은 만들지 않았다. 코드 해시와 결과는 [요약 JSON](windows-validation-summary.json)의 `video_defaults_update`에 추가했으며 이전 검증 기록은 보존했다.
+
 ## 2026-09-16: 포터블 빌드 스크립트
 
 루트의 `build-portable.ps1`을 PowerShell 5.1에서 `-Parallel 4`로 실행해 서브모듈 준비, `windows-x64` 구성·전체 빌드, 새 폴더 설치, portable 버전 조회, ZIP 생성·내용 비교까지 **종료 코드 0**을 확인했다. CMake 4.4.3, Visual Studio 2026, `RelWithDebInfo` 구성이며 `ENABLE_AUDIO_TRACK_TESTS=OFF`, `ENABLE_TEST_INPUT=OFF`인 일반 배포용이다.
