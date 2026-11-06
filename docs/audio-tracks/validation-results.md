@@ -1,5 +1,11 @@
 # 12트랙 확장 검증 결과
 
+## 2026-11-07: 원본 안정성 수정 이후 확인
+
+[선별한 안정성 수정](../superpowers/plans/2026-11-07-upstream-stability.md)을 Ubuntu 24.04 Docker 환경에서 전체 빌드·별도 설치하고 Xvfb CTest **5/5**를 통과했다. ALSA 모듈도 빌드됐다. 기존 `ubuntu` preset과 `ENABLE_BROWSER=OFF`, `ENABLE_AUDIO_TRACK_TESTS=ON`, `ENABLE_TEST_INPUT=ON`을 사용했으며 폴더·플러그인 로딩 구조와 의존성 버전 정책은 바꾸지 않았다.
+
+이번 Linux 범위는 빌드와 코어 회귀 검사다. 물리 USB 마이크 제거·재연결, 브라우저, 실제 Linux GUI 녹화·장시간 검사는 재실행하지 않았다. Windows 실제 녹화·분할과 리플레이/영상 끝 경계 제한은 [Windows 검증 결과](windows-validation-results.md)에 따로 기록했다. 코드 SHA-256과 명령·종료 코드는 [Linux 요약 JSON](linux-validation-summary.json)의 `upstream_stability_backports`에 추가했으며 이전 기록을 보존했다.
+
 ## 2026-09-16 추가 변경 이후 확인
 
 본체 업데이트를 제외한 현재 코드는 기존 Ubuntu 24.04 검증 이미지에서 `ENABLE_BROWSER=OFF`, `ENABLE_WHATSNEW=ON`으로 전체 빌드·설치와 Xvfb CTest `audio-tracks` 1/1을 통과했다. CEF 배포본이 없어 브라우저 ON 구성은 실패했으며 해당 GUI 검증은 남아 있다. 이전 상세 녹화·UI·장시간 결과는 이번 변경으로 재실행한 것으로 간주하지 않는다.
