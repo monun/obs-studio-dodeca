@@ -2481,5 +2481,420 @@
       "No new installation or portable ZIP was produced; Linux and macOS were not tested.",
       "Earlier platform validation records and OpenSpec completion states are unchanged."
     ]
+  },
+  "upstream_stability_backports": {
+    "date": "2026-11-07",
+    "base_commit": "167270eed8d66fe331a21afa92587dc1b1fbbdf5",
+    "selected_upstream_commits": [
+      "4315559a098308604df5cdbf3b1546787a19f050",
+      "1bb3a4ee739b43acb3fa77a3c8f2556543e54701",
+      "575c77f19d704f6abc4bc0dcb250b67002a6601b",
+      "cfc81c9ad44f292fda960693c230a01d6249667c",
+      "36d134ee9afff90ab7b067598949fed99b652559",
+      "dfad5c86f66aa5656ddf8d22bd231b85d869b4c3",
+      "3bf06991a5db445a96a12c2081686840c8c3b2dd",
+      "0969e43a83db8bbc84eeea5f1b4210ac573d0750",
+      "8126df7cd0dd8bd9af29357ec33c86e576a26eef",
+      "0820d804bcabe7a14f0474f73584321b882c7080"
+    ],
+    "source_sha256": {
+      "frontend/components/SourceSelectButton.cpp": "f061be07256b5e61835fed4293874d375ca2e7bd01702ebe55ed7d2cdea6cf74",
+      "frontend/widgets/AudioMixer.cpp": "e25fe8345d729acda2765f26ac9471c73797299a2f86231e4a825795a6ce9d1c",
+      "frontend/widgets/OBSBasic_Clipboard.cpp": "6b1c9bf3d74c4cf33a847e094362ef163382804a66bbc5953b5d0f6e61dc3772",
+      "frontend/widgets/OBSBasic_Profiles.cpp": "308f3e23924febe83f40c92671e6ba8e32adbbed5bde2dd268e802a25065b49a",
+      "libobs-d3d11/d3d11-shader.cpp": "cd39af8c8f68c8db7441d7e327ba3a0e8ac9dbb664e28e53944c916d5630b8bf",
+      "libobs/obs-audio.c": "2dd583051cd097410f3f92186c1afec7cb4047b41c1c2fcf83a95b3d4ba08bdb",
+      "libobs/obs-scene.c": "4dffd5b0afbfe928c168261740918ea5f0753b75011b77234f53104454f0b888",
+      "libobs/obs-video.c": "653eb111d73f20bdd39e3d643b9c9ba775ef59017182520853bf191b9cb70015",
+      "libobs/obs.c": "79ee4f6e2bff0dae6416bf234d1f7e8d099a5a9388cb0d258d8fe22496cebbb5",
+      "plugins/linux-alsa/alsa-input.c": "e26b5f1a4a19fbf920e9561a8849f56fc3037288d09b6559b0132096f5c4992b",
+      "plugins/obs-ffmpeg/texture-amf.cpp": "fc7e9c5e23d66d1994a34b5e52c7dd089dbef70e87db0ac855ca90cf40c03e53",
+      "plugins/obs-outputs/mp4-mux.c": "c832319e4fad250cfb3e14c205de44f9e96a9c9c383694ed3de926941f854a04",
+      "test/audio-tracks/CMakeLists.txt": "343a7ac87c39732e6487894b17667129c8e3dbb1b11f3f8c12ffb9edafeec16f",
+      "test/audio-tracks/hybrid-final-flush.c": "a9a99e4b02381c58d5d8d83e0cf9a214bbae5c1f7e9864cde96794db1004f7ff",
+      "test/audio-tracks/upstream-stability.cpp": "df7860444aabf2f4e3676b53817cc49c8cbda089fac8174ff638276d5958711d"
+    },
+    "upstream_adjustment": "575c77f19: preserve the duration-only chapter sentinel; reproduced by a failing regression before the guard.",
+    "unchanged": [
+      "32.2.2-dodeca",
+      "12 audio mixes",
+      "bin/data/obs-plugins layout",
+      "application updates disabled",
+      "submodule revisions",
+      "dependency presets",
+      "portable build script"
+    ],
+    "raw_evidence": "build_windows_validation/2026-11-07/upstream-stability/",
+    "platform": "Windows 11 25H2 x64",
+    "preset": "windows-x64",
+    "configuration": "RelWithDebInfo",
+    "build_and_install_passed": true,
+    "portable_version": "OBS Studio - 32.2.2-dodeca",
+    "ctest": {
+      "passed": 5,
+      "total": 5
+    },
+    "python_tests": {
+      "passed": 4,
+      "total": 4
+    },
+    "commands": {
+      "configure": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+          "--preset",
+          "windows-x64",
+          "-DENABLE_AUDIO_TRACK_TESTS=ON",
+          "-DENABLE_TEST_INPUT=ON",
+          "-DOBS_VERSION_OVERRIDE=32.2.2-dodeca",
+          "-DCMAKE_INSTALL_PREFIX=C:/Users/monun/proj/obs-studio-dodeca/build_x64/install_stability_20261107"
+        ],
+        "exit_code": 0
+      },
+      "build-final": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+          "--build",
+          "--preset",
+          "windows-x64",
+          "--parallel",
+          "2",
+          "--",
+          "/nodeReuse:false",
+          "/p:CL_MPCount=2"
+        ],
+        "exit_code": 0
+      },
+      "build-test-dependencies": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+          "--build",
+          "build_x64",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "test-upstream-stability",
+          "--parallel",
+          "2",
+          "--",
+          "/nodeReuse:false",
+          "/p:CL_MPCount=2"
+        ],
+        "exit_code": 0
+      },
+      "install": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/cmake.exe",
+          "--install",
+          "build_x64",
+          "--config",
+          "RelWithDebInfo",
+          "--prefix",
+          "C:/Users/monun/proj/obs-studio-dodeca/build_x64/install_stability_20261107"
+        ],
+        "exit_code": 0
+      },
+      "ctest-complete": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/cmake/data/bin/ctest.exe",
+          "--test-dir",
+          "build_x64",
+          "-C",
+          "RelWithDebInfo",
+          "--output-on-failure"
+        ],
+        "exit_code": 0
+      },
+      "python-final": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "test/audio-tracks",
+          "-p",
+          "test_*.py",
+          "-v"
+        ],
+        "exit_code": 0
+      },
+      "clang-format": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Lib/site-packages/clang_format/data/bin/clang-format.exe",
+          "--dry-run",
+          "--Werror",
+          "frontend/components/SourceSelectButton.cpp",
+          "frontend/widgets/AudioMixer.cpp",
+          "frontend/widgets/OBSBasic_Clipboard.cpp",
+          "frontend/widgets/OBSBasic_Profiles.cpp",
+          "libobs-d3d11/d3d11-shader.cpp",
+          "libobs/obs-audio.c",
+          "libobs/obs-scene.c",
+          "libobs/obs-video.c",
+          "libobs/obs.c",
+          "plugins/linux-alsa/alsa-input.c",
+          "plugins/obs-ffmpeg/texture-amf.cpp",
+          "plugins/obs-outputs/mp4-mux.c",
+          "test/audio-tracks/upstream-stability.cpp",
+          "test/audio-tracks/hybrid-final-flush.c"
+        ],
+        "exit_code": 0
+      },
+      "gersemi": {
+        "argv": [
+          "build_windows_validation/2026-09-15/venv/Scripts/python.exe",
+          "-m",
+          "gersemi",
+          "--check",
+          "test/audio-tracks/CMakeLists.txt"
+        ],
+        "exit_code": 0
+      }
+    },
+    "runtime": {
+      "mkv": {
+        "files": 3,
+        "process_exit": 0,
+        "loopback_only": true,
+        "decode_names_tone_isolation_and_sync": true,
+        "continuity_passed_files": 2,
+        "continuity_failures": [
+          {
+            "path": "C:\\Users\\monun\\proj\\obs-studio-dodeca\\build_windows_validation\\2026-11-07\\upstream-stability\\runtime-mkv\\recordings\\Replay tracks-2026-11-07-05-43-50.mkv",
+            "error": "Track packet counts differ",
+            "streams": [
+              {
+                "index": 0,
+                "codec_type": "video",
+                "start_time": "0.000000",
+                "nb_read_packets": "150"
+              },
+              {
+                "index": 1,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "235"
+              },
+              {
+                "index": 2,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 3,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 4,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 5,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 6,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 7,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 8,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 9,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 10,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 11,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              },
+              {
+                "index": 12,
+                "codec_type": "audio",
+                "start_time": "0.000000",
+                "nb_read_packets": "234"
+              }
+            ]
+          }
+        ],
+        "audio_tracks_per_file": 12,
+        "max_intertrack_ms": 0.0,
+        "max_audio_video_ms": 33.66666666666663,
+        "worst_other_tones_db": -48.66899679437574
+      },
+      "hybrid_mp4": {
+        "files": 2,
+        "process_exit": 0,
+        "loopback_only": true,
+        "decode_names_tone_isolation_and_sync": true,
+        "continuity_passed_files": 2,
+        "continuity_failures": [],
+        "audio_tracks_per_file": 12,
+        "max_intertrack_ms": 0.0,
+        "max_audio_video_ms": 0.3333333333334849,
+        "worst_other_tones_db": -48.678647387950605,
+        "video_packet_total": 470,
+        "obs_output_frames": [
+          470
+        ]
+      },
+      "hybrid_mov": {
+        "files": 2,
+        "process_exit": 0,
+        "loopback_only": true,
+        "decode_names_tone_isolation_and_sync": true,
+        "continuity_passed_files": 2,
+        "continuity_failures": [],
+        "audio_tracks_per_file": 12,
+        "max_intertrack_ms": 0.0,
+        "max_audio_video_ms": 0.3333333333334849,
+        "worst_other_tones_db": -48.678647387950605,
+        "video_packet_total": 480,
+        "obs_output_frames": [
+          481
+        ]
+      },
+      "profile": {
+        "files": 0,
+        "process_exit": 0,
+        "loopback_only": true,
+        "decode_names_tone_isolation_and_sync": false,
+        "continuity_passed_files": 0,
+        "continuity_failures": [],
+        "create_switch_and_return": true
+      }
+    },
+    "replay_baseline_comparison": {
+      "source_installation": "build_x64/install_no_updates (validated 2026-09-16)",
+      "reproduced_one_packet_replay_boundary_difference": true,
+      "packet_counts": {
+        "Replay tracks-2026-11-07-05-53-59.mkv": [
+          234,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233
+        ],
+        "Replay tracks-2026-11-07-05-54-00.mkv": [
+          217,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216,
+          216
+        ],
+        "Replay tracks-2026-11-07-05-54-01.mkv": [
+          234,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233,
+          233
+        ]
+      },
+      "harness_limit": "Repeated saves sharing a filename stopped the extended runner; three complete replay files and clean process exit were inspected."
+    },
+    "review": "Independent review found the chapter sentinel regression; corrected and re-reviewed with no remaining blockers.",
+    "limits": [
+      "One replay had 235/234 audio packets at the trailing boundary; the pre-backport installation also reproduced one-packet differences. Internal packet continuity and decoded content checks passed.",
+      "A final fragment containing only one media packet still has no prior fragment sample to infer duration. Separately, Hybrid MOV contained 480 video packets versus 481 reported output frames; the exact cause of that boundary difference was not isolated and full video-frame retention is not claimed.",
+      "AMF hardware streaming, corrupted-cache/GPU-allocation fault injection, source-rename dialog crash reproduction, and long-duration tests were not run.",
+      "Harness startup readiness, asynchronous profile/record completion, and profile-list data-shape errors were corrected; existing completed media files were inspected independently.",
+      "No portable ZIP, commit, push, PR, or macOS validation was performed."
+    ]
+  },
+  "upstream_stability_portable": {
+    "date": "2026-11-07",
+    "zip": "artifacts/obs-studio-32.2.2-dodeca-windows-x64-portable-20261107-060247-184.zip",
+    "sha256_file": "artifacts/obs-studio-32.2.2-dodeca-windows-x64-portable-20261107-060247-184.zip.sha256",
+    "sha256": "50e4e740484bb04d0a085605ee392741e0300e60c7c7ca758467528c798ac9f9",
+    "bytes": 178437703,
+    "entries": 2066,
+    "install": "build_x64/portable/20261107-060247-184",
+    "build_exit_code": 0,
+    "zip_content_hashes_checked_by_build_script": true,
+    "zip_crc_check": true,
+    "sha256_sidecar_matches": true,
+    "extracted_portable_version": "OBS Studio - 32.2.2-dodeca",
+    "extracted_portable_exit_code": 0,
+    "layout": [
+      "bin/",
+      "data/",
+      "obs-plugins/",
+      "portable_mode.txt",
+      "Start-OBS.bat"
+    ],
+    "excludes_test_modules_pdb_updater_and_settings": true,
+    "source_sha256": {
+      "frontend/components/SourceSelectButton.cpp": "f061be07256b5e61835fed4293874d375ca2e7bd01702ebe55ed7d2cdea6cf74",
+      "frontend/widgets/AudioMixer.cpp": "e25fe8345d729acda2765f26ac9471c73797299a2f86231e4a825795a6ce9d1c",
+      "frontend/widgets/OBSBasic_Clipboard.cpp": "6b1c9bf3d74c4cf33a847e094362ef163382804a66bbc5953b5d0f6e61dc3772",
+      "frontend/widgets/OBSBasic_Profiles.cpp": "308f3e23924febe83f40c92671e6ba8e32adbbed5bde2dd268e802a25065b49a",
+      "libobs-d3d11/d3d11-shader.cpp": "cd39af8c8f68c8db7441d7e327ba3a0e8ac9dbb664e28e53944c916d5630b8bf",
+      "libobs/obs-audio.c": "2dd583051cd097410f3f92186c1afec7cb4047b41c1c2fcf83a95b3d4ba08bdb",
+      "libobs/obs-scene.c": "4dffd5b0afbfe928c168261740918ea5f0753b75011b77234f53104454f0b888",
+      "libobs/obs-video.c": "653eb111d73f20bdd39e3d643b9c9ba775ef59017182520853bf191b9cb70015",
+      "libobs/obs.c": "79ee4f6e2bff0dae6416bf234d1f7e8d099a5a9388cb0d258d8fe22496cebbb5",
+      "plugins/linux-alsa/alsa-input.c": "e26b5f1a4a19fbf920e9561a8849f56fc3037288d09b6559b0132096f5c4992b",
+      "plugins/obs-ffmpeg/texture-amf.cpp": "fc7e9c5e23d66d1994a34b5e52c7dd089dbef70e87db0ac855ca90cf40c03e53",
+      "plugins/obs-outputs/mp4-mux.c": "c832319e4fad250cfb3e14c205de44f9e96a9c9c383694ed3de926941f854a04",
+      "test/audio-tracks/CMakeLists.txt": "343a7ac87c39732e6487894b17667129c8e3dbb1b11f3f8c12ffb9edafeec16f",
+      "test/audio-tracks/hybrid-final-flush.c": "a9a99e4b02381c58d5d8d83e0cf9a214bbae5c1f7e9864cde96794db1004f7ff",
+      "test/audio-tracks/upstream-stability.cpp": "df7860444aabf2f4e3676b53817cc49c8cbda089fac8174ff638276d5958711d"
+    },
+    "build_script_sha256": "621069b2f6102435c34a8f347a8f05ded14a59f5cd67ab3a6b9706e6de842fba",
+    "raw_evidence": "build_windows_validation/2026-11-07/portable-merge",
+    "limits": [
+      "GUI/recording checks were performed on the same source in the preceding stability validation; they were not repeated on the extracted distribution archive.",
+      "The previously documented replay packet boundary and Hybrid MOV frame-count observations remain."
+    ],
+    "extracted_content_matches_zip": true
   }
 }

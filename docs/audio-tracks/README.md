@@ -58,6 +58,8 @@ libobs의 공개 오디오 구조체 크기가 바뀌므로 **libobs, 프런트�
 
 자동화는 **별도 시험 설정에서만** 실행한다. `test-input`과 Python UI 스크립트는 검증용이며 일반 배포에서는 기본 OFF다. 시험음은 200ms의 선행 데이터를 제공해 시험 실행기의 스케줄링 지연을 흡수한다. 실제 녹화 파일은 Git에 추가하지 않는다.
 
+`ENABLE_AUDIO_TRACK_TESTS=ON`의 CTest는 12트랙 기본값·이전·출력 슬롯 외에 오디오/그래픽 작업 큐 교착, 그룹 복제 시 편집과 트랙 배정의 보존, Hybrid MP4/MOV의 마지막 패킷과 챕터 끝 표식 처리를 검사한다. 그래픽 검사는 Windows의 D3D11 또는 Linux의 OpenGL을 사용하므로 Linux headless 실행에는 아래의 Xvfb 명령이 필요하다.
+
 ### Linux: 기존 ubuntu preset
 
 검증에 사용한 의존성 목록은 `test/audio-tracks/Dockerfile`에 있다. Ubuntu 24.04의 Qt/FFmpeg 패키지를 이용하며, CEF가 없는 로컬 환경에서는 브라우저만 추가로 비활성화한다. 기본 ubuntu preset의 AJA/WebRTC 비활성화도 결과에 명시한다.

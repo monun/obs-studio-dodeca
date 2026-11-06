@@ -1,5 +1,33 @@
 # Windows 검증 결과
 
+## 2026-11-07: 안정성 수정 포터블 ZIP
+
+`powershell -NoProfile -ExecutionPolicy Bypass -File .\build-portable.ps1 -Parallel 2`로 배포용 전체 빌드·설치·패키징을 완료했다. CMake 4.4.3 경로를 명시했으며 `ENABLE_AUDIO_TRACK_TESTS=OFF`, `ENABLE_TEST_INPUT=OFF`를 확인했다.
+
+- ZIP: `artifacts/obs-studio-32.2.2-dodeca-windows-x64-portable-20261107-060247-184.zip` — **178,437,703 bytes**, **2,066개 파일**.
+- SHA-256: `50e4e740484bb04d0a085605ee392741e0300e60c7c7ca758467528c798ac9f9`. 같은 이름의 `.zip.sha256` 파일과 일치한다.
+- 설치 파일과 ZIP 내부의 SHA-256 비교, 별도 CRC 검사, 압축 해제본의 전체 바이트 비교 및 개발 DLL 경로를 제외한 `obs64.exe --portable --version` 실행: 통과.
+- `bin/`, `data/`, `obs-plugins/`, `portable_mode.txt`, `Start-OBS.bat` 배치를 유지하고 설정·PDB·test-input·검증 모듈·updater는 제외했다.
+
+배포본 소스 해시는 아래 안정성 검사 때와 같다. 새 ZIP의 GUI·녹화 검사는 반복하지 않았으며, 앞서 확인한 리플레이 저장 경계와 MOV 프레임 통계 차이는 그대로 남는다. [요약 JSON](windows-validation-summary.json)의 `upstream_stability_portable`과 `build_windows_validation/2026-11-07/portable-merge/`에 증거를 기록했다. ZIP은 Git에 포함하지 않는다.
+
+## 2026-11-07: 원본 안정성 수정 선별 반영
+
+`167270eed`에서 원본 안정성 커밋 10개를 선별했다. [반영 목록과 제외 범위](../superpowers/plans/2026-11-07-upstream-stability.md)에 전체 SHA를 기록했다. 32.2.2-dodeca 버전, 12트랙, `bin/`·`data/`·`obs-plugins/` 포터블 구조, 업데이트 비활성화, 의존성·서브모듈·배포 스크립트는 유지했다.
+
+원본 MP4 패치의 챕터 끝 표식이 실제 챕터로 저장되는 부작용을 별도 리뷰에서 발견했다. 실패하는 테스트로 재현한 뒤 챕터만 기존 마지막 표식 제외 동작을 유지했다. 나머지 생산 코드 패치는 원본과 patch-id가 일치한다. 단일 패킷만 남은 마지막 조각은 이전 표본에서 길이를 추론할 수 없어 해당 패킷을 버릴 수 있는 기존 제한이 남는다.
+
+- Windows 전체 RelWithDebInfo 빌드·`build_x64/install_stability_20261107` 설치·포터블 버전 조회: 종료 코드 0.
+- CTest **5/5**, Python **4/4**, clang-format **22.1.3**, gersemi **0.25.0**, 두 기존 OpenSpec 변경의 strict 검사: 통과.
+- 수정 전 오디오/그래픽 작업 큐의 교착과 그룹 공유, MP4 마지막 패킷 누락을 재현했다. 수정 후 같은 회귀 검사가 통과했으며 챕터 표식 회귀도 통과했다.
+- 새 포터블 설정과 `127.0.0.1:14575` 전용 시험 서버로 MKV 녹화 1개·리플레이 2개, Hybrid MP4/MOV 각각 분할 파일 2개를 생성했다. **7개 파일 모두 12트랙의 디코딩·이름·300~1400Hz 시험음 분리·동기 검사를 통과**했다. 트랙 간 동기 오차는 0ms, 다른 시험음 누설 최대 -48.67dB였다. 새 프로필 생성·전환·원래 프로필 복귀도 별도로 통과했다.
+- 패킷 연속성의 엄격한 전체 검사는 **6/7 파일**에서 통과했다. 리플레이 한 파일에서 1번 트랙 235개, 나머지 234개의 끝 패킷 차이가 있었다. 2026-09-16 검증 설치본의 별도 복사본에서도 234/233, 217/216 등의 차이를 재현했으므로 기존 리플레이 저장 경계 제한으로 기록한다. 각 트랙 내부의 연속성과 디코딩 검사는 통과했다.
+- Hybrid MP4의 합계 영상 패킷은 OBS 출력 통계와 같은 470개였다. MOV는 파일 합계 480개와 출력 통계 481개가 달랐다. 이 끝 경계 차이의 정확한 원인은 분리하지 않았으며 모든 영상 프레임의 보존을 검증 완료로 처리하지 않는다.
+
+시험 실행기의 준비 완료 대기, 비동기 녹화 종료·프로필 생성, 프로필 목록 형식 오류를 수정했다. 완료된 파일은 재녹화 대신 독립적으로 분석했고 실패한 시도도 원시 증거에 보존했다. 기존 실행 중인 OBS와 개인 설정은 조작하지 않았다.
+
+AMD AMF 실기 송출, GPU 초기화/캐시 오류 주입, 소스 이름 변경 창의 충돌 재현, 장시간·macOS 검사는 실행하지 않았다. ZIP·커밋·푸시·PR은 만들지 않았다. 명령·종료 코드·코드 해시는 [요약 JSON](windows-validation-summary.json)의 `upstream_stability_backports`, 원시 로그와 시험 파일은 `build_windows_validation/2026-11-07/upstream-stability/`에 있다. 이전 검증 기록과 OpenSpec 플랫폼 완료 상태는 유지한다.
+
 ## 2026-10-26: 비디오 기본값
 
 새 프로필의 기본·출력 해상도를 모두 1920×1080으로, 표준 FPS 값을 60으로 변경했다. 저장된 사용자 값이 우선하는 기존 설정 경로를 유지했다.
